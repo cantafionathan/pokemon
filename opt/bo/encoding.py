@@ -13,9 +13,8 @@ DEBUG_DECODE = True  # set to True manually when debugging
 # === CONFIG AND DATA LOADING ===
 # ============================================================
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-MOVE_VOCAB_PATH = DATA_DIR / "move_vocab.json"
-VALID_MOVES_PATH = DATA_DIR / "valid_moves.json"
+DATA_DIR = Path(__file__).resolve().parents[2] / "data"
+POKEMON_MOVESETS_PATH = DATA_DIR / "competitive_movesets.json"
 
 
 # -----------------------------
@@ -31,13 +30,8 @@ FEATURE_DIM = 6 * EMBED_DIM
 # -----------------------------
 # Load move vocabulary and valid moves
 # -----------------------------
-with open(MOVE_VOCAB_PATH, "r", encoding="utf-8") as f:
-    MOVE_VOCAB = json.load(f)
-MOVE_INDEX = {m: i for i, m in enumerate(MOVE_VOCAB)}
-NUM_MOVES = len(MOVE_VOCAB)
-
-with open(VALID_MOVES_PATH, "r", encoding="utf-8") as f:
-    VALID_MOVES = json.load(f)
+with open(POKEMON_MOVESETS_PATH, "r", encoding="utf-8") as f:
+    POKEMON_MOVESETS = json.load(f)
 
 
 # ============================================================
@@ -104,19 +98,14 @@ def decode_single_pokemon(vec: torch.Tensor) -> str:
     return best
 
 
-def random_legal_moves(p: str, k=4) -> list:
-    legal = VALID_MOVES.get(p, [])
+def random_legal_moves(p: str) -> list:
+    movesets = POKEMON_MOVESETS.get(p, [])
+    
+    # Choose a random moveset from available movesets
+    chosen_moveset = random.choice(movesets)
+        
+    return chosen_moveset
 
-    # If no legal moves at all → give one safe generic move.
-    if len(legal) == 0:
-        return ["Body Slam"]  # always legal in gen1
-
-    # If 1 ≤ #legal < k → return all legal moves (1 to k moves)
-    if len(legal) <= k:
-        return legal[:]  # return all, no repeats
-
-    # If many legal moves → sample k
-    return random.sample(legal, k=k)
 
 def format_team(pokemon_moves: Dict[str, List[str]]) -> str:
     """Format Gen 1 team with explicit Ability: None lines so poke-env won't crash."""
@@ -152,7 +141,7 @@ def decode_team_from_embedding(team_vec: torch.Tensor) -> dict:
         pokemon_list.append(name)
 
     # assign random legal moves
-    pokemon_moves = {p: random_legal_moves(p, k=4) for p in pokemon_list}
+    pokemon_moves = {p: random_legal_moves(p) for p in pokemon_list}
 
     return {
         "name": "decoded_team",
