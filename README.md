@@ -1,20 +1,25 @@
-# Pokémon BO
+# Pokémon Team Building
 
-This project uses [`poke-env`](https://github.com/hsahovic/poke-env) to simulate Pokémon battles and evaluate AI-designed teams.\
+This project uses [`poke-env`](https://github.com/hsahovic/poke-env) to simulate Pokémon battles and evaluate AI-designed teams.
 A **Bayesian Optimization (BO)** framework is implemented to automatically design and improve teams based on simulated win rates.
 
 ------------------------------------------------------------------------
 
 ## Installation
 
-Clone the repository:
+### 1. Clone the Repository
 
-``` bash
-git clone https://github.com/cantafionathan/pokemon.git
+Clone this repository and its submodules. The `--recurse-submodules` flag is important as it will automatically clone the `pokemon-showdown` repository needed for the simulator.
+
+```bash
+git clone --recurse-submodules https://github.com/cantafionathan/pokemon.git
 cd pokemon
 ```
 
-Create and activate a virtual environment
+Note: If you have already cloned the repository without the `--recurse-submodules` flag, you can run this command after cloning: `git submodule update --init --recursive`
+
+
+### 2. Create and activate a virtual environment
 
 ``` bash
 python3 -m venv venv
@@ -22,29 +27,37 @@ source venv/bin/activate        # macOS / Linux
 venv\Scripts\activate           # Windows
 ```
 
-Install dependencies:
+### 3. Install dependencies:
 
 ``` bash
 pip install -r requirements.txt
 ```
 
-## Setting up `poke-env`
+## Setting up the Pokémon Showdown Server
 
-`poke-env` requires a local Pokémon Showdown server. Ensure you have Node.js v10+ installed.
+The `pokemon-showdown` directory is already included as a git submodule. You need to set it up before running the battles.
 
-If this is your first setup, open a new terminal and run:
+Ensure you have Node.js v10+ installed.
 
-``` bash
-git clone https://github.com/smogon/pokemon-showdown.git
+Open a new terminal and run the following commands from the project root:
+
+```bash
+# Navigate into the submodule directory
 cd pokemon-showdown
+
+# Install server dependencies
 npm install
+
+# Set up the configuration file
 cp config/config-example.js config/config.js
+
+# Start the server
 node pokemon-showdown start --no-security
 ```
 
-The `--no-security` flag disables crucial security features, use with caution. This flag facilitates AI training by removing rate limiting and authentication requirements
+The `--no-security` flag disables crucial security features buts its useful for AI training as it removes rate limiting and authentication. Use with caution.
 
-This starts a local Showdown server on ws://localhost:8000, which poke-env will connect to.
+`node pokemon-showdown start --no-security` starts a local Showdown server on `ws://localhost:8000`, which `poke-env` will connect to.
 
 ## Running the BO Loop
 

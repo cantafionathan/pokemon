@@ -14,7 +14,7 @@ logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.INFO)
 
 
-class TeamOptimizer:
+class BOOptimizer:
     """
     Clean, modern Bayesian Optimization loop.
     Uses ONLY real battle results (black_box_eval).
