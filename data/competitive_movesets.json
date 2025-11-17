@@ -65,12 +65,6 @@
       "Hyper Beam"
     ],
     [
-      "Sleep Powder",
-      "Swords Dance",
-      "Body Slam",
-      "Body Slam"
-    ],
-    [
       "Razor Leaf",
       "Body Slam",
       "Sleep Powder",
@@ -124,12 +118,6 @@
       "Fire Blast",
       "Body Slam",
       "Counter",
-      "Counter"
-    ],
-    [
-      "Fire Blast",
-      "Body Slam",
-      "Counter",
       "Swords Dance"
     ],
     [
@@ -137,12 +125,6 @@
       "Body Slam",
       "Counter",
       "Substitute"
-    ],
-    [
-      "Flamethrower",
-      "Body Slam",
-      "Counter",
-      "Counter"
     ],
     [
       "Flamethrower",
@@ -185,24 +167,12 @@
       "Slash",
       "Dragon Rage",
       "Counter"
-    ],
-    [
-      "Fire Blast",
-      "Slash",
-      "Dragon Rage",
-      "Dig"
     ],
     [
       "Swords Dance",
       "Fire Blast",
       "Body Slam",
       "Submission"
-    ],
-    [
-      "Flamethrower",
-      "Slash",
-      "Dig",
-      "Fire Spin"
     ]
   ],
   "Charmeleon": [
@@ -255,12 +225,6 @@
       "Earthquake",
       "Slash",
       "Counter"
-    ],
-    [
-      "Fire Blast",
-      "Earthquake",
-      "Slash",
-      "Slash"
     ],
     [
       "Fire Blast",
@@ -320,12 +284,6 @@
       "Fire Spin",
       "Fire Blast",
       "Slash",
-      "Dig"
-    ],
-    [
-      "Fire Spin",
-      "Fire Blast",
-      "Slash",
       "Toxic"
     ],
     [
@@ -338,19 +296,7 @@
       "Fire Spin",
       "Fire Blast",
       "Body Slam",
-      "Dig"
-    ],
-    [
-      "Fire Spin",
-      "Fire Blast",
-      "Body Slam",
       "Toxic"
-    ],
-    [
-      "Fly",
-      "Swords Dance",
-      "Fire Spin",
-      "Fire Blast"
     ]
   ],
   "Squirtle": [
@@ -365,12 +311,6 @@
       "Blizzard",
       "Body Slam",
       "Rest"
-    ],
-    [
-      "Surf",
-      "Blizzard",
-      "Body Slam",
-      "Dig"
     ]
   ],
   "Wartortle": [
@@ -431,18 +371,6 @@
       "Rest"
     ],
     [
-      "Hydro Pump",
-      "Blizzard",
-      "Earthquake",
-      "Hydro Pump"
-    ],
-    [
-      "Hydro Pump",
-      "Blizzard",
-      "Body Slam",
-      "Dig"
-    ],
-    [
       "Surf",
       "Blizzard",
       "Body Slam",
@@ -461,12 +389,6 @@
       "Rest"
     ],
     [
-      "Surf",
-      "Blizzard",
-      "Counter",
-      "Counter"
-    ],
-    [
       "Hydro Pump",
       "Blizzard",
       "Body Slam",
@@ -483,12 +405,6 @@
       "Blizzard",
       "Counter",
       "Rest"
-    ],
-    [
-      "Hydro Pump",
-      "Blizzard",
-      "Counter",
-      "Counter"
     ],
     [
       "Hydro Pump",
@@ -587,12 +503,6 @@
       "Quick Attack",
       "Wing Attack",
       "Mirror Move"
-    ],
-    [
-      "Fly",
-      "Quick Attack",
-      "Sand Attack",
-      "Take Down"
     ]
   ],
   "Pidgeot": [
@@ -607,12 +517,6 @@
       "Hyper Beam",
       "Sky Attack",
       "Agility"
-    ],
-    [
-      "Mirror Move",
-      "Fly",
-      "Quick Attack",
-      "Sand Attack"
     ]
   ],
   "Rattata": [
@@ -670,12 +574,6 @@
       "Hyper Beam",
       "Body Slam",
       "Thunderbolt",
-      "Thunderbolt"
-    ],
-    [
-      "Hyper Beam",
-      "Body Slam",
-      "Thunderbolt",
       "Super Fang"
     ],
     [
@@ -683,24 +581,6 @@
       "Super Fang",
       "Bubble Beam",
       "Thunderbolt"
-    ],
-    [
-      "Hyper Beam",
-      "Super Fang",
-      "Bubble Beam",
-      "Super Fang"
-    ],
-    [
-      "Hyper Beam",
-      "Super Fang",
-      "Thunderbolt",
-      "Thunderbolt"
-    ],
-    [
-      "Hyper Beam",
-      "Super Fang",
-      "Thunderbolt",
-      "Super Fang"
     ],
     [
       "Super Fang",
@@ -793,18 +673,6 @@
       "Wrap",
       "Earthquake",
       "Rock Slide"
-    ],
-    [
-      "Glare",
-      "Wrap",
-      "Dig",
-      "Strength"
-    ],
-    [
-      "Glare",
-      "Wrap",
-      "Earthquake",
-      "Dig"
     ]
   ],
   "Pikachu": [
@@ -836,12 +704,6 @@
       "Thunderbolt",
       "Surf",
       "Body Slam",
-      "Body Slam"
-    ],
-    [
-      "Thunderbolt",
-      "Surf",
-      "Body Slam",
       "Agility"
     ],
     [
@@ -854,30 +716,6 @@
       "Thunderbolt",
       "Body Slam",
       "Quick Attack",
-      "Body Slam"
-    ],
-    [
-      "Thunderbolt",
-      "Body Slam",
-      "Quick Attack",
-      "Agility"
-    ],
-    [
-      "Thunderbolt",
-      "Body Slam",
-      "Body Slam",
-      "Thunder Wave"
-    ],
-    [
-      "Thunderbolt",
-      "Body Slam",
-      "Body Slam",
-      "Body Slam"
-    ],
-    [
-      "Thunderbolt",
-      "Body Slam",
-      "Body Slam",
       "Agility"
     ],
     [
@@ -923,36 +761,6 @@
       "Surf",
       "Body Slam",
       "Substitute"
-    ],
-    [
-      "Thunderbolt",
-      "Surf",
-      "Counter",
-      "Thunder Wave"
-    ],
-    [
-      "Thunderbolt",
-      "Surf",
-      "Counter",
-      "Substitute"
-    ],
-    [
-      "Sing",
-      "Thunderbolt",
-      "Surf",
-      "Hyper Beam"
-    ],
-    [
-      "Sing",
-      "Thunderbolt",
-      "Surf",
-      "Body Slam"
-    ],
-    [
-      "Sing",
-      "Thunderbolt",
-      "Surf",
-      "Thunder Wave"
     ],
     [
       "Thunderbolt",
@@ -1033,12 +841,6 @@
     [
       "Swords Dance",
       "Earthquake",
-      "Body Slam",
-      "Body Slam"
-    ],
-    [
-      "Swords Dance",
-      "Earthquake",
       "Rock Slide",
       "Hyper Beam"
     ],
@@ -1083,12 +885,6 @@
       "Earthquake",
       "Rock Slide",
       "Submission"
-    ],
-    [
-      "Dig",
-      "Swift",
-      "Seismic Toss",
-      "Sand Attack"
     ]
   ],
   "Nidoran-F": [
@@ -1149,12 +945,6 @@
       "Blizzard",
       "Earthquake",
       "Body Slam"
-    ],
-    [
-      "Lovely Kiss",
-      "Earthquake",
-      "Blizzard",
-      "Thunderbolt"
     ],
     [
       "Toxic",
@@ -1226,18 +1016,6 @@
       "Focus Energy",
       "Thunderbolt",
       "Blizzard",
-      "Earthquake"
-    ],
-    [
-      "Lovely Kiss",
-      "Blizzard",
-      "Thunderbolt",
-      "Earthquake"
-    ],
-    [
-      "Amnesia",
-      "Blizzard",
-      "Thunderbolt",
       "Earthquake"
     ],
     [
@@ -1351,54 +1129,6 @@
       "Body Slam",
       "Blizzard",
       "Thunderbolt"
-    ],
-    [
-      "Slash",
-      "Recover",
-      "Explosion",
-      "Sing"
-    ],
-    [
-      "Slash",
-      "Recover",
-      "Explosion",
-      "Counter"
-    ],
-    [
-      "Slash",
-      "Recover",
-      "Explosion",
-      "Thunder Wave"
-    ],
-    [
-      "Slash",
-      "Recover",
-      "Explosion",
-      "Glare"
-    ],
-    [
-      "Amnesia",
-      "Blizzard",
-      "Body Slam",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Blizzard",
-      "Thunderbolt",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Body Slam",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Thunderbolt",
-      "Rest"
     ]
   ],
   "Vulpix": [
@@ -1425,18 +1155,6 @@
       "Body Slam",
       "Confuse Ray",
       "Quick Attack"
-    ],
-    [
-      "Confuse Ray",
-      "Fire Blast",
-      "Dig",
-      "Substitute"
-    ],
-    [
-      "Flamethrower",
-      "Dig",
-      "Confuse Ray",
-      "Double Edge"
     ]
   ],
   "Ninetales": [
@@ -1444,18 +1162,6 @@
       "Fire Blast",
       "Fire Spin",
       "Body Slam",
-      "Confuse Ray"
-    ],
-    [
-      "Fire Blast",
-      "Fire Spin",
-      "Dig",
-      "Toxic"
-    ],
-    [
-      "Fire Blast",
-      "Fire Spin",
-      "Dig",
       "Confuse Ray"
     ],
     [
@@ -1495,12 +1201,6 @@
       "Thunder Wave",
       "Blizzard",
       "Counter"
-    ],
-    [
-      "Body Slam",
-      "Thunder Wave",
-      "Thunderbolt",
-      "Thunderbolt"
     ],
     [
       "Body Slam",
@@ -1600,12 +1300,6 @@
     ],
     [
       "Confuse Ray",
-      "Hyper Beam",
-      "Hyper Beam",
-      "Mega Drain"
-    ],
-    [
-      "Confuse Ray",
       "Mega Drain",
       "Bite",
       "Haze"
@@ -1683,12 +1377,6 @@
       "Stun Spore",
       "Slash",
       "Leech Life"
-    ],
-    [
-      "Spore",
-      "Slash",
-      "Dig",
-      "Mega Drain"
     ]
   ],
   "Parasect": [
@@ -1736,21 +1424,9 @@
     ],
     [
       "Spore",
-      "Stun Spore",
-      "Body Slam",
-      "Body Slam"
-    ],
-    [
-      "Spore",
       "Toxic",
       "Slash",
       "Mega Drain"
-    ],
-    [
-      "Spore",
-      "Take Down",
-      "Dig",
-      "Solar Beam"
     ]
   ],
   "Venonat": [
@@ -1867,24 +1543,6 @@
       "Rock Slide",
       "Substitute",
       "Toxic"
-    ],
-    [
-      "Earthquake",
-      "Dig",
-      "Rock Slide",
-      "Substitute"
-    ],
-    [
-      "Earthquake",
-      "Dig",
-      "Rock Slide",
-      "Sand Attack"
-    ],
-    [
-      "Dig",
-      "Sand Attack",
-      "Toxic",
-      "Hyper Beam"
     ]
   ],
   "Meowth": [
@@ -1911,12 +1569,6 @@
       "Thunderbolt",
       "Screech",
       "Substitute"
-    ],
-    [
-      "Body Slam",
-      "Thunderbolt",
-      "Screech",
-      "Screech"
     ],
     [
       "Slash",
@@ -1970,12 +1622,6 @@
     ],
     [
       "Slash",
-      "Hyper Beam",
-      "Screech",
-      "Screech"
-    ],
-    [
-      "Slash",
       "Thunderbolt",
       "Bubble Beam",
       "Substitute"
@@ -1994,72 +1640,12 @@
     ],
     [
       "Slash",
-      "Super Fang",
-      "Glare",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Recover",
-      "Glare",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Bubble Beam",
-      "Glare",
-      "Explosion"
-    ],
-    [
-      "Hypnosis",
-      "Slash",
-      "Thunderbolt",
-      "Amnesia"
-    ],
-    [
-      "Hypnosis",
-      "Slash",
-      "Thunderbolt",
-      "Bubble Beam"
-    ],
-    [
-      "Slash",
       "Bubble Beam",
       "Mimic",
       "Growl"
     ]
   ],
   "Psyduck": [
-    [
-      "Amnesia",
-      "Surf",
-      "Blizzard",
-      "Body Slam"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Blizzard",
-      "Counter"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Blizzard",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Blizzard",
-      "Seismic Toss"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Ice Beam",
-      "Rest"
-    ],
     [
       "Surf",
       "Confusion",
@@ -2091,114 +1677,6 @@
       "Blizzard",
       "Seismic Toss",
       "Body Slam"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Blizzard",
-      "Seismic Toss"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Blizzard",
-      "Seismic Toss"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Blizzard",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Blizzard",
-      "Counter"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Blizzard",
-      "Hydro Pump"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Hydro Pump",
-      "Counter"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Hydro Pump",
-      "Seismic Toss"
-    ],
-    [
-      "Amnesia",
-      "Surf",
-      "Hydro Pump",
-      "Hydro Pump"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Blizzard",
-      "Counter"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Blizzard",
-      "Hydro Pump"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Hydro Pump",
-      "Counter"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Hydro Pump",
-      "Seismic Toss"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Hydro Pump",
-      "Hydro Pump"
-    ],
-    [
-      "Ice Beam",
-      "Blizzard",
-      "Amnesia",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Blizzard",
-      "Submission"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Ice Beam",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Ice Beam",
-      "Counter"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Ice Beam",
-      "Submission"
     ],
     [
       "Ice Beam",
@@ -2337,30 +1815,6 @@
       "Dragon Rage",
       "Body Slam",
       "Substitute"
-    ],
-    [
-      "Fire Blast",
-      "Dragon Rage",
-      "Body Slam",
-      "Dig"
-    ],
-    [
-      "Fire Blast",
-      "Dragon Rage",
-      "Dig",
-      "Substitute"
-    ],
-    [
-      "Fire Blast",
-      "Dragon Rage",
-      "Dig",
-      "Dig"
-    ],
-    [
-      "Flamethrower",
-      "Body Slam",
-      "Reflect",
-      "Dig"
     ]
   ],
   "Arcanine": [
@@ -2425,12 +1879,6 @@
       "Amnesia",
       "Blizzard",
       "Psychic"
-    ],
-    [
-      "Hypnosis",
-      "Amnesia",
-      "Blizzard",
-      "Blizzard"
     ],
     [
       "Hypnosis",
@@ -2656,12 +2104,6 @@
       "Amnesia",
       "Hydro Pump",
       "Hypnosis",
-      "Hypnosis"
-    ],
-    [
-      "Amnesia",
-      "Hydro Pump",
-      "Hypnosis",
       "Submission"
     ],
     [
@@ -2725,12 +2167,6 @@
       "Submission"
     ],
     [
-      "Crabhammer",
-      "Hypnosis",
-      "Counter",
-      "Blizzard"
-    ],
-    [
       "Blizzard",
       "Amnesia",
       "Submission",
@@ -2785,12 +2221,6 @@
       "Seismic Toss",
       "Counter",
       "Substitute"
-    ],
-    [
-      "Psychic",
-      "Seismic Toss",
-      "Counter",
-      "Counter"
     ]
   ],
   "Kadabra": [
@@ -2811,12 +2241,6 @@
       "Seismic Toss",
       "Thunder Wave",
       "Substitute"
-    ],
-    [
-      "Psychic",
-      "Counter",
-      "Recover",
-      "Dig"
     ],
     [
       "Psybeam",
@@ -2858,18 +2282,6 @@
     ],
     [
       "Psychic",
-      "Ice Punch",
-      "Thunder Wave",
-      "Recover"
-    ],
-    [
-      "Psychic",
-      "Thunder Punch",
-      "Thunder Wave",
-      "Recover"
-    ],
-    [
-      "Psychic",
       "Thunder Wave",
       "Recover",
       "Substitute"
@@ -2891,12 +2303,6 @@
       "Metronome",
       "Disable",
       "Tri Attack"
-    ],
-    [
-      "Psybeam",
-      "Recover",
-      "Kinesis",
-      "Dig"
     ]
   ],
   "Machop": [
@@ -2999,12 +2405,6 @@
       "Body Slam",
       "Rock Slide",
       "Submission"
-    ],
-    [
-      "Earthquake",
-      "Body Slam",
-      "Rock Slide",
-      "Rock Slide"
     ],
     [
       "Low Kick",
@@ -3193,12 +2593,6 @@
       "Body Slam"
     ],
     [
-      "Wrap",
-      "Razor Leaf",
-      "Stun Spore",
-      "Stun Spore"
-    ],
-    [
       "Swords Dance",
       "Stun Spore",
       "Razor Leaf",
@@ -3315,18 +2709,6 @@
       "Blizzard",
       "Wrap",
       "Swords Dance"
-    ],
-    [
-      "Crabhammer",
-      "Blizzard",
-      "Wrap",
-      "Hyper Beam"
-    ],
-    [
-      "Crabhammer",
-      "Blizzard",
-      "Wrap",
-      "Surf"
     ],
     [
       "Wrap",
@@ -3452,25 +2834,7 @@
       "Earthquake",
       "Explosion",
       "Body Slam",
-      "Body Slam"
-    ],
-    [
-      "Earthquake",
-      "Explosion",
-      "Body Slam",
       "Fire Blast"
-    ],
-    [
-      "Dig",
-      "Seismic Toss",
-      "Fire Blast",
-      "Metronome"
-    ],
-    [
-      "Rock Throw",
-      "Mega Punch",
-      "Dig",
-      "Self Destruct"
     ]
   ],
   "Ponyta": [
@@ -3525,12 +2889,6 @@
       "Hyper Beam"
     ],
     [
-      "Fire Spin",
-      "Fire Blast",
-      "Toxic",
-      "Toxic"
-    ],
-    [
       "Fire Blast",
       "Body Slam",
       "Hyper Beam",
@@ -3547,30 +2905,6 @@
       "Body Slam",
       "Fire Spin",
       "Agility"
-    ],
-    [
-      "Hypnosis",
-      "Fire Spin",
-      "Fire Blast",
-      "Hyper Beam"
-    ],
-    [
-      "Hypnosis",
-      "Fire Spin",
-      "Fire Blast",
-      "Double Kick"
-    ],
-    [
-      "Hypnosis",
-      "Fire Spin",
-      "Body Slam",
-      "Hyper Beam"
-    ],
-    [
-      "Hypnosis",
-      "Fire Spin",
-      "Body Slam",
-      "Double Kick"
     ],
     [
       "Fire Blast",
@@ -3668,12 +3002,6 @@
     ],
     [
       "Amnesia",
-      "Rest",
-      "Psychic",
-      "Psychic"
-    ],
-    [
-      "Amnesia",
       "Surf",
       "Substitute",
       "Rest"
@@ -3694,12 +3022,6 @@
       "Surf",
       "Body Slam",
       "Thunder Wave",
-      "Rest"
-    ],
-    [
-      "Surf",
-      "Body Slam",
-      "Body Slam",
       "Rest"
     ],
     [
@@ -3758,12 +3080,6 @@
       "Thunder Wave",
       "Thunderbolt",
       "Rest",
-      "Rest"
-    ],
-    [
-      "Thunder Wave",
-      "Thunderbolt",
-      "Rest",
       "Reflect"
     ],
     [
@@ -3797,18 +3113,6 @@
       "Agility",
       "Swords Dance",
       "Double Edge"
-    ],
-    [
-      "Swords Dance",
-      "Body Slam",
-      "Fly",
-      "Substitute"
-    ],
-    [
-      "Slash",
-      "Sand Attack",
-      "Toxic",
-      "Fly"
     ]
   ],
   "Doduo": [
@@ -3843,36 +3147,6 @@
       "Hyper Beam",
       "Drill Peck",
       "Toxic"
-    ],
-    [
-      "Slash",
-      "Drill Peck",
-      "Explosion",
-      "Mirror Move"
-    ],
-    [
-      "Slash",
-      "Drill Peck",
-      "Explosion",
-      "Swords Dance"
-    ],
-    [
-      "Slash",
-      "Drill Peck",
-      "Explosion",
-      "Super Fang"
-    ],
-    [
-      "Slash",
-      "Drill Peck",
-      "Explosion",
-      "Hyper Beam"
-    ],
-    [
-      "Fly",
-      "Tri Attack",
-      "Agility",
-      "Reflect"
     ]
   ],
   "Seel": [
@@ -4011,12 +3285,6 @@
       "Explosion"
     ],
     [
-      "Clamp",
-      "Double Edge",
-      "Double Edge",
-      "Explosion"
-    ],
-    [
       "Surf",
       "Blizzard",
       "Clamp",
@@ -4055,21 +3323,9 @@
       "Rest"
     ],
     [
-      "Clamp",
-      "Blizzard",
-      "Rest",
-      "Rest"
-    ],
-    [
       "Blizzard",
       "Clamp",
       "Toxic",
-      "Explosion"
-    ],
-    [
-      "Crabhammer",
-      "Blizzard",
-      "Clamp",
       "Explosion"
     ],
     [
@@ -4095,12 +3351,6 @@
       "Leer",
       "Hyper Beam",
       "Rest"
-    ],
-    [
-      "Clamp",
-      "Explosion",
-      "Blizzard",
-      "Screech"
     ],
     [
       "Ice Beam",
@@ -4174,12 +3424,6 @@
       "Hypnosis",
       "Mega Drain",
       "Psychic",
-      "Explosion"
-    ],
-    [
-      "Hypnosis",
-      "Mega Drain",
-      "Mega Drain",
       "Explosion"
     ],
     [
@@ -4296,12 +3540,6 @@
     ],
     [
       "Thunderbolt",
-      "Sludge",
-      "Hypnosis",
-      "Explosion"
-    ],
-    [
-      "Thunderbolt",
       "Psychic",
       "Rest",
       "Substitute"
@@ -4311,12 +3549,6 @@
       "Psychic",
       "Rest",
       "Confuse Ray"
-    ],
-    [
-      "Hypnosis",
-      "Thunderbolt",
-      "Ice Punch",
-      "Explosion"
     ],
     [
       "Night Shade",
@@ -4473,60 +3705,6 @@
       "Toxic",
       "Psychic",
       "Rest"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Reflect",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Reflect",
-      "Thunder Wave"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Reflect",
-      "Hypnosis"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Ice Punch",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Ice Punch",
-      "Thunder Wave"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Ice Punch",
-      "Hypnosis"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Thunder Punch",
-      "Rest"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Thunder Punch",
-      "Thunder Wave"
-    ],
-    [
-      "Amnesia",
-      "Psychic",
-      "Thunder Punch",
-      "Hypnosis"
     ],
     [
       "Psychic",
@@ -4817,18 +3995,6 @@
       "Rest"
     ],
     [
-      "Razor Leaf",
-      "Psychic",
-      "Sleep Powder",
-      "Explosion"
-    ],
-    [
-      "Razor Leaf",
-      "Stun Spore",
-      "Sleep Powder",
-      "Explosion"
-    ],
-    [
       "Psychic",
       "Toxic",
       "Leech Seed",
@@ -4909,12 +4075,6 @@
       "Body Slam",
       "Counter",
       "Fire Blast"
-    ],
-    [
-      "Earthquake",
-      "Body Slam",
-      "Counter",
-      "Counter"
     ],
     [
       "Bonemerang",
@@ -4998,12 +4158,6 @@
       "Swords Dance",
       "Body Slam",
       "Hyper Beam",
-      "Earthquake"
-    ],
-    [
-      "Swords Dance",
-      "Hyper Beam",
-      "Earthquake",
       "Earthquake"
     ],
     [
@@ -5143,12 +4297,6 @@
     [
       "Earthquake",
       "Rock Slide",
-      "Substitute",
-      "Substitute"
-    ],
-    [
-      "Earthquake",
-      "Rock Slide",
       "Body Slam",
       "Bubble Beam"
     ],
@@ -5163,12 +4311,6 @@
       "Rock Slide",
       "Body Slam",
       "Rest"
-    ],
-    [
-      "Dig",
-      "Strength",
-      "Thunder",
-      "Surf"
     ]
   ],
   "Chansey": [
@@ -5243,30 +4385,6 @@
       "Reflect",
       "Thunder Wave",
       "Soft Boiled"
-    ],
-    [
-      "Thunder Wave",
-      "Super Fang",
-      "Recover",
-      "Ice Beam"
-    ],
-    [
-      "Thunder Wave",
-      "Super Fang",
-      "Recover",
-      "Seismic Toss"
-    ],
-    [
-      "Glare",
-      "Super Fang",
-      "Recover",
-      "Ice Beam"
-    ],
-    [
-      "Glare",
-      "Super Fang",
-      "Recover",
-      "Seismic Toss"
     ],
     [
       "Reflect",
@@ -5411,30 +4529,6 @@
       "Rock Slide"
     ],
     [
-      "Slash",
-      "Earthquake",
-      "Recover",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Glare",
-      "Recover",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Counter",
-      "Recover",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Defense Curl",
-      "Recover",
-      "Explosion"
-    ],
-    [
       "Body Slam",
       "Mega Kick",
       "Earthquake",
@@ -5539,12 +4633,6 @@
       "Double Edge"
     ],
     [
-      "Hyper Beam",
-      "Surf",
-      "Agility",
-      "Swords Dance"
-    ],
-    [
       "Waterfall",
       "Supersonic",
       "Horn Attack",
@@ -5630,19 +4718,7 @@
       "Recover",
       "Thunder Wave",
       "Thunderbolt",
-      "Thunderbolt"
-    ],
-    [
-      "Recover",
-      "Thunder Wave",
-      "Thunderbolt",
       "Surf"
-    ],
-    [
-      "Blizzard",
-      "Blizzard",
-      "Thunder Wave",
-      "Recover"
     ],
     [
       "Surf",
@@ -5660,18 +4736,6 @@
       "Psychic",
       "Thunder",
       "Thunder Wave",
-      "Recover"
-    ],
-    [
-      "Crabhammer",
-      "Thunderbolt",
-      "Thunder Wave",
-      "Recover"
-    ],
-    [
-      "Crabhammer",
-      "Thunderbolt",
-      "Blizzard",
       "Recover"
     ],
     [
@@ -5755,18 +4819,6 @@
       "Counter"
     ],
     [
-      "Hypnosis",
-      "Thunderbolt",
-      "Psychic",
-      "Seismic Toss"
-    ],
-    [
-      "Hypnosis",
-      "Thunderbolt",
-      "Psychic",
-      "Thunder Wave"
-    ],
-    [
       "Barrier",
       "Psychic",
       "Metronome",
@@ -5805,12 +4857,6 @@
       "Blizzard",
       "Psychic",
       "Counter"
-    ],
-    [
-      "Blizzard",
-      "Psychic",
-      "Lovely Kiss",
-      "Amnesia"
     ],
     [
       "Blizzard",
@@ -5861,12 +4907,6 @@
       "Thunderbolt",
       "Seismic Toss",
       "Psychic"
-    ],
-    [
-      "Thunder Wave",
-      "Thunderbolt",
-      "Seismic Toss",
-      "Seismic Toss"
     ],
     [
       "Thunderbolt",
@@ -5923,12 +4963,6 @@
       "Hyper Beam"
     ],
     [
-      "Thunder Wave",
-      "Thunderbolt",
-      "Ice Punch",
-      "Rolling Kick"
-    ],
-    [
       "Thunder Punch",
       "Mega Punch",
       "Psychic",
@@ -5979,12 +5013,6 @@
       "Smokescreen"
     ],
     [
-      "Fire Blast",
-      "Body Slam",
-      "Counter",
-      "Counter"
-    ],
-    [
       "Psychic",
       "Body Slam",
       "Hyper Beam",
@@ -6013,12 +5041,6 @@
       "Body Slam",
       "Counter",
       "Smokescreen"
-    ],
-    [
-      "Psychic",
-      "Body Slam",
-      "Counter",
-      "Counter"
     ],
     [
       "Fire Punch",
@@ -6063,12 +5085,6 @@
       "Hyper Beam",
       "Bind",
       "Submission"
-    ],
-    [
-      "Swords Dance",
-      "Hyper Beam",
-      "Bind",
-      "Bind"
     ]
   ],
   "Tauros": [
@@ -6109,18 +5125,6 @@
       "Blizzard"
     ],
     [
-      "Slash",
-      "Earthquake",
-      "Explosion",
-      "Recover"
-    ],
-    [
-      "Slash",
-      "Glare",
-      "Explosion",
-      "Recover"
-    ],
-    [
       "Hyper Beam",
       "Body Slam",
       "Earthquake",
@@ -6131,18 +5135,6 @@
       "Body Slam",
       "Earthquake",
       "Thunderbolt"
-    ],
-    [
-      "Body Slam",
-      "Hyper Beam",
-      "Earthquake",
-      "Surf"
-    ],
-    [
-      "Body Slam",
-      "Hyper Beam",
-      "Thunderbolt",
-      "Surf"
     ],
     [
       "Body Slam",
@@ -6173,12 +5165,6 @@
       "Blizzard",
       "Double Edge",
       "Stomp"
-    ],
-    [
-      "Body Slam",
-      "Blizzard",
-      "Double Edge",
-      "Double Edge"
     ],
     [
       "Body Slam",
@@ -6225,12 +5211,6 @@
       "Thunderbolt"
     ],
     [
-      "Body Slam",
-      "Blizzard",
-      "Hydro Pump",
-      "Hydro Pump"
-    ],
-    [
       "Hydro Pump",
       "Thunderbolt",
       "Body Slam",
@@ -6295,30 +5275,6 @@
       "Hyper Beam",
       "Blizzard",
       "Double Edge"
-    ],
-    [
-      "Crabhammer",
-      "Drill Peck",
-      "Thunderbolt",
-      "Body Slam"
-    ],
-    [
-      "Crabhammer",
-      "Drill Peck",
-      "Thunderbolt",
-      "Hyper Beam"
-    ],
-    [
-      "Crabhammer",
-      "Drill Peck",
-      "Thunderbolt",
-      "Blizzard"
-    ],
-    [
-      "Crabhammer",
-      "Drill Peck",
-      "Thunderbolt",
-      "Mirror Move"
     ],
     [
       "Surf",
@@ -6452,24 +5408,6 @@
       "Rest"
     ],
     [
-      "Crabhammer",
-      "Blizzard",
-      "Glare",
-      "Recover"
-    ],
-    [
-      "Crabhammer",
-      "Explosion",
-      "Glare",
-      "Recover"
-    ],
-    [
-      "Growth",
-      "Surf",
-      "Acid Armor",
-      "Rest"
-    ],
-    [
       "Surf",
       "Quick Attack",
       "Sand Attack",
@@ -6491,21 +5429,9 @@
     ],
     [
       "Thunderbolt",
-      "Thunder Wave",
-      "Super Fang",
-      "Explosion"
-    ],
-    [
-      "Thunderbolt",
       "Pin Missile",
       "Toxic",
       "Rest"
-    ],
-    [
-      "Thunderbolt",
-      "Double Kick",
-      "Thunder Wave",
-      "Growth"
     ],
     [
       "Focus Energy",
@@ -6744,12 +5670,6 @@
       "Rest"
     ],
     [
-      "Hydro Pump",
-      "Blizzard",
-      "Blizzard",
-      "Rest"
-    ],
-    [
       "Surf",
       "Body Slam",
       "Seismic Toss",
@@ -6765,12 +5685,6 @@
       "Surf",
       "Blizzard",
       "Seismic Toss",
-      "Rest"
-    ],
-    [
-      "Surf",
-      "Blizzard",
-      "Blizzard",
       "Rest"
     ],
     [
@@ -6796,12 +5710,6 @@
       "Ice Beam",
       "Seismic Toss",
       "Rest"
-    ],
-    [
-      "Crabhammer",
-      "Blizzard",
-      "Body Slam",
-      "Seismic Toss"
     ],
     [
       "Hydro Pump",
@@ -6828,12 +5736,6 @@
       "Blizzard",
       "Slash",
       "Body Slam"
-    ],
-    [
-      "Hydro Pump",
-      "Blizzard",
-      "Slash",
-      "Hydro Pump"
     ],
     [
       "Surf",
@@ -6904,24 +5806,6 @@
       "Rest"
     ],
     [
-      "Body Slam",
-      "Body Slam",
-      "Blizzard",
-      "Swords Dance"
-    ],
-    [
-      "Body Slam",
-      "Body Slam",
-      "Blizzard",
-      "Rest"
-    ],
-    [
-      "Crabhammer",
-      "Swords Dance",
-      "Rock Slide",
-      "Hyper Beam"
-    ],
-    [
       "Slash",
       "Surf",
       "Substitute",
@@ -6964,30 +5848,6 @@
       "Hyper Beam",
       "Fire Blast",
       "Agility"
-    ],
-    [
-      "Drill Peck",
-      "Rock Slide",
-      "Fire Blast",
-      "Mirror Move"
-    ],
-    [
-      "Drill Peck",
-      "Rock Slide",
-      "Hyper Beam",
-      "Mirror Move"
-    ],
-    [
-      "Earthquake",
-      "Hyper Beam",
-      "Headbutt",
-      "Fire Blast"
-    ],
-    [
-      "Fly",
-      "Hyper Beam",
-      "Supersonic",
-      "Dragon Rage"
     ]
   ],
   "Snorlax": [
@@ -7035,12 +5895,6 @@
     ],
     [
       "Body Slam",
-      "Counter",
-      "Self Destruct",
-      "Counter"
-    ],
-    [
-      "Body Slam",
       "Blizzard",
       "Amnesia",
       "Rest"
@@ -7254,150 +6108,12 @@
       "Thunderbolt",
       "Surf",
       "Rest"
-    ],
-    [
-      "Slash",
-      "Earthquake",
-      "Recover",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Earthquake",
-      "Earthquake",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Earthquake",
-      "Glare",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Counter",
-      "Recover",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Counter",
-      "Earthquake",
-      "Explosion"
-    ],
-    [
-      "Slash",
-      "Counter",
-      "Glare",
-      "Explosion"
-    ],
-    [
-      "Swords Dance",
-      "Body Slam",
-      "Earthquake",
-      "Recover"
-    ],
-    [
-      "Swords Dance",
-      "Body Slam",
-      "Earthquake",
-      "Explosion"
-    ],
-    [
-      "Swords Dance",
-      "Quick Attack",
-      "Earthquake",
-      "Recover"
-    ],
-    [
-      "Swords Dance",
-      "Quick Attack",
-      "Earthquake",
-      "Explosion"
-    ],
-    [
-      "Swords Dance",
-      "Hyper Beam",
-      "Earthquake",
-      "Recover"
-    ],
-    [
-      "Swords Dance",
-      "Hyper Beam",
-      "Earthquake",
-      "Explosion"
-    ],
-    [
-      "Glare",
-      "Body Slam",
-      "Earthquake",
-      "Recover"
-    ],
-    [
-      "Glare",
-      "Body Slam",
-      "Earthquake",
-      "Explosion"
-    ],
-    [
-      "Glare",
-      "Quick Attack",
-      "Earthquake",
-      "Recover"
-    ],
-    [
-      "Glare",
-      "Quick Attack",
-      "Earthquake",
-      "Explosion"
-    ],
-    [
-      "Glare",
-      "Hyper Beam",
-      "Earthquake",
-      "Recover"
-    ],
-    [
-      "Glare",
-      "Hyper Beam",
-      "Earthquake",
-      "Explosion"
     ],
     [
       "Body Slam",
       "Hyper Beam",
       "Amnesia",
       "Ice Beam"
-    ],
-    [
-      "Lovely Kiss",
-      "Body Slam",
-      "Earthquake",
-      "Self Destruct"
-    ],
-    [
-      "Lovely Kiss",
-      "Body Slam",
-      "Hyper Beam",
-      "Self Destruct"
-    ],
-    [
-      "Amnesia",
-      "Body Slam",
-      "Blizzard",
-      "Lovely Kiss"
-    ],
-    [
-      "Amnesia",
-      "Body Slam",
-      "Ice Beam",
-      "Lovely Kiss"
-    ],
-    [
-      "Body Slam",
-      "Reflect",
-      "Rest",
-      "Lovely Kiss"
     ],
     [
       "Amnesia",
@@ -7487,21 +6203,9 @@
     ],
     [
       "Blizzard",
-      "Double Edge",
-      "Hyper Beam",
-      "Fly"
-    ],
-    [
-      "Blizzard",
       "Toxic",
       "Hyper Beam",
       "Agility"
-    ],
-    [
-      "Blizzard",
-      "Toxic",
-      "Hyper Beam",
-      "Fly"
     ],
     [
       "Blizzard",
@@ -7549,30 +6253,6 @@
     ],
     [
       "Thunderbolt",
-      "Fly",
-      "Thunder Wave",
-      "Rest"
-    ],
-    [
-      "Thunderbolt",
-      "Fly",
-      "Thunder Wave",
-      "Hyper Beam"
-    ],
-    [
-      "Thunderbolt",
-      "Fly",
-      "Toxic",
-      "Rest"
-    ],
-    [
-      "Thunderbolt",
-      "Fly",
-      "Toxic",
-      "Hyper Beam"
-    ],
-    [
-      "Thunderbolt",
       "Drill Peck",
       "Thunder Wave",
       "Rest"
@@ -7612,12 +6292,6 @@
       "Sky Attack",
       "Thunder Wave",
       "Flash"
-    ],
-    [
-      "Toxic",
-      "Thunder Shock",
-      "Thunder Wave",
-      "Fly"
     ]
   ],
   "Moltres": [
@@ -7637,12 +6311,6 @@
       "Fire Blast",
       "Fire Spin",
       "Toxic",
-      "Rest"
-    ],
-    [
-      "Fire Blast",
-      "Fire Spin",
-      "Fire Spin",
       "Rest"
     ],
     [
@@ -7680,18 +6348,6 @@
       "Fire Spin",
       "Double Edge",
       "Agility"
-    ],
-    [
-      "Fire Blast",
-      "Fly",
-      "Swift",
-      "Substitute"
-    ],
-    [
-      "Fire Spin",
-      "Fire Blast",
-      "Hyper Beam",
-      "Fly"
     ]
   ],
   "Dratini": [
@@ -7883,12 +6539,6 @@
       "Wrap",
       "Thunderbolt",
       "Blizzard",
-      "Thunderbolt"
-    ],
-    [
-      "Wrap",
-      "Thunderbolt",
-      "Blizzard",
       "Hyper Beam"
     ],
     [
@@ -7908,12 +6558,6 @@
       "Body Slam",
       "Thunder Wave",
       "Hyper Beam"
-    ],
-    [
-      "Blizzard",
-      "Body Slam",
-      "Thunder Wave",
-      "Thunder Wave"
     ],
     [
       "Blizzard",
@@ -7958,18 +6602,6 @@
       "Body Slam"
     ],
     [
-      "Wrap",
-      "Agility",
-      "Surf",
-      "Agility"
-    ],
-    [
-      "Wrap",
-      "Agility",
-      "Blizzard",
-      "Agility"
-    ],
-    [
       "Thunderbolt",
       "Surf",
       "Wrap",
@@ -8004,30 +6636,6 @@
       "Hyper Beam",
       "Wrap",
       "Thunder Wave"
-    ],
-    [
-      "Agility",
-      "Wrap",
-      "Drill Peck",
-      "Surf"
-    ],
-    [
-      "Agility",
-      "Wrap",
-      "Drill Peck",
-      "Blizzard"
-    ],
-    [
-      "Thunder Wave",
-      "Wrap",
-      "Drill Peck",
-      "Surf"
-    ],
-    [
-      "Thunder Wave",
-      "Wrap",
-      "Drill Peck",
-      "Blizzard"
     ],
     [
       "Slam",
@@ -8053,12 +6661,6 @@
       "Amnesia",
       "Psychic",
       "Ice Beam",
-      "Recover"
-    ],
-    [
-      "Amnesia",
-      "Thunderbolt",
-      "Thunderbolt",
       "Recover"
     ],
     [

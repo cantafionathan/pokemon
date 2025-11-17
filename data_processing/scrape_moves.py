@@ -63,6 +63,25 @@ def get_valid_moves_for_pokemon(name, gen1_move_vocab):
 
     return sorted(set(m for m in valid if m not in OU_BANNED_MOVES))
 
+def get_evolution_chain(name):
+    """Return a list of Pokémon names in its evolution chain, in order."""
+    # Convert name to API species slug
+    species_name = name.lower().replace(" ", "-").replace("♀", "-f").replace("♂", "-m")
+    species = requests.get(f"{POKEAPI_BASE}/pokemon-species/{species_name}").json()
+    
+    chain_url = species["evolution_chain"]["url"]
+    chain = requests.get(chain_url).json()["chain"]
+
+    evo_list = []
+
+    def traverse(node):
+        evo_list.append(node["species"]["name"].replace("-", " ").title())
+        for e in node["evolves_to"]:
+            traverse(e)
+
+    traverse(chain)
+    return evo_list
+
 
 def main():
     print("Fetching Generation 1 move vocabulary...")
@@ -79,6 +98,23 @@ def main():
     valid_moves = {}
     for name in tqdm(pokemons):
         valid_moves[name] = get_valid_moves_for_pokemon(name, set(move_vocab))
+
+    print("Applying evolution-based inheritance...")
+
+    # Build map: base form → full chain
+    evo_cache = {}
+    for name in pokemons:
+        evo_cache[name] = get_evolution_chain(name)
+
+    # Now propagate moves down each chain
+    for chain in evo_cache.values():
+        inherited = set()
+        for mon in chain:
+            if mon in valid_moves:
+                # Add inherited moves
+                valid_moves[mon] = sorted(set(valid_moves[mon]) | inherited)
+                inherited |= set(valid_moves[mon])
+
 
     # Rename specific Pokémon keys for presentation
     rename_map = {

@@ -12,6 +12,10 @@ UBERS_BANNED_MOVES = {
     "Minimize",
 }
 
+with open("data/valid_moves.json") as f:
+    VALID_MOVES = json.load(f)
+
+
 BASE_URL = "https://www.smogon.com/dex/rb/pokemon/{}/"
 OUTPUT_FILE = "data/competitive_movesets.json"
 with open("data/move_vocab.json") as f:
@@ -70,6 +74,12 @@ def expand_moveslots(moveslots):
         result.append(restored)
     return result
 
+def is_valid_moveset(pokemon_name, moveset):
+    # Normalize the valid move names
+    valid = {normalize_move_name(m) for m in VALID_MOVES.get(pokemon_name, [])}
+    # Normalize all moves in the moveset
+    return all(normalize_move_name(move) in valid for move in moveset)
+
 
 def slugify(name):
     s = name.lower()
@@ -77,14 +87,14 @@ def slugify(name):
     s = s.replace(" ", "-")           # Replace spaces with dash
     return s
 
-def scrape_pokemon_movesets(pokemon_name):
-    url = BASE_URL.format(pokemon_name)
+def scrape_pokemon_movesets(slug_name, real_name):
+    url = BASE_URL.format(slug_name)
     try:
         response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
         response.raise_for_status()
         html_text = response.text
     except Exception as e:
-        print(f"Failed to fetch {pokemon_name}: {e}")
+        print(f"Failed to fetch {slug_name}: {e}")
         return []
 
     movesets_blocks = extract_all_movesets_blocks(html_text)
@@ -97,9 +107,23 @@ def scrape_pokemon_movesets(pokemon_name):
                 moveslots = moveset.get("moveslots")
                 if moveslots:
                     variants = expand_moveslots(moveslots)
+
+                    # filter out any moveset with duplicates
+                    variants = [
+                        combo for combo in variants
+                        if len(set(combo)) == len(combo)
+                    ]
+
+                    # remove combos containing moves not legal in Gen 1
+                    variants = [
+                        combo for combo in variants
+                        if is_valid_moveset(real_name, combo)
+                    ]
+
                     all_movesets.extend(variants)
         except Exception as e:
-            print(f"Error parsing movesets for {pokemon_name}: {e}")
+            print(f"Error parsing movesets for {slug_name}: {e}")
+
 
     # Filter out movesets with banned moves
     filtered_movesets = [
@@ -129,7 +153,7 @@ if __name__ == "__main__":
     for key, name in pokedex.items():
         slug = slugify(name)
         print(f"Scraping movesets for {name} → {slug}")
-        movesets = scrape_pokemon_movesets(slug)
+        movesets = scrape_pokemon_movesets(slug, name)
         if movesets:
             all_data[name] = movesets
             print(f"  Found {len(movesets)} unique moveset(s)")

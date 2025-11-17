@@ -101,10 +101,13 @@ def decode_single_pokemon(vec: torch.Tensor) -> str:
 def random_legal_moves(p: str) -> list:
     movesets = POKEMON_MOVESETS.get(p, [])
     
-    # Choose a random moveset from available movesets
-    chosen_moveset = random.choice(movesets)
-        
-    return chosen_moveset
+    try:
+        return random.choice(movesets)
+    except IndexError:
+        print(f"[ERROR] No legal movesets available for Pokémon: '{p}'")
+        print(f"POKEMON_MOVESETS[{p!r}] = {movesets}")
+        raise
+
 
 
 def format_team(pokemon_moves: Dict[str, List[str]]) -> str:

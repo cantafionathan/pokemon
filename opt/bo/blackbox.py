@@ -7,7 +7,7 @@ from .encoding import decode_team_from_embedding as decode
 # Black-box BO wrapper
 # ============================================================
 
-def black_box_eval(x: torch.Tensor, n_battles_per_opponent: int = 1) -> float:
+def black_box_eval(x: torch.Tensor, n_battles_per_opponent: int = 10) -> float:
     """
     Decode embedding → team string → real battle winrate.
     """

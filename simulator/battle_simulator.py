@@ -40,9 +40,9 @@ async def _battle_once(team_str: str, opponent_team_str: str) -> int:
         max_concurrent_battles=1,
     )
 
-    # Suppress verbose warnings from poke-env
-    player.logger.setLevel(logging.ERROR)
-    opponent.logger.setLevel(logging.ERROR)
+    # # Suppress verbose warnings from poke-env
+    # player.logger.setLevel(logging.ERROR)
+    # opponent.logger.setLevel(logging.ERROR)
 
     # Unique usernames
     player._username = f"p_{uuid.uuid4().hex[:6]}"
