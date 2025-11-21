@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# reduce_embeddings.py
 import argparse
 import json
 from pathlib import Path

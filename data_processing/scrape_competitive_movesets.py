@@ -1,3 +1,4 @@
+# scrape_competitive_movesets.py
 import re
 import json
 import html

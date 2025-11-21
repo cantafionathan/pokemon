@@ -71,9 +71,9 @@ def parse_raw_teams(raw_text):
 def main():
     raw_text = RAW_PATH.read_text(encoding="utf-8")
     teams = parse_raw_teams(raw_text)
-    print(f"✅ Parsed {len(teams)} teams")
+    print(f"Parsed {len(teams)} teams")
     OUT_PATH.write_text(json.dumps(teams, indent=2))
-    print(f"💾 Saved to {OUT_PATH}")
+    print(f"Saved to {OUT_PATH}")
 
 
 if __name__ == "__main__":

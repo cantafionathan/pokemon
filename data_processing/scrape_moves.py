@@ -116,11 +116,12 @@ def main():
                 inherited |= set(valid_moves[mon])
 
 
-    # Rename specific Pokémon keys for presentation
+    # Rename specific Pokémon keys for consistency
     rename_map = {
         "Mr Mime": "Mr. Mime",
         "Nidoran M": "Nidoran-M",
         "Nidoran F": "Nidoran-F",
+        "Farfetchd": "Farfetch'd",
     }
 
     for old_name, new_name in rename_map.items():

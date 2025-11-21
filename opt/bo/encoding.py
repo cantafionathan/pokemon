@@ -1,7 +1,5 @@
 # bo/encoding.py
 import json
-import numpy as np
-import pandas as pd
 import random
 import torch
 from pathlib import Path
@@ -28,7 +26,7 @@ EMBED_DIM = len(next(iter(POKEMON_EMBEDDINGS.values())))
 FEATURE_DIM = 6 * EMBED_DIM
 
 # -----------------------------
-# Load move vocabulary and valid moves
+# Load moveset pool
 # -----------------------------
 with open(POKEMON_MOVESETS_PATH, "r", encoding="utf-8") as f:
     POKEMON_MOVESETS = json.load(f)
@@ -61,7 +59,7 @@ def encode_pokemon(name: str) -> torch.Tensor:
 
 def encode_team(team_dict: dict) -> torch.Tensor:
     """
-    Encodes a team using ONLY the 6 Pokémon embeddings.
+    Encodes a team using the 6 Pokémon embeddings.
     Moves are ignored in the encoding.
     """
     team_text = team_dict["team"]
@@ -119,11 +117,10 @@ def format_team(pokemon_moves: Dict[str, List[str]]) -> str:
         blocks.append(block)
     return "\n\n".join(blocks)
 
-
-def decode_team_from_embedding(team_vec: torch.Tensor) -> dict:
+def decode_team_pokemon_only(team_vec: torch.Tensor) -> dict:
     """
-    Decode a team using ONLY Pokémon embeddings.
-    Moves are assigned randomly from the legal move list.
+    Decode only the Pokémon names from an embedding.
+    (Moves are not assigned here.)
     """
     pokemon_list = []
 
@@ -142,6 +139,16 @@ def decode_team_from_embedding(team_vec: torch.Tensor) -> dict:
 
 
         pokemon_list.append(name)
+
+    return pokemon_list
+
+
+def decode_team_from_embedding(team_vec: torch.Tensor) -> dict:
+    """
+    Decode a team using ONLY Pokémon embeddings.
+    Moves are assigned randomly from the moveset pool.
+    """
+    pokemon_list = decode_team_pokemon_only(team_vec)
 
     # assign random legal moves
     pokemon_moves = {p: random_legal_moves(p) for p in pokemon_list}
