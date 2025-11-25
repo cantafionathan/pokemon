@@ -1,11 +1,13 @@
 # bo/optimizer.py
 import torch
 import logging
+import random
+import numpy as np
 from botorch.acquisition import LogExpectedImprovement
 from botorch.optim import optimize_acqf
 from botorch.utils.transforms import normalize, unnormalize
 
-from .encoding import FEATURE_DIM
+from .encoding import FEATURE_DIM, parse_showdown_team
 from .models import build_gp
 from .blackbox import black_box_eval
 
@@ -51,7 +53,9 @@ class BOOptimizer:
         self,
         n_iters: int = 3,
         n_init: int = 1,
-        batch_size: int = 1,
+        n_battles_per_opponent: int = 1,
+        n_moveset_samples: int = 5,
+        seed: int | None = None,
     ):
         """
         Runs the Bayesian Optimization loop.
@@ -59,16 +63,30 @@ class BOOptimizer:
         Args:
             n_iters: Number of optimization iterations.
             n_init: Number of initial random points to sample.
-            batch_size: Number of candidates to evaluate in each iteration.
+            n_battles_per_opponent: Number of battles to run per opponent for evaluation.
+            n_moveset_samples: Number of random moveset assignments to try per team.
+            seed: Random seed for reproducibility.
         """
+        if seed is not None:
+            random.seed(seed)
+            np.random.seed(seed)
+            torch.manual_seed(seed)
+            # for CUDA determinism
+            if torch.cuda.is_available():
+                torch.cuda.manual_seed_all(seed)
+
+            logger.info(f"BO seed set to {seed}")
+
         logger.info("=== Initializing BO with %d random teams ===", n_init)
         dtype = torch.double
 
         # --- Initial data (random embeddings)
         X_unit = torch.rand(n_init, FEATURE_DIM, device=self.device, dtype=dtype)
-        X = unnormalize(X_unit, self.bounds)  # now X is inside [-bounds_scale, bounds_scale]
+        X = unnormalize(X_unit, self.bounds) # scale to real bounds
 
-        initial_results = [black_box_eval(x) for x in X]
+        initial_results = [black_box_eval(x=x, 
+                                          n_battles_per_opponent=n_battles_per_opponent, 
+                                          n_moveset_samples=n_moveset_samples) for x in X]
         Y = torch.tensor([[score] for score, _ in initial_results], device=self.device, dtype=dtype)
         team_strings = [team_str for _, team_str in initial_results]
 
@@ -81,7 +99,7 @@ class BOOptimizer:
 
         # --- BO Loop ---
         for it in range(n_iters):
-            logger.info("=== Iteration %d/%d ===", it + 1, n_iters)
+            logger.info("\n=== Iteration %d/%d ===", it + 1, n_iters)
 
             # Normalize X into [0, 1]
             norm_X = normalize(X, self.bounds)
@@ -107,7 +125,7 @@ class BOOptimizer:
                     [[0.0] * FEATURE_DIM, [1.0] * FEATURE_DIM],
                     device=self.device,
                     dtype=dtype),
-                q=batch_size,
+                q=1,
                 num_restarts=10,
                 raw_samples=128,
             )
@@ -116,7 +134,9 @@ class BOOptimizer:
             new_candidates = unnormalize(candidates.detach(), self.bounds)
 
             # Evaluate
-            new_results = [black_box_eval(x) for x in new_candidates]
+            new_results = [black_box_eval(x=x, 
+                                          n_battles_per_opponent=n_battles_per_opponent, 
+                                          n_moveset_samples=n_moveset_samples) for x in new_candidates]
             Y_new = torch.tensor([[score] for score, _ in new_results], device=self.device, dtype=dtype)
             new_team_strings = [team_str for _, team_str in new_results]
 
@@ -131,6 +151,12 @@ class BOOptimizer:
                 best_y = max_score_new
                 best_x = new_candidates[max_idx_new]
                 best_team_str = new_team_strings[max_idx_new]
+
+            parsed_team = parse_showdown_team(new_team_strings[max_idx_new])
+            print("\n=== NEW TEAM ===")
+            print(f"Score {max_score_new:.4f}")
+            for i, b in enumerate(parsed_team, 1):
+                print(f"{i}. {b['species']}: {b['moveset']}")
 
             logger.info(
                 " -> New candidates: %s",

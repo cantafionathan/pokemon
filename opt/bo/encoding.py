@@ -31,6 +31,37 @@ FEATURE_DIM = 6 * EMBED_DIM
 with open(POKEMON_MOVESETS_PATH, "r", encoding="utf-8") as f:
     POKEMON_MOVESETS = json.load(f)
 
+def parse_showdown_team(team_str: str) -> list[dict]:
+    """
+    Parses a Showdown team string into list of {species, moveset} dicts.
+
+    Example input chunk:
+
+    Clefable
+    Ability: None
+    - Mega Kick
+    - Hyper Beam
+    - Blizzard
+    - Sing
+
+    Returns:
+        [
+          {"species": "Clefable", "moveset": ["Mega Kick", "Hyper Beam", "Blizzard", "Sing"]},
+          ...
+        ]
+    """
+    teams = []
+    blocks = team_str.strip().split("\n\n")
+
+    for block in blocks:
+        lines = block.strip().split("\n")
+        species = lines[0].strip()
+        moves = [line[2:].strip() for line in lines if line.startswith("- ")]
+        teams.append({"species": species, "moveset": moves})
+
+    return teams
+
+
 
 # ============================================================
 # === BASIC HELPERS ===

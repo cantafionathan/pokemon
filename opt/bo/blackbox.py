@@ -2,7 +2,7 @@
 import torch
 import logging
 from simulator.battle_simulator import evaluate_team
-from .encoding import decode_team_pokemon_only, random_legal_moves, format_team
+from .encoding import decode_team_pokemon_only, random_legal_moves, format_team, parse_showdown_team
 
 # ============================================================
 # Black-box BO wrapper
@@ -37,7 +37,7 @@ def black_box_eval(x: torch.Tensor, n_battles_per_opponent: int = 1, n_moveset_s
             best_score = score
             best_team_str = team_str
 
-    logger.info("Best team for this embedding:\n%s", best_team_str)
+
 
     return best_score, best_team_str
 
