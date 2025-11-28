@@ -131,7 +131,8 @@ def random_legal_moves(p: str) -> list:
     movesets = POKEMON_MOVESETS.get(p, [])
     
     try:
-        return random.choice(movesets)
+        ms = random.choice(movesets)
+        return ms
     except IndexError:
         print(f"[ERROR] No legal movesets available for Pokémon: '{p}'")
         print(f"POKEMON_MOVESETS[{p!r}] = {movesets}")

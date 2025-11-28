@@ -2,6 +2,7 @@
 import torch
 import logging
 import random
+import json
 import numpy as np
 from botorch.acquisition import LogExpectedImprovement
 from botorch.optim import optimize_acqf
@@ -56,6 +57,7 @@ class BOOptimizer:
         n_battles_per_opponent: int = 1,
         n_moveset_samples: int = 5,
         seed: int | None = None,
+        history_file: str | None = None
     ):
         """
         Runs the Bayesian Optimization loop.
@@ -67,6 +69,11 @@ class BOOptimizer:
             n_moveset_samples: Number of random moveset assignments to try per team.
             seed: Random seed for reproducibility.
         """
+
+        # set up history
+        history = []
+
+        # set seed
         if seed is not None:
             random.seed(seed)
             np.random.seed(seed)
@@ -96,6 +103,15 @@ class BOOptimizer:
         best_team_str = team_strings[best_idx]
 
         logger.info("Initial best: %.4f", best_y)
+
+        # record initial state
+        history.append({
+            "iteration": 0,
+            "best_wr_so_far": best_y,
+        })
+        if history_file is not None:
+            with open(history_file, "w") as f:
+                json.dump(history, f, indent=2)
 
         # --- BO Loop ---
         for it in range(n_iters):
@@ -163,6 +179,15 @@ class BOOptimizer:
                 ", ".join([f"{float(y):.3f}" for y in Y_new.flatten()])
             )
             logger.info(" -> Best so far: %.4f", best_y)
+
+            ### record iteration state
+            history.append({
+                "iteration": it,
+                "best_wr_so_far": best_y,
+            })
+            if history_file is not None:
+                with open(history_file, "w") as f:
+                    json.dump(history, f, indent=2)
 
 
         logger.info("=== BO Finished ===")

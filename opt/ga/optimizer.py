@@ -143,6 +143,7 @@ class GAOptimizer:
     n_battles_per_opponent: int = 1,
     elite_frac: float = 0.2,
     verbose: bool = True,
+    history_file: str | None = None
     ) -> tuple[list[int], float, list[dict]]:
         """
         Runs the Genetic Algorithm.
@@ -150,6 +151,8 @@ class GAOptimizer:
         Returns:
             (best_team_indices, best_score, best_team_repr)
         """
+        history = []
+
         pop = [self.random_team() for _ in range(self.population_size)]
         best_team: list[int] | None = None
         best_score = -float("inf")
@@ -180,6 +183,15 @@ class GAOptimizer:
                 mean = float(np.mean(scores))
                 std = float(np.std(scores))
                 print(f"[GA] Gen {gen}/{n_generations} | best={gen_best_score:.4f} mean={mean:.4f} std={std:.4f}")
+
+            ### record history after each generation
+            history.append({
+                "generation": gen,
+                "best_wr_so_far": best_score,
+            })
+            if history_file is not None:
+                with open(history_file, "w") as f:
+                    json.dump(history, f, indent=2)
 
             # selection: keep elites and produce rest by crossover and mutation
             elite_indices = np.argsort(scores)[-elite_k:]

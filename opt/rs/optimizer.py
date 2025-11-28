@@ -80,7 +80,8 @@ class RandomSearchOptimizer:
     def run_random_search(
         self,
         n_battles_per_opponent: int = 1,
-        verbose: bool = True
+        verbose: bool = True,
+        history_file: str | None = None
     ):
         """
         Perform random sampling of teams.
@@ -88,6 +89,9 @@ class RandomSearchOptimizer:
         Returns:
             (best_team_indices, best_score, best_team_repr)
         """
+
+        history = []
+
         best_score = -float("inf")
         best_team = None
 
@@ -101,6 +105,15 @@ class RandomSearchOptimizer:
             if score > best_score:
                 best_score = score
                 best_team = team[:]
+
+            ### record history after each generation
+            history.append({
+                "iteration": i,
+                "best_wr_so_far": best_score,
+            })
+            if history_file is not None:
+                with open(history_file, "w") as f:
+                    json.dump(history, f, indent=2)
 
             if verbose and (i % 10 == 0 or i == 1 or i == self.n_samples):
                 print(f"[Random] {i}/{self.n_samples} | best={best_score:.4f}")
