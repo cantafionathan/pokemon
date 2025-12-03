@@ -27,6 +27,57 @@ def safe_standardize(Y: torch.Tensor):
     Y_norm = (Y - mean) / std
     return Y_norm, mean, std
 
+def optimize_acqf_blockwise(acq, current_best_x, bounds, num_restarts=10, raw_samples=128):
+    """
+    Optimize acquisition function blockwise on 6 blocks of EMBED_DIM dimensions,
+    keeping other blocks fixed at current_best_x.
+    """
+    EMBED_DIM = FEATURE_DIM // 6
+    device = bounds.device
+    dtype = bounds.dtype
+    
+    best_candidates = []
+    
+    for block_idx in range(6):
+        # Fix other blocks at current best
+        def fix_other_blocks(x_block):
+            # x_block shape: (batch_size, q=1, EMBED_DIM)
+            batch_size = x_block.shape[0]
+            candidate = current_best_x.unsqueeze(0).repeat(batch_size, 1)  # (batch_size, FEATURE_DIM)
+            start = block_idx * EMBED_DIM
+            end = start + EMBED_DIM
+            x_block_squeezed = x_block.squeeze(1)  # (batch_size, EMBED_DIM)
+            candidate[:, start:end] = x_block_squeezed
+            return candidate  # (batch_size, FEATURE_DIM)
+
+        # Optimize acquisition only for this block
+        block_bounds = bounds[:, block_idx*EMBED_DIM:(block_idx+1)*EMBED_DIM]
+        
+        candidates_block, _ = optimize_acqf(
+            acq_function=lambda x: acq(fix_other_blocks(x).unsqueeze(1)).flatten(),  # Add q=1 dim for acq input
+            bounds=block_bounds,
+            q=1,
+            num_restarts=num_restarts,
+            raw_samples=raw_samples,
+        )
+        
+        # candidates_block shape: (num_candidates, q=1, EMBED_DIM)
+        # Fix other blocks and get full candidates shape: (num_candidates, FEATURE_DIM)
+        full_candidates = fix_other_blocks(candidates_block)  # (num_candidates, FEATURE_DIM)
+        
+        # Pick best candidate from this block by acquisition value
+        acq_values = acq(full_candidates.unsqueeze(1)).flatten()  # (num_candidates,)
+        best_idx = torch.argmax(acq_values).item()
+        
+        best_candidates.append(full_candidates[best_idx])  # 1D tensor (FEATURE_DIM,)
+    
+    # Among best candidates from all blocks, pick the one with highest acquisition
+    acq_values_all = torch.stack([acq(c.unsqueeze(0).unsqueeze(1)).squeeze() for c in best_candidates])  # shape (6,)
+    best_idx_all = torch.argmax(acq_values_all).item()
+
+    return best_candidates[best_idx_all].unsqueeze(0)  # Return (1, FEATURE_DIM)
+
+
 class BOOptimizer:
     """
     Bayesian Optimization loop.
@@ -135,13 +186,13 @@ class BOOptimizer:
             )
 
             # Optimize acquisition in normalized space
-            candidates, _ = optimize_acqf(
-                acq_function=acq,
+            candidates = optimize_acqf_blockwise(
+                acq=acq,
+                current_best_x=normalize(best_x.unsqueeze(0), self.bounds).squeeze(0),
                 bounds=torch.tensor(
                     [[0.0] * FEATURE_DIM, [1.0] * FEATURE_DIM],
                     device=self.device,
                     dtype=dtype),
-                q=1,
                 num_restarts=10,
                 raw_samples=128,
             )

@@ -1,11 +1,11 @@
 # opt/optimizer.py
 
-from simulator.battle_simulator import OPPONENTS
+import json
 from opt.bo.optimizer import BOOptimizer
 from opt.ga.optimizer import GAOptimizer
 from opt.rs.optimizer import RandomSearchOptimizer
 from opt.bo.encoding import parse_showdown_team
-from config import set_format, get_format
+from config import DATA_DIR,set_format, get_format
 
 
 class Optimizer:
@@ -16,18 +16,25 @@ class Optimizer:
     - Random Search (rs)
 
     Usage:
-        opt = Optimizer(method="ga", B=7500, seed=0)
+        opt = Optimizer(method="ga", B=7500, seed=0, format="ou")
         results = opt.run()
     """
 
     def __init__(self, method, B, seed=0, n_battles_per_opponent=1, format="ou"):
+        set_format(format)
+
+        OPP_PATH = DATA_DIR() / "opponent_teams.json"
+
+        with open(OPP_PATH, "r", encoding="utf-8") as f:
+            OPPONENTS = json.load(f)
+
         self.method = method.lower()
         self.B = B
         self.seed = seed
         self.n_battles_per_opponent = n_battles_per_opponent
         self.n_opponents = len(OPPONENTS)
 
-        set_format(format)
+        
 
         valid = {"bo", "ga", "rs"}
         if self.method not in valid:
@@ -51,7 +58,7 @@ class Optimizer:
         opt = BOOptimizer()
 
         n_init = 5
-        n_moveset_samples = 5
+        n_moveset_samples = 1
 
         n_init_battles = (
             n_init
@@ -92,7 +99,7 @@ class Optimizer:
     # --------------------------------------------------------
     def _run_ga(self):
         opt = GAOptimizer(
-            population_size=2,
+            population_size=50,
             mutation_rate=0.12,
             seed=self.seed,
         )
