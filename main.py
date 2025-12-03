@@ -2,7 +2,7 @@
 from opt.optimizer import Optimizer
 
 if __name__ == "__main__":
-    method = "rs"   # "bo", "ga", "rs"
+    method = "bo"   # "bo", "ga", "rs"
     B = 750 + 150*55
     seed = 0
     n_battles_per_opponent = 1

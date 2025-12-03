@@ -5,13 +5,13 @@ import os
 import random
 import numpy as np
 
-from opt.ga.blackbox import black_box_eval
+from opt.pool_ga.blackbox import black_box_eval
 from config import DATA_DIR
 
 MOVES_PATH = DATA_DIR() / "competitive_movesets.json"
 
 
-class RandomSearchOptimizer:
+class POOLRandomSearchOptimizer:
     """
     Simple random search over Pokémon teams.
     Each 'team' is 6 builds (species + moveset) chosen randomly,
@@ -126,7 +126,7 @@ class RandomSearchOptimizer:
 # Self-test
 # -------------------------
 if __name__ == "__main__":
-    rs = RandomSearchOptimizer(n_samples=20, seed=0)
+    rs = POOLRandomSearchOptimizer(n_samples=20, seed=0)
     best_team, best_score, best_repr = rs.run_random_search(n_battles_per_opponent=1)
     print("\n=== BEST TEAM (Random Search) ===")
     print("Score", best_score)

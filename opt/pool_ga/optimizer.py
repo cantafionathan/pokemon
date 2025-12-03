@@ -1,7 +1,6 @@
-# opt/ga/optimizer.py
+# opt/pool_ga/optimizer.py
 
 import json
-import os
 import random
 import numpy as np
 
@@ -13,7 +12,7 @@ from config import DATA_DIR
 MOVES_PATH = DATA_DIR() / "competitive_movesets.json"
 
 
-class GAOptimizer:
+class POOLGAOptimizer:
     """
     Genetic Algorithm Optimization loop for Pokémon teams where each 'gene' is a
     (species, moveset) build drawn from data/competitive_movesets.json.
@@ -228,7 +227,7 @@ class GAOptimizer:
 # -------------------------
 if __name__ == "__main__":
     # quick self-test of GA optimizer
-    ga = GAOptimizer(population_size=2, mutation_rate=0.12, seed=None)
+    ga = POOLGAOptimizer(population_size=2, mutation_rate=0.12, seed=None)
     try:
         best_team, best_score, best_repr = ga.run_ga(n_generations=10, n_battles_per_opponent=1)
         print("\n=== BEST TEAM ===")

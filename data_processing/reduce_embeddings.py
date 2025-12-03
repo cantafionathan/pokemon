@@ -122,6 +122,6 @@ def main(dim):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dim", type=int, default=32, help="PCA output dimension")
+    parser.add_argument("--dim", type=int, default=64, help="PCA output dimension")
     args = parser.parse_args()
     main(args.dim)

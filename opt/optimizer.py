@@ -1,11 +1,11 @@
 # opt/optimizer.py
 
 import json
-from opt.bo.optimizer import BOOptimizer
-from opt.ga.optimizer import GAOptimizer
-from opt.rs.optimizer import RandomSearchOptimizer
-from opt.bo.encoding import parse_showdown_team
-from config import DATA_DIR,set_format, get_format
+from opt.pool_bo.optimizer import POOLBOOptimizer
+from opt.pool_ga.optimizer import POOLGAOptimizer
+from opt.pool_rs.optimizer import POOLRandomSearchOptimizer
+from opt.pool_bo.encoding import parse_showdown_team
+from config import DATA_DIR, set_format, get_format
 
 
 class Optimizer:
@@ -55,7 +55,7 @@ class Optimizer:
     # BO
     # --------------------------------------------------------
     def _run_bo(self):
-        opt = BOOptimizer()
+        opt = POOLBOOptimizer()
 
         n_init = 5
         n_moveset_samples = 1
@@ -98,7 +98,7 @@ class Optimizer:
     # GA
     # --------------------------------------------------------
     def _run_ga(self):
-        opt = GAOptimizer(
+        opt = POOLGAOptimizer(
             population_size=50,
             mutation_rate=0.12,
             seed=self.seed,
@@ -136,7 +136,7 @@ class Optimizer:
         print(f"Random Samples: {n_samples}")
         print(f"Format: gen1{get_format()}")
 
-        opt = RandomSearchOptimizer(
+        opt = POOLRandomSearchOptimizer(
             n_samples=n_samples,
             seed=self.seed,
         )

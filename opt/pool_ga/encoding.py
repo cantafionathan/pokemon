@@ -1,4 +1,4 @@
-# ga/encoding.py
+# pool_ga/encoding.py
 
 import json
 import os

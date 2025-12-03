@@ -78,7 +78,7 @@ def optimize_acqf_blockwise(acq, current_best_x, bounds, num_restarts=10, raw_sa
     return best_candidates[best_idx_all].unsqueeze(0)  # Return (1, FEATURE_DIM)
 
 
-class BOOptimizer:
+class POOLBOOptimizer:
     """
     Bayesian Optimization loop.
     """
