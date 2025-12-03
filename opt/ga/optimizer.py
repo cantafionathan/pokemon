@@ -7,8 +7,10 @@ import numpy as np
 
 from .blackbox import black_box_eval 
 
+from config import DATA_DIR
+
 # adjust path if needed; this assumes project root is current working dir when running main.py
-MOVES_PATH = os.path.join("data", "competitive_movesets.json")
+MOVES_PATH = DATA_DIR() / "competitive_movesets.json"
 
 
 class GAOptimizer:

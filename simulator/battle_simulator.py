@@ -7,16 +7,16 @@ import gc
 from pathlib import Path
 
 from poke_env.player import SimpleHeuristicsPlayer as PLAYER_CLASS
-
 from poke_env.ps_client.server_configuration import LocalhostServerConfiguration
+from config import DATA_DIR, get_format
 
 
 # ============================================================
 # Data
 # ============================================================
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-OPP_PATH = DATA_DIR / "opponent_teams.json"
+
+OPP_PATH = DATA_DIR() / "opponent_teams.json"
 
 def load_opponent_teams():
     with open(OPP_PATH, "r", encoding="utf-8") as f:
@@ -40,20 +40,24 @@ logging.getLogger("poke_env").addFilter(IgnoreLightScreenWarning())
 class BattleRunner:
     def __init__(self):
         self.loop = asyncio.get_event_loop_policy().new_event_loop()
+        
 
     async def _battle_once(self, team_str: str, opponent_team_str: str) -> int:
+        fmt = f"gen1{get_format()}"
+        
         player = PLAYER_CLASS(
-            battle_format="gen1ubers",
+            battle_format=fmt,
             server_configuration=SERVER,
             team=team_str,
             max_concurrent_battles=1,
         )
         opponent = PLAYER_CLASS(
-            battle_format="gen1ubers",
+            battle_format=fmt,
             server_configuration=SERVER,
             team=opponent_team_str,
             max_concurrent_battles=1,
         )
+
 
         player.logger.setLevel(logging.ERROR)
         opponent.logger.setLevel(logging.ERROR)

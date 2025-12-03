@@ -2,3 +2,4 @@ venv/
 __pycache__/
 data/pokemon_embeddings.parquet
 results/
+results_dec2-2025/

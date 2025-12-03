@@ -1,6 +1,5 @@
 {
   "Abra": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Double Edge",
@@ -26,7 +25,6 @@
   ],
   "Aerodactyl": [
     "Agility",
-    "Bide",
     "Bite",
     "Double Edge",
     "Dragon Rage",
@@ -47,7 +45,6 @@
     "Wing Attack"
   ],
   "Alakazam": [
-    "Bide",
     "Body Slam",
     "Confusion",
     "Counter",
@@ -79,7 +76,6 @@
   ],
   "Arbok": [
     "Acid",
-    "Bide",
     "Bite",
     "Body Slam",
     "Double Edge",
@@ -103,7 +99,6 @@
   ],
   "Arcanine": [
     "Agility",
-    "Bide",
     "Bite",
     "Body Slam",
     "Double Edge",
@@ -127,7 +122,6 @@
   ],
   "Articuno": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Double Edge",
@@ -150,7 +144,6 @@
   ],
   "Beedrill": [
     "Agility",
-    "Bide",
     "Cut",
     "Double Edge",
     "Focus Energy",
@@ -175,7 +168,6 @@
   ],
   "Bellsprout": [
     "Acid",
-    "Bide",
     "Cut",
     "Double Edge",
     "Growth",
@@ -198,7 +190,6 @@
     "Wrap"
   ],
   "Blastoise": [
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -230,7 +221,6 @@
     "Withdraw"
   ],
   "Bulbasaur": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -254,7 +244,6 @@
     "Vine Whip"
   ],
   "Butterfree": [
-    "Bide",
     "Confusion",
     "Double Edge",
     "Flash",
@@ -289,7 +278,6 @@
     "Tackle"
   ],
   "Chansey": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -333,7 +321,6 @@
     "Water Gun"
   ],
   "Charizard": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Cut",
@@ -366,7 +353,6 @@
     "Toxic"
   ],
   "Charmander": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Cut",
@@ -397,7 +383,6 @@
     "Toxic"
   ],
   "Charmeleon": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Cut",
@@ -428,7 +413,6 @@
     "Toxic"
   ],
   "Clefable": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -469,7 +453,6 @@
     "Water Gun"
   ],
   "Clefairy": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -510,7 +493,6 @@
   ],
   "Cloyster": [
     "Aurora Beam",
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Clamp",
@@ -538,7 +520,6 @@
     "Withdraw"
   ],
   "Cubone": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bone Club",
@@ -571,7 +552,6 @@
   ],
   "Dewgong": [
     "Aurora Beam",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -593,7 +573,6 @@
     "Water Gun"
   ],
   "Diglett": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -615,7 +594,6 @@
   ],
   "Dodrio": [
     "Agility",
-    "Bide",
     "Body Slam",
     "Double Edge",
     "Drill Peck",
@@ -637,7 +615,6 @@
   ],
   "Doduo": [
     "Agility",
-    "Bide",
     "Body Slam",
     "Double Edge",
     "Drill Peck",
@@ -658,7 +635,6 @@
   ],
   "Dragonair": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -687,7 +663,6 @@
   ],
   "Dragonite": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -718,7 +693,6 @@
   ],
   "Dratini": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -746,7 +720,6 @@
     "Wrap"
   ],
   "Drowzee": [
-    "Bide",
     "Body Slam",
     "Confusion",
     "Counter",
@@ -779,7 +752,6 @@
     "Tri Attack"
   ],
   "Dugtrio": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -798,7 +770,6 @@
     "Toxic"
   ],
   "Eevee": [
-    "Bide",
     "Bite",
     "Body Slam",
     "Double Edge",
@@ -820,7 +791,6 @@
   ],
   "Ekans": [
     "Acid",
-    "Bide",
     "Bite",
     "Body Slam",
     "Double Edge",
@@ -842,7 +812,6 @@
     "Wrap"
   ],
   "Electabuzz": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Double Edge",
@@ -877,7 +846,6 @@
     "Toxic"
   ],
   "Electrode": [
-    "Bide",
     "Explosion",
     "Flash",
     "Hyper Beam",
@@ -902,7 +870,6 @@
   ],
   "Exeggcute": [
     "Barrage",
-    "Bide",
     "Double Edge",
     "Egg Bomb",
     "Explosion",
@@ -926,7 +893,6 @@
   ],
   "Exeggutor": [
     "Barrage",
-    "Bide",
     "Double Edge",
     "Egg Bomb",
     "Explosion",
@@ -952,33 +918,8 @@
     "Teleport",
     "Toxic"
   ],
-  "Farfetch'd": [
-    "Agility",
-    "Bide",
-    "Body Slam",
-    "Cut",
-    "Double Edge",
-    "Fury Attack",
-    "Leer",
-    "Mimic",
-    "Peck",
-    "Rage",
-    "Razor Wind",
-    "Reflect",
-    "Rest",
-    "Sand Attack",
-    "Skull Bash",
-    "Slash",
-    "Substitute",
-    "Swift",
-    "Swords Dance",
-    "Take Down",
-    "Toxic",
-    "Whirlwind"
-  ],
   "Fearow": [
     "Agility",
-    "Bide",
     "Double Edge",
     "Drill Peck",
     "Fury Attack",
@@ -1002,7 +943,6 @@
     "Acid Armor",
     "Agility",
     "Aurora Beam",
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -1045,7 +985,6 @@
     "Water Gun"
   ],
   "Gastly": [
-    "Bide",
     "Confuse Ray",
     "Dream Eater",
     "Explosion",
@@ -1065,7 +1004,6 @@
     "Toxic"
   ],
   "Gengar": [
-    "Bide",
     "Body Slam",
     "Confuse Ray",
     "Counter",
@@ -1097,7 +1035,6 @@
     "Toxic"
   ],
   "Geodude": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Defense Curl",
@@ -1125,7 +1062,6 @@
   "Gloom": [
     "Absorb",
     "Acid",
-    "Bide",
     "Cut",
     "Double Edge",
     "Mega Drain",
@@ -1144,7 +1080,6 @@
     "Toxic"
   ],
   "Golbat": [
-    "Bide",
     "Bite",
     "Confuse Ray",
     "Double Edge",
@@ -1167,7 +1102,6 @@
   ],
   "Goldeen": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Double Edge",
@@ -1190,7 +1124,6 @@
     "Waterfall"
   ],
   "Golduck": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -1222,7 +1155,6 @@
     "Water Gun"
   ],
   "Golem": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Defense Curl",
@@ -1250,7 +1182,6 @@
     "Toxic"
   ],
   "Graveler": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Defense Curl",
@@ -1277,7 +1208,6 @@
   ],
   "Grimer": [
     "Acid Armor",
-    "Bide",
     "Body Slam",
     "Disable",
     "Explosion",
@@ -1299,7 +1229,6 @@
   ],
   "Growlithe": [
     "Agility",
-    "Bide",
     "Bite",
     "Body Slam",
     "Double Edge",
@@ -1320,7 +1249,6 @@
     "Toxic"
   ],
   "Gyarados": [
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -1349,7 +1277,6 @@
     "Water Gun"
   ],
   "Haunter": [
-    "Bide",
     "Confuse Ray",
     "Dream Eater",
     "Explosion",
@@ -1370,7 +1297,6 @@
   ],
   "Hitmonchan": [
     "Agility",
-    "Bide",
     "Body Slam",
     "Comet Punch",
     "Counter",
@@ -1400,7 +1326,6 @@
     "Toxic"
   ],
   "Hitmonlee": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Double Edge",
@@ -1427,7 +1352,6 @@
   ],
   "Horsea": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Bubble",
     "Bubble Beam",
@@ -1448,7 +1372,6 @@
     "Water Gun"
   ],
   "Hypno": [
-    "Bide",
     "Body Slam",
     "Confusion",
     "Counter",
@@ -1482,7 +1405,6 @@
     "Tri Attack"
   ],
   "Ivysaur": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -1506,7 +1428,6 @@
     "Vine Whip"
   ],
   "Jigglypuff": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -1547,7 +1468,6 @@
     "Acid Armor",
     "Agility",
     "Aurora Beam",
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -1584,7 +1504,6 @@
     "Water Gun"
   ],
   "Jynx": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -1618,7 +1537,6 @@
   ],
   "Kabuto": [
     "Absorb",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -1641,7 +1559,6 @@
   ],
   "Kabutops": [
     "Absorb",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -1671,7 +1588,6 @@
     "Water Gun"
   ],
   "Kadabra": [
-    "Bide",
     "Body Slam",
     "Confusion",
     "Counter",
@@ -1706,7 +1622,6 @@
     "String Shot"
   ],
   "Kangaskhan": [
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -1740,7 +1655,6 @@
     "Water Gun"
   ],
   "Kingler": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble",
@@ -1766,7 +1680,6 @@
     "Water Gun"
   ],
   "Koffing": [
-    "Bide",
     "Explosion",
     "Fire Blast",
     "Haze",
@@ -1784,7 +1697,6 @@
     "Toxic"
   ],
   "Krabby": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble",
@@ -1809,7 +1721,6 @@
     "Water Gun"
   ],
   "Lapras": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -1840,7 +1751,6 @@
     "Water Gun"
   ],
   "Lickitung": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -1877,7 +1787,6 @@
     "Wrap"
   ],
   "Machamp": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Double Edge",
@@ -1904,7 +1813,6 @@
     "Toxic"
   ],
   "Machoke": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Double Edge",
@@ -1930,7 +1838,6 @@
     "Toxic"
   ],
   "Machop": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Double Edge",
@@ -1960,7 +1867,6 @@
     "Tackle"
   ],
   "Magmar": [
-    "Bide",
     "Body Slam",
     "Confuse Ray",
     "Counter",
@@ -1991,7 +1897,6 @@
     "Toxic"
   ],
   "Magnemite": [
-    "Bide",
     "Double Edge",
     "Flash",
     "Mimic",
@@ -2013,7 +1918,6 @@
     "Toxic"
   ],
   "Magneton": [
-    "Bide",
     "Double Edge",
     "Flash",
     "Hyper Beam",
@@ -2036,7 +1940,6 @@
     "Toxic"
   ],
   "Mankey": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Double Edge",
@@ -2068,7 +1971,6 @@
     "Toxic"
   ],
   "Marowak": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bone Club",
@@ -2101,7 +2003,6 @@
     "Water Gun"
   ],
   "Meowth": [
-    "Bide",
     "Bite",
     "Body Slam",
     "Bubble Beam",
@@ -2130,7 +2031,6 @@
     "Tackle"
   ],
   "Mew": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -2186,7 +2086,6 @@
   "Mewtwo": [
     "Amnesia",
     "Barrier",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -2229,7 +2128,6 @@
   ],
   "Moltres": [
     "Agility",
-    "Bide",
     "Double Edge",
     "Fire Blast",
     "Fire Spin",
@@ -2250,7 +2148,6 @@
   ],
   "Muk": [
     "Acid Armor",
-    "Bide",
     "Body Slam",
     "Disable",
     "Explosion",
@@ -2272,7 +2169,6 @@
     "Toxic"
   ],
   "Nidoking": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -2311,7 +2207,6 @@
     "Water Gun"
   ],
   "Nidoqueen": [
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -2350,7 +2245,6 @@
     "Water Gun"
   ],
   "Nidorina": [
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -2377,7 +2271,6 @@
     "Water Gun"
   ],
   "Nidorino": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -2403,7 +2296,6 @@
     "Water Gun"
   ],
   "Ninetales": [
-    "Bide",
     "Body Slam",
     "Confuse Ray",
     "Double Edge",
@@ -2428,7 +2320,6 @@
   "Oddish": [
     "Absorb",
     "Acid",
-    "Bide",
     "Cut",
     "Double Edge",
     "Mega Drain",
@@ -2447,7 +2338,6 @@
     "Toxic"
   ],
   "Omanyte": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -2469,7 +2359,6 @@
     "Withdraw"
   ],
   "Omastar": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -2495,7 +2384,6 @@
     "Withdraw"
   ],
   "Onix": [
-    "Bide",
     "Bind",
     "Body Slam",
     "Double Edge",
@@ -2518,7 +2406,6 @@
     "Toxic"
   ],
   "Paras": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -2541,7 +2428,6 @@
     "Toxic"
   ],
   "Parasect": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -2565,7 +2451,6 @@
     "Toxic"
   ],
   "Persian": [
-    "Bide",
     "Bite",
     "Body Slam",
     "Bubble Beam",
@@ -2591,7 +2476,6 @@
   ],
   "Pidgeot": [
     "Agility",
-    "Bide",
     "Double Edge",
     "Gust",
     "Hyper Beam",
@@ -2613,7 +2497,6 @@
   ],
   "Pidgeotto": [
     "Agility",
-    "Bide",
     "Double Edge",
     "Gust",
     "Mimic",
@@ -2634,7 +2517,6 @@
   ],
   "Pidgey": [
     "Agility",
-    "Bide",
     "Double Edge",
     "Gust",
     "Mimic",
@@ -2655,7 +2537,6 @@
   ],
   "Pikachu": [
     "Agility",
-    "Bide",
     "Body Slam",
     "Double Edge",
     "Flash",
@@ -2685,7 +2566,6 @@
     "Toxic"
   ],
   "Pinsir": [
-    "Bide",
     "Bind",
     "Body Slam",
     "Cut",
@@ -2708,7 +2588,6 @@
   ],
   "Poliwag": [
     "Amnesia",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble",
@@ -2732,7 +2611,6 @@
   ],
   "Poliwhirl": [
     "Amnesia",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble",
@@ -2764,7 +2642,6 @@
   ],
   "Poliwrath": [
     "Amnesia",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble",
@@ -2797,7 +2674,6 @@
   ],
   "Ponyta": [
     "Agility",
-    "Bide",
     "Body Slam",
     "Double Edge",
     "Ember",
@@ -2818,7 +2694,6 @@
   ],
   "Porygon": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Conversion",
     "Double Edge",
@@ -2847,7 +2722,6 @@
     "Tri Attack"
   ],
   "Primeape": [
-    "Bide",
     "Body Slam",
     "Counter",
     "Double Edge",
@@ -2880,7 +2754,6 @@
     "Toxic"
   ],
   "Psyduck": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -2912,7 +2785,6 @@
   ],
   "Raichu": [
     "Agility",
-    "Bide",
     "Body Slam",
     "Double Edge",
     "Flash",
@@ -2944,7 +2816,6 @@
   ],
   "Rapidash": [
     "Agility",
-    "Bide",
     "Body Slam",
     "Double Edge",
     "Ember",
@@ -2965,7 +2836,6 @@
     "Toxic"
   ],
   "Raticate": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -2991,7 +2861,6 @@
     "Water Gun"
   ],
   "Rattata": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -3015,7 +2884,6 @@
     "Water Gun"
   ],
   "Rhydon": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -3050,7 +2918,6 @@
     "Water Gun"
   ],
   "Rhyhorn": [
-    "Bide",
     "Body Slam",
     "Double Edge",
     "Earthquake",
@@ -3073,7 +2940,6 @@
     "Toxic"
   ],
   "Sandshrew": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -3098,7 +2964,6 @@
     "Toxic"
   ],
   "Sandslash": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -3125,7 +2990,6 @@
   ],
   "Scyther": [
     "Agility",
-    "Bide",
     "Cut",
     "Double Edge",
     "Focus Energy",
@@ -3146,7 +3010,6 @@
   ],
   "Seadra": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Bubble",
     "Bubble Beam",
@@ -3169,7 +3032,6 @@
   ],
   "Seaking": [
     "Agility",
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Double Edge",
@@ -3194,7 +3056,6 @@
   ],
   "Seel": [
     "Aurora Beam",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -3216,7 +3077,6 @@
   ],
   "Shellder": [
     "Aurora Beam",
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Clamp",
@@ -3243,7 +3103,6 @@
   ],
   "Slowbro": [
     "Amnesia",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -3284,7 +3143,6 @@
   ],
   "Slowpoke": [
     "Amnesia",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -3318,7 +3176,6 @@
   ],
   "Snorlax": [
     "Amnesia",
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -3357,7 +3214,6 @@
   ],
   "Spearow": [
     "Agility",
-    "Bide",
     "Double Edge",
     "Drill Peck",
     "Fury Attack",
@@ -3377,7 +3233,6 @@
     "Whirlwind"
   ],
   "Squirtle": [
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -3407,7 +3262,6 @@
     "Withdraw"
   ],
   "Starmie": [
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Double Edge",
@@ -3439,7 +3293,6 @@
     "Water Gun"
   ],
   "Staryu": [
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Double Edge",
@@ -3471,7 +3324,6 @@
   ],
   "Tangela": [
     "Absorb",
-    "Bide",
     "Bind",
     "Body Slam",
     "Constrict",
@@ -3496,7 +3348,6 @@
     "Vine Whip"
   ],
   "Tauros": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Double Edge",
@@ -3522,7 +3373,6 @@
   "Tentacool": [
     "Acid",
     "Barrier",
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Constrict",
@@ -3550,7 +3400,6 @@
   "Tentacruel": [
     "Acid",
     "Barrier",
-    "Bide",
     "Blizzard",
     "Bubble Beam",
     "Constrict",
@@ -3579,7 +3428,6 @@
   "Vaporeon": [
     "Acid Armor",
     "Aurora Beam",
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -3609,7 +3457,6 @@
     "Water Gun"
   ],
   "Venomoth": [
-    "Bide",
     "Confusion",
     "Disable",
     "Double Edge",
@@ -3639,7 +3486,6 @@
     "Whirlwind"
   ],
   "Venonat": [
-    "Bide",
     "Confusion",
     "Disable",
     "Double Edge",
@@ -3664,7 +3510,6 @@
     "Toxic"
   ],
   "Venusaur": [
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -3690,7 +3535,6 @@
   ],
   "Victreebel": [
     "Acid",
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -3717,7 +3561,6 @@
   "Vileplume": [
     "Absorb",
     "Acid",
-    "Bide",
     "Body Slam",
     "Cut",
     "Double Edge",
@@ -3738,7 +3581,6 @@
     "Toxic"
   ],
   "Voltorb": [
-    "Bide",
     "Explosion",
     "Flash",
     "Light Screen",
@@ -3760,7 +3602,6 @@
     "Toxic"
   ],
   "Vulpix": [
-    "Bide",
     "Body Slam",
     "Confuse Ray",
     "Double Edge",
@@ -3782,7 +3623,6 @@
     "Toxic"
   ],
   "Wartortle": [
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -3817,7 +3657,6 @@
   ],
   "Weepinbell": [
     "Acid",
-    "Bide",
     "Cut",
     "Double Edge",
     "Growth",
@@ -3840,7 +3679,6 @@
     "Wrap"
   ],
   "Weezing": [
-    "Bide",
     "Explosion",
     "Fire Blast",
     "Haze",
@@ -3859,7 +3697,6 @@
     "Toxic"
   ],
   "Wigglytuff": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Bubble Beam",
@@ -3899,7 +3736,6 @@
   ],
   "Zapdos": [
     "Agility",
-    "Bide",
     "Double Edge",
     "Drill Peck",
     "Flash",
@@ -3922,7 +3758,6 @@
     "Whirlwind"
   ],
   "Zubat": [
-    "Bide",
     "Bite",
     "Confuse Ray",
     "Double Edge",
@@ -3943,7 +3778,6 @@
   ],
   "Mr. Mime": [
     "Barrier",
-    "Bide",
     "Body Slam",
     "Confusion",
     "Counter",
@@ -3975,7 +3809,6 @@
     "Toxic"
   ],
   "Nidoran-M": [
-    "Bide",
     "Blizzard",
     "Body Slam",
     "Double Edge",
@@ -3998,7 +3831,6 @@
     "Toxic"
   ],
   "Nidoran-F": [
-    "Bide",
     "Bite",
     "Blizzard",
     "Body Slam",
@@ -4020,5 +3852,28 @@
     "Thunder",
     "Thunderbolt",
     "Toxic"
+  ],
+  "Farfetch'd": [
+    "Agility",
+    "Body Slam",
+    "Cut",
+    "Double Edge",
+    "Fury Attack",
+    "Leer",
+    "Mimic",
+    "Peck",
+    "Rage",
+    "Razor Wind",
+    "Reflect",
+    "Rest",
+    "Sand Attack",
+    "Skull Bash",
+    "Slash",
+    "Substitute",
+    "Swift",
+    "Swords Dance",
+    "Take Down",
+    "Toxic",
+    "Whirlwind"
   ]
 }

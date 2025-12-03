@@ -6,8 +6,9 @@ import random
 import numpy as np
 
 from opt.ga.blackbox import black_box_eval
+from config import DATA_DIR
 
-MOVES_PATH = os.path.join("data", "competitive_movesets.json")
+MOVES_PATH = DATA_DIR() / "competitive_movesets.json"
 
 
 class RandomSearchOptimizer:

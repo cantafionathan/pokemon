@@ -8,18 +8,29 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 
 RAW_PATH = DATA_DIR / "raw_teams.txt"
-OUT_PATH = DATA_DIR / "opponent_teams.json"
 
-TEAM_HEADER = re.compile(r"^=== \[(?P<format>[^\]]+)\] (?P<name>.+) ===$", re.MULTILINE)
+FORMAT_DIRS = {
+    "gen1ou": DATA_DIR / "ou",
+    "gen1ubers": DATA_DIR / "ubers"
+}
 
-# regex to find move lines like "- Soft-Boiled"
+TEAM_HEADER = re.compile(
+    r"^=== \[(?P<format>[^\]]+)\] (?P<name>.+) ===$",
+    re.MULTILINE
+)
+
 MOVE_LINE = re.compile(r"^- (.+)$")
+
 
 def normalize_move_name(move_name: str) -> str:
     """Convert hyphenated move names like 'Soft-Boiled' → 'Soft Boiled'."""
-    # Replace hyphens only if surrounded by letters (not numeric or punctuation cases)
     move_name = re.sub(r"(?<=\w)-(?=\w)", " ", move_name)
     return move_name.strip()
+
+
+# ----------------------------------------------------
+# PARSING
+# ----------------------------------------------------
 
 def parse_raw_teams(raw_text):
     matches = list(TEAM_HEADER.finditer(raw_text))
@@ -28,12 +39,13 @@ def parse_raw_teams(raw_text):
     for i, match in enumerate(matches):
         start = match.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(raw_text)
+
         block = raw_text[start:end].strip()
 
         format_name = match.group("format").strip().lower()
         team_name = match.group("name").strip()
 
-        # Split block into Pokémon sections separated by blank lines
+        # Pokémon sections separated by blank lines
         mons = [m.strip() for m in re.split(r"\n\s*\n", block) if m.strip()]
         mon_blocks = []
 
@@ -42,38 +54,68 @@ def parse_raw_teams(raw_text):
             if not lines:
                 continue
 
-            # Insert "Ability: None" after Pokémon name if missing
+            # Insert Ability: None if missing
             if not any(ln.lower().startswith("ability:") for ln in lines):
                 lines.insert(1, "Ability: None")
 
-            # Normalize move names
+            # Normalize moves
             for j, ln in enumerate(lines):
-                match = MOVE_LINE.match(ln)
-                if match:
-                    move = match.group(1)
-                    move = normalize_move_name(move)
+                m = MOVE_LINE.match(ln)
+                if m:
+                    move = normalize_move_name(m.group(1))
                     lines[j] = f"- {move}"
 
             mon_blocks.append("\n".join(lines))
 
-        # Join Pokémon sections with a blank line between them
         team_text = "\n\n".join(mon_blocks)
 
         teams.append({
             "name": team_name,
-            "format": format_name,
+            "format": format_name,  # gen1ou / gen1ubers
             "team": team_text
         })
 
     return teams
 
 
+# ----------------------------------------------------
+# ROUTING TO FORMAT DIRECTORIES
+# ----------------------------------------------------
+
+def save_teams(teams):
+
+    # OU gets only OU-tagged teams
+    ou_teams = [t for t in teams if t["format"] == "gen1ou"]
+
+    # UBERS gets BOTH
+    ubers_teams = teams[:]  # copy entire list
+
+    # Save
+    (DATA_DIR / "ou").mkdir(exist_ok=True)
+    (DATA_DIR / "ubers").mkdir(exist_ok=True)
+
+    (DATA_DIR / "ou" / "opponent_teams.json").write_text(
+        json.dumps(ou_teams, indent=2), encoding="utf-8"
+    )
+
+    (DATA_DIR / "ubers" / "opponent_teams.json").write_text(
+        json.dumps(ubers_teams, indent=2), encoding="utf-8"
+    )
+
+    print(f"Saved {len(ou_teams)} → data/ou/opponent_teams.json")
+    print(f"Saved {len(ubers_teams)} → data/ubers/opponent_teams.json")
+
+
+# ----------------------------------------------------
+# MAIN
+# ----------------------------------------------------
+
 def main():
     raw_text = RAW_PATH.read_text(encoding="utf-8")
     teams = parse_raw_teams(raw_text)
-    print(f"Parsed {len(teams)} teams")
-    OUT_PATH.write_text(json.dumps(teams, indent=2))
-    print(f"Saved to {OUT_PATH}")
+
+    print(f"Parsed {len(teams)} teams total")
+    save_teams(teams)
 
 
 if __name__ == "__main__":

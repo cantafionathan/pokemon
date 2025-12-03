@@ -1155,3 +1155,42 @@ Zapdos
 - Thunder Wave
 - Thunderbolt
 - Thunder
+
+
+=== [gen1ubers] Nathan's Custom ===
+
+Mew
+- Psychic
+- Seismic Toss
+- Thunder Wave
+- Recover
+
+Exeggutor
+- Sleep Powder
+- Psychic
+- Stun Spore
+- Explosion
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Self-Destruct
+
+Jolteon
+- Double Kick
+- Pin Missile
+- Thunderbolt
+- Thunder Wave
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Zapdos
+- Drill Peck
+- Thunder Wave
+- Thunderbolt
+- Thunder

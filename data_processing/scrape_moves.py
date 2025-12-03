@@ -13,14 +13,36 @@ VALID_MOVES_PATH = DATA_DIR / "valid_moves.json"
 
 POKEAPI_BASE = "https://pokeapi.co/api/v2"
 
-OU_BANNED_MOVES = {
-    "Fissure",
-    "Horn Drill",
-    "Guillotine",
-    "Double Team",
-    "Minimize",
-    "Dig",
-    "Fly",
+FORMATS = {
+    "ubers": {
+        "banned_pokemon": set(),  # none banned in Ubers
+        "banned_moves": {
+            "Fissure",
+            "Horn Drill",
+            "Guillotine",
+            "Double Team",
+            "Minimize",
+            "Dig",
+            "Fly",
+            "Bide",
+        },  
+    },
+    "ou": {
+        "banned_pokemon": {
+            "Mewtwo",
+            "Mew",
+        },
+        "banned_moves": {
+            "Fissure",
+            "Horn Drill",
+            "Guillotine",
+            "Double Team",
+            "Minimize",
+            "Dig",
+            "Fly",
+            "Bide",
+        },
+    },
 }
 
 def get_gen1_moves():
@@ -61,7 +83,7 @@ def get_valid_moves_for_pokemon(name, gen1_move_vocab):
                 valid.append(move_name)
                 break
 
-    return sorted(set(m for m in valid if m not in OU_BANNED_MOVES))
+    return sorted(set(valid))
 
 def get_evolution_chain(name):
     """Return a list of Pokémon names in its evolution chain, in order."""
@@ -85,51 +107,77 @@ def get_evolution_chain(name):
 
 def main():
     print("Fetching Generation 1 move vocabulary...")
-    move_vocab = get_gen1_moves()
-    MOVE_VOCAB_PATH.write_text(json.dumps(move_vocab, indent=2))
-    print(f"Saved {len(move_vocab)} moves to {MOVE_VOCAB_PATH}")
+    base_move_vocab = get_gen1_moves()
 
     print("Fetching Generation 1 Pokémon...")
-    pokemons = get_gen1_pokemon()
+    base_pokemons = get_gen1_pokemon()
 
-    print(f"Found {len(pokemons)} Pokémon")
+    print(f"Found {len(base_pokemons)} Pokémon")
 
-    print("Collecting valid moves for each Pokémon...")
-    valid_moves = {}
-    for name in tqdm(pokemons):
-        valid_moves[name] = get_valid_moves_for_pokemon(name, set(move_vocab))
+    # Cache evolution chains once (same for all formats)
+    print("Building evolution chain cache...")
+    evo_cache = {name: get_evolution_chain(name) for name in base_pokemons}
 
-    print("Applying evolution-based inheritance...")
+    #
+    # ───────────────────────────────────────────────────────────────
+    #   PROCESS EACH FORMAT SEPARATELY
+    # ───────────────────────────────────────────────────────────────
+    #
+    for fmt, rules in FORMATS.items():
+        fmt_dir = DATA_DIR / fmt
+        fmt_dir.mkdir(parents=True, exist_ok=True)
 
-    # Build map: base form → full chain
-    evo_cache = {}
-    for name in pokemons:
-        evo_cache[name] = get_evolution_chain(name)
+        banned_moves = rules["banned_moves"]
+        banned_pokemon = rules["banned_pokemon"]
 
-    # Now propagate moves down each chain
-    for chain in evo_cache.values():
-        inherited = set()
-        for mon in chain:
-            if mon in valid_moves:
-                # Add inherited moves
-                valid_moves[mon] = sorted(set(valid_moves[mon]) | inherited)
-                inherited |= set(valid_moves[mon])
+        print(f"\n=== Processing format: {fmt.upper()} ===")
 
+        # Apply move filter
+        move_vocab = sorted([m for m in base_move_vocab if m not in banned_moves])
 
-    # Rename specific Pokémon keys for consistency
-    rename_map = {
-        "Mr Mime": "Mr. Mime",
-        "Nidoran M": "Nidoran-M",
-        "Nidoran F": "Nidoran-F",
-        "Farfetchd": "Farfetch'd",
-    }
+        # Save move vocab
+        (fmt_dir / "move_vocab.json").write_text(json.dumps(move_vocab, indent=2))
 
-    for old_name, new_name in rename_map.items():
-        if old_name in valid_moves:
-            valid_moves[new_name] = valid_moves.pop(old_name)
+        # Apply Pokémon filter
+        pokemons = [p for p in base_pokemons if p not in banned_pokemon]
 
-    VALID_MOVES_PATH.write_text(json.dumps(valid_moves, indent=2))
-    print(f"Saved valid moves for {len(valid_moves)} Pokémon to {VALID_MOVES_PATH}")
+        print("Collecting valid moves for each Pokémon...")
+        valid_moves = {}
+        for name in tqdm(pokemons):
+            moves = get_valid_moves_for_pokemon(name, set(move_vocab))
+            valid_moves[name] = sorted(set(moves) - banned_moves)
+
+        print("Applying evolution-based inheritance...")
+        for chain in evo_cache.values():
+            # Skip chains containing banned mons
+            chain = [m for m in chain if m in valid_moves]
+            inherited = set()
+            for mon in chain:
+                current = set(valid_moves.get(mon, []))
+                valid_moves[mon] = sorted(current | inherited)
+                inherited |= current
+
+        # Name consistency fixes
+        rename_map = {
+            "Mr Mime": "Mr. Mime",
+            "Nidoran M": "Nidoran-M",
+            "Nidoran F": "Nidoran-F",
+            "Farfetchd": "Farfetch'd",
+        }
+
+        for old, new in rename_map.items():
+            if old in valid_moves:
+                valid_moves[new] = valid_moves.pop(old)
+
+        # Save final valid_moves.json
+        (fmt_dir / "valid_moves.json").write_text(
+            json.dumps(valid_moves, indent=2)
+        )
+
+        print(f"Saved {len(valid_moves)} Pokémon to {fmt_dir}/valid_moves.json")
+
+    print("\nAll formats processed!")
+
 
 
 

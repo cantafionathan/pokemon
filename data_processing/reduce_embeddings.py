@@ -13,10 +13,14 @@ from scipy.stats import spearmanr
 # CONFIG
 # ============================================
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = ROOT / "data"
 POKEMON_EMBED_PATH = DATA_DIR / "pokemon_embeddings.parquet"
 POKEDEX_PATH = DATA_DIR / "gen1_pokedex.json"
-OUT_JSON_PATH = DATA_DIR / "pokemon_embeddings_reduced.json"
+
+# New output paths
+OUT_UBERS = DATA_DIR / "ubers" / "pokemon_embeddings_reduced.json"
+OUT_OU = DATA_DIR / "ou" / "pokemon_embeddings_reduced.json"
 
 
 # ============================================
@@ -26,7 +30,6 @@ OUT_JSON_PATH = DATA_DIR / "pokemon_embeddings_reduced.json"
 def load_text_embeddings():
     df = pd.read_parquet(POKEMON_EMBED_PATH)
 
-    # load pokedex mapping (id → name)
     with open(POKEDEX_PATH, "r", encoding="utf-8") as f:
         dex = {int(k): v for k, v in json.load(f).items()}
 
@@ -45,16 +48,14 @@ def load_text_embeddings():
 
 
 # ============================================
-# METRICS / DIAGNOSTICS
+# METRICS
 # ============================================
 
 def nearest_neighbour_accuracy(orig, reduced):
     d_orig = cdist(orig, orig, metric="cosine")
     d_red = cdist(reduced, reduced, metric="cosine")
-
     nn_orig = np.argmin(d_orig + np.eye(len(orig)) * 1e9, axis=1)
     nn_red = np.argmin(d_red + np.eye(len(orig)) * 1e9, axis=1)
-
     return np.mean(nn_orig == nn_red)
 
 
@@ -90,15 +91,33 @@ def main(dim):
     print(f"Spearman distance correlation: {spearman:.4f}")
 
     print("\n=== SAVING JSON ===")
-    out_dict = {
+
+    # Build full dict (ubers)
+    full_dict = {
         name: X_reduced[i].astype(float).tolist()
         for i, name in enumerate(names)
     }
 
-    with open(OUT_JSON_PATH, "w", encoding="utf-8") as f:
-        json.dump(out_dict, f, indent=2)
+    # Build OU dict (exclude Mew & Mewtwo)
+    banned = {"Mew", "Mewtwo"}
+    ou_dict = {
+        name: emb for name, emb in full_dict.items()
+        if name not in banned
+    }
 
-    print(f"Saved reduced embeddings → {OUT_JSON_PATH}")
+    # Ensure directories exist
+    OUT_UBERS.parent.mkdir(parents=True, exist_ok=True)
+    OUT_OU.parent.mkdir(parents=True, exist_ok=True)
+
+    # Save both
+    with open(OUT_UBERS, "w", encoding="utf-8") as f:
+        json.dump(full_dict, f, indent=2)
+
+    with open(OUT_OU, "w", encoding="utf-8") as f:
+        json.dump(ou_dict, f, indent=2)
+
+    print(f"Saved Ubers embeddings → {OUT_UBERS}")
+    print(f"Saved OU embeddings → {OUT_OU}")
 
 
 if __name__ == "__main__":

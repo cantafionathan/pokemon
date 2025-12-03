@@ -5,20 +5,22 @@ import torch
 from pathlib import Path
 from typing import List, Dict
 
+from config import DATA_DIR
+
 DEBUG_DECODE = True  # set to True manually when debugging
 
 # ============================================================
 # === CONFIG AND DATA LOADING ===
 # ============================================================
 
-DATA_DIR = Path(__file__).resolve().parents[2] / "data"
-POKEMON_MOVESETS_PATH = DATA_DIR / "competitive_movesets.json"
+
+POKEMON_MOVESETS_PATH = DATA_DIR() / "competitive_movesets.json"
 
 
 # -----------------------------
 # Load Pokémon embeddings
 # -----------------------------
-with open(DATA_DIR / "pokemon_embeddings_reduced.json", "r") as f:
+with open(DATA_DIR() / "pokemon_embeddings_reduced.json", "r") as f:
     POKEMON_EMBEDDINGS = {k: torch.tensor(v, dtype=torch.double) for k, v in json.load(f).items()}
 
 EMBED_DIM = len(next(iter(POKEMON_EMBEDDINGS.values())))

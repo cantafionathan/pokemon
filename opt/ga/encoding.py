@@ -4,13 +4,15 @@ import json
 import os
 from typing import List, Tuple, Dict
 
+from config import DATA_DIR
+
 
 # -----------------------------
 # Load and flatten move pool
 # -----------------------------
 
 def load_flattened_pool(
-    path: str = "data/competitive_movesets.json"
+    path: str = DATA_DIR() / "competitive_movesets.json"
 ) -> List[Tuple[str, List[str]]]:
     """
     Loads competitive movesets and returns a flattened pool:

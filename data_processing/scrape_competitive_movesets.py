@@ -1,39 +1,31 @@
-# scrape_competitive_movesets.py
 import re
 import json
 import html
 import time
 import requests
+from pathlib import Path
 
-UBERS_BANNED_MOVES = {
-    "Fissure",
-    "Horn Drill",
-    "Guillotine",
-    "Double Team",
-    "Minimize",
-}
+# ─────────────────────────────────────────────
+# Formats handled by this script
+# ─────────────────────────────────────────────
 
-with open("data/valid_moves.json") as f:
-    VALID_MOVES = json.load(f)
+FORMATS = ["ubers", "ou"]
 
 
-BASE_URL = "https://www.smogon.com/dex/rb/pokemon/{}/"
-OUTPUT_FILE = "data/competitive_movesets.json"
-with open("data/move_vocab.json") as f:
-    move_vocab_list = json.load(f)
+# ─────────────────────────────────────────────
+# Utility: Normalize move names
+# ─────────────────────────────────────────────
 
-# Build mapping normalized name -> original name
 def normalize_move_name(m):
     s = m.strip().lower()
-    # Remove all apostrophes, both plain and fancy
     s = s.replace("’", "").replace("‘", "").replace("'", "")
     s = s.replace(" ", "_").replace("-", "_")
     return s
 
 
-normalized_to_original = {
-    normalize_move_name(move): move for move in move_vocab_list
-}
+# ─────────────────────────────────────────────
+# HTML → JSON moveset extraction helpers
+# ─────────────────────────────────────────────
 
 def find_matching_bracket(s, start_idx):
     stack = []
@@ -46,50 +38,72 @@ def find_matching_bracket(s, start_idx):
                 return i
     raise ValueError("No matching bracket")
 
-def extract_all_movesets_blocks(html):
-    movesets_blocks = []
-    for m in re.finditer(r'"movesets"\s*:\s*\[', html):
+def extract_all_movesets_blocks(html_text):
+    blocks = []
+    for m in re.finditer(r'"movesets"\s*:\s*\[', html_text):
         start = m.end() - 1
-        end = find_matching_bracket(html, start)
-        block_text = html[start:end+1]
-        movesets_blocks.append(block_text)
-    return movesets_blocks
+        end = find_matching_bracket(html_text, start)
+        blocks.append(html_text[start:end+1])
+    return blocks
 
-
-def parse_moveslots_json(array_text):
-    cleaned = html.unescape(array_text)
-    cleaned = re.sub(r",\s*([\]\}])", r"\1", cleaned)  # remove trailing commas
-    return json.loads(cleaned)
-
-def expand_moveslots(moveslots):
+def expand_moveslots(moveslots, normalized_to_original):
     from itertools import product
+
     slot_moves = []
     for slot in moveslots:
-        slot_moves.append([normalize_move_name(mv['move']) for mv in slot if 'move' in mv])
+        slot_moves.append([
+            normalize_move_name(mv["move"])
+            for mv in slot if "move" in mv
+        ])
+
     all_combos = list(product(*slot_moves))
 
-    # Restore original move names with correct casing and spacing
-    result = []
+    restored_sets = []
     for combo in all_combos:
-        restored = [normalized_to_original.get(mv, mv) for mv in combo]
-        result.append(restored)
-    return result
+        restored = [normalized_to_original.get(m, m) for m in combo]
+        restored_sets.append(restored)
 
-def is_valid_moveset(pokemon_name, moveset):
-    # Normalize the valid move names
-    valid = {normalize_move_name(m) for m in VALID_MOVES.get(pokemon_name, [])}
-    # Normalize all moves in the moveset
-    return all(normalize_move_name(move) in valid for move in moveset)
+    return restored_sets
 
+
+# ─────────────────────────────────────────────
+# Move filtering
+# ─────────────────────────────────────────────
+
+def is_valid_moveset(pokemon_name, moveset, valid_move_dict):
+    legal = {normalize_move_name(m) for m in valid_move_dict.get(pokemon_name, [])}
+
+    for m in moveset:
+        if normalize_move_name(m) not in legal:
+            return False
+
+    return True
+
+
+# ─────────────────────────────────────────────
+# URL slug generation
+# ─────────────────────────────────────────────
 
 def slugify(name):
     s = name.lower()
-    s = re.sub(r"[.'’]", "", s)      # Remove dots and apostrophes
-    s = s.replace(" ", "-")           # Replace spaces with dash
+    s = re.sub(r"[.'’]", "", s)
+    s = s.replace(" ", "-")
     return s
 
-def scrape_pokemon_movesets(slug_name, real_name):
+
+# ─────────────────────────────────────────────
+# Scraping + parsing of a single Pokémon
+# ─────────────────────────────────────────────
+
+BASE_URL = "https://www.smogon.com/dex/rb/pokemon/{}/"
+
+def scrape_pokemon_movesets(slug_name, real_name,
+                            valid_move_dict,
+                            normalized_to_original,
+                            allowed_moves_set):
+
     url = BASE_URL.format(slug_name)
+
     try:
         response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
         response.raise_for_status()
@@ -98,73 +112,110 @@ def scrape_pokemon_movesets(slug_name, real_name):
         print(f"Failed to fetch {slug_name}: {e}")
         return []
 
-    movesets_blocks = extract_all_movesets_blocks(html_text)
+    blocks = extract_all_movesets_blocks(html_text)
     all_movesets = []
 
-    for block_text in movesets_blocks:
+    for block in blocks:
         try:
-            movesets = json.loads(block_text)
-            for moveset in movesets:
-                moveslots = moveset.get("moveslots")
-                if moveslots:
-                    variants = expand_moveslots(moveslots)
+            movesets = json.loads(block)
 
-                    # filter out any moveset with duplicates
-                    variants = [
-                        combo for combo in variants
-                        if len(set(combo)) == len(combo)
-                    ]
+            for ms in movesets:
+                moveslots = ms.get("moveslots")
+                if not moveslots:
+                    continue
 
-                    # remove combos containing moves not legal in Gen 1
-                    variants = [
-                        combo for combo in variants
-                        if is_valid_moveset(real_name, combo)
-                    ]
+                expanded = expand_moveslots(moveslots, normalized_to_original)
 
-                    all_movesets.extend(variants)
+                # No duplicate moves in a moveset
+                expanded = [m for m in expanded if len(set(m)) == len(m)]
+
+                # Must be legal for this Pokémon (format-specific valid_moves.json)
+                expanded = [
+                    m for m in expanded if is_valid_moveset(real_name, m, valid_move_dict)
+                ]
+
+                # Must be in the allowed move pool of the format (important!)
+                expanded = [
+                    m for m in expanded
+                    if all(move in allowed_moves_set for move in m)
+                ]
+
+                all_movesets.extend(expanded)
+
         except Exception as e:
             print(f"Error parsing movesets for {slug_name}: {e}")
 
-
-    # Filter out movesets with banned moves
-    filtered_movesets = [
-        ms for ms in all_movesets
-        if not any(move in UBERS_BANNED_MOVES for move in ms)
-    ]
-
-    # Deduplicate ignoring order
-    unique_movesets = []
+    # Deduplicate movesets (order-independent)
+    unique = []
     seen = set()
-    for ms in filtered_movesets:
+    for ms in all_movesets:
         key = tuple(sorted(ms))
         if key not in seen:
             seen.add(key)
-            unique_movesets.append(ms)
+            unique.append(ms)
 
-    return unique_movesets
+    return unique
 
+
+# ─────────────────────────────────────────────
+# Main execution
+# ─────────────────────────────────────────────
 
 if __name__ == "__main__":
-    # Load your pokedex file - assumed format: { "bulbasaur": "Bulbasaur", "ivysaur": "Ivysaur", ... }
+
     with open("data/gen1_pokedex.json") as f:
         pokedex = json.load(f)
 
-    all_data = {}
+    for fmt in FORMATS:
+        fmt_dir = Path("data") / fmt
+        valid_path = fmt_dir / "valid_moves.json"
+        vocab_path = fmt_dir / "move_vocab.json"
+        output_path = fmt_dir / "competitive_movesets.json"
 
-    for key, name in pokedex.items():
-        slug = slugify(name)
-        print(f"Scraping movesets for {name} → {slug}")
-        movesets = scrape_pokemon_movesets(slug, name)
-        if movesets:
-            all_data[name] = movesets
-            print(f"  Found {len(movesets)} unique moveset(s)")
-        else:
-            print(f"  No movesets found")
-        time.sleep(0.3)
+        print(f"\n======================================")
+        print(f"   Processing FORMAT: {fmt.upper()}")
+        print(f"======================================\n")
 
+        # Load format-specific data
+        with valid_path.open() as f:
+            valid_move_dict = json.load(f)
 
-    # Write to output file
-    with open(OUTPUT_FILE, "w") as f:
-        json.dump(all_data, f, indent=2)
+        with vocab_path.open() as f:
+            move_vocab = json.load(f)
 
-    print(f"Saved all movesets to {OUTPUT_FILE}")
+        # Allowed moves: all moves in the move vocab of this format
+        allowed_moves_set = set(move_vocab)
+
+        # Build normalization table
+        normalized_to_original = {
+            normalize_move_name(m): m for m in move_vocab
+        }
+
+        # Scraping begins
+        all_data = {}
+
+        for key, name in pokedex.items():
+            slug = slugify(name)
+            print(f"Scraping {name} → {slug}")
+
+            movesets = scrape_pokemon_movesets(
+                slug,
+                name,
+                valid_move_dict,
+                normalized_to_original,
+                allowed_moves_set,
+            )
+
+            if movesets:
+                all_data[name] = movesets
+                print(f"  → {len(movesets)} unique moveset(s)")
+            else:
+                print("  → No movesets found")
+
+            time.sleep(0.25)
+
+        # Save per-format output
+        with output_path.open("w") as f:
+            json.dump(all_data, f, indent=2)
+
+        print(f"\nSaved {fmt.upper()} movesets → {output_path}")
