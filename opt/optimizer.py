@@ -11,12 +11,12 @@ from config import DATA_DIR, set_format, get_format
 class Optimizer:
     """
     Unified wrapper for all optimization methods:
-    - Bayesian Optimization (bo)
-    - Genetic Algorithm (ga)
-    - Random Search (rs)
+    - Bayesian Optimization on pool of good movesets (pool_bo)
+    - Genetic Algorithm on pool of good movesets (pool_ga)
+    - Random Search on pool of good movesets (pool_rs)
 
     Usage:
-        opt = Optimizer(method="ga", B=7500, seed=0, format="ou")
+        opt = Optimizer(method="pool_bo", B=7500, seed=0, format="ou")
         results = opt.run()
     """
 
@@ -36,7 +36,7 @@ class Optimizer:
 
         
 
-        valid = {"bo", "ga", "rs"}
+        valid = {"pool_bo", "pool_ga", "pool_rs"}
         if self.method not in valid:
             raise ValueError(f"method must be one of {valid}")
 
@@ -44,17 +44,17 @@ class Optimizer:
     # Unified run()
     # --------------------------------------------------------
     def run(self):
-        if self.method == "bo":
-            return self._run_bo()
-        elif self.method == "ga":
-            return self._run_ga()
-        elif self.method == "rs":
-            return self._run_rs()
+        if self.method == "pool_bo":
+            return self._run_pool_bo()
+        elif self.method == "pool_ga":
+            return self._run_pool_ga()
+        elif self.method == "pool_rs":
+            return self._run_pool_rs()
 
     # --------------------------------------------------------
     # BO
     # --------------------------------------------------------
-    def _run_bo(self):
+    def _run_pool_bo(self):
         opt = POOLBOOptimizer()
 
         n_init = 5
@@ -75,14 +75,14 @@ class Optimizer:
 
         n_iters = max(1, (self.B - n_init_battles) // battles_per_iter)
 
-        print("=== BO Schedule ===")
+        print("=== Pool BO Schedule ===")
         print(f"Battle Budget: {self.B}")
         print(f"Init Number of Battles: {n_init_battles}")
         print(f"Battles per BO Step: {battles_per_iter}")
         print(f"BO Iterations: {n_iters}")
         print(f"Format: gen1{get_format()}")
 
-        best_x, best_y, best_team_str = opt.run_bo(
+        best_x, best_y, best_team_str = opt.run_pool_bo(
             n_iters=n_iters,
             n_init=n_init,
             n_battles_per_opponent=self.n_battles_per_opponent,
@@ -97,7 +97,7 @@ class Optimizer:
     # --------------------------------------------------------
     # GA
     # --------------------------------------------------------
-    def _run_ga(self):
+    def _run_pool_ga(self):
         opt = POOLGAOptimizer(
             population_size=50,
             mutation_rate=0.12,
@@ -107,14 +107,14 @@ class Optimizer:
         battles_per_eval = self.n_battles_per_opponent * self.n_opponents
         n_generations = max(1, self.B // (opt.population_size * battles_per_eval))
 
-        print("=== GA Schedule ===")
+        print("=== Pool GA Schedule ===")
         print(f"Battle Budget: {self.B}")
         print(f"Population Size: {opt.population_size}")
         print(f"Battles per Team Evaluation: {battles_per_eval}")
         print(f"GA Generations: {n_generations}")
         print(f"Format: gen1{get_format()}")
 
-        best_team_indices, best_score, best_repr = opt.run_ga(
+        best_team_indices, best_score, best_repr = opt.run_pool_ga(
             n_generations=n_generations,
             n_battles_per_opponent=self.n_battles_per_opponent,
             verbose=True,
@@ -126,11 +126,11 @@ class Optimizer:
     # --------------------------------------------------------
     # Random Search
     # --------------------------------------------------------
-    def _run_rs(self):
+    def _run_pool_rs(self):
         battles_per_eval = self.n_battles_per_opponent * self.n_opponents
         n_samples = max(1, self.B // battles_per_eval)
 
-        print("=== Random Search Schedule ===")
+        print("=== Pool Random Search Schedule ===")
         print(f"Battle Budget: {self.B}")
         print(f"Battles per Team Evaluation: {battles_per_eval}")
         print(f"Random Samples: {n_samples}")
@@ -141,7 +141,7 @@ class Optimizer:
             seed=self.seed,
         )
 
-        best_team_indices, best_score, best_repr = opt.run_random_search(
+        best_team_indices, best_score, best_repr = opt.run_pool_random_search(
             n_battles_per_opponent=self.n_battles_per_opponent,
             verbose=True,
         )

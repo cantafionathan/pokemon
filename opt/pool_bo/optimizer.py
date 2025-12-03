@@ -101,7 +101,7 @@ class POOLBOOptimizer:
             ]
         )
 
-    def run_bo(
+    def run_pool_bo(
         self,
         n_iters: int = 3,
         n_init: int = 1,

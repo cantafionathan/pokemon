@@ -78,7 +78,7 @@ class POOLRandomSearchOptimizer:
     # ---------------------
     # Main loop
     # ---------------------
-    def run_random_search(
+    def run_pool_random_search(
         self,
         n_battles_per_opponent: int = 1,
         verbose: bool = True,

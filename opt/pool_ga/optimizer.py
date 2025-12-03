@@ -138,7 +138,7 @@ class POOLGAOptimizer:
     # -------------------------
     # GA main loop
     # -------------------------
-    def run_ga(
+    def run_pool_ga(
     self,
     n_generations: int = 10,
     n_battles_per_opponent: int = 1,
