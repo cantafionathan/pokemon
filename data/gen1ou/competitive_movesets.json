@@ -169,10 +169,22 @@
       "Counter"
     ],
     [
+      "Fire Blast",
+      "Slash",
+      "Dragon Rage",
+      "Dig"
+    ],
+    [
       "Swords Dance",
       "Fire Blast",
       "Body Slam",
       "Submission"
+    ],
+    [
+      "Flamethrower",
+      "Slash",
+      "Dig",
+      "Fire Spin"
     ]
   ],
   "Charmeleon": [
@@ -284,6 +296,12 @@
       "Fire Spin",
       "Fire Blast",
       "Slash",
+      "Dig"
+    ],
+    [
+      "Fire Spin",
+      "Fire Blast",
+      "Slash",
       "Toxic"
     ],
     [
@@ -296,7 +314,19 @@
       "Fire Spin",
       "Fire Blast",
       "Body Slam",
+      "Dig"
+    ],
+    [
+      "Fire Spin",
+      "Fire Blast",
+      "Body Slam",
       "Toxic"
+    ],
+    [
+      "Fly",
+      "Swords Dance",
+      "Fire Spin",
+      "Fire Blast"
     ]
   ],
   "Squirtle": [
@@ -311,6 +341,12 @@
       "Blizzard",
       "Body Slam",
       "Rest"
+    ],
+    [
+      "Surf",
+      "Blizzard",
+      "Body Slam",
+      "Dig"
     ]
   ],
   "Wartortle": [
@@ -369,6 +405,12 @@
       "Blizzard",
       "Earthquake",
       "Rest"
+    ],
+    [
+      "Hydro Pump",
+      "Blizzard",
+      "Body Slam",
+      "Dig"
     ],
     [
       "Surf",
@@ -503,6 +545,12 @@
       "Quick Attack",
       "Wing Attack",
       "Mirror Move"
+    ],
+    [
+      "Fly",
+      "Quick Attack",
+      "Sand Attack",
+      "Take Down"
     ]
   ],
   "Pidgeot": [
@@ -517,6 +565,12 @@
       "Hyper Beam",
       "Sky Attack",
       "Agility"
+    ],
+    [
+      "Mirror Move",
+      "Fly",
+      "Quick Attack",
+      "Sand Attack"
     ]
   ],
   "Rattata": [
@@ -673,6 +727,18 @@
       "Wrap",
       "Earthquake",
       "Rock Slide"
+    ],
+    [
+      "Glare",
+      "Wrap",
+      "Dig",
+      "Strength"
+    ],
+    [
+      "Glare",
+      "Wrap",
+      "Earthquake",
+      "Dig"
     ]
   ],
   "Pikachu": [
@@ -885,6 +951,12 @@
       "Earthquake",
       "Rock Slide",
       "Submission"
+    ],
+    [
+      "Dig",
+      "Swift",
+      "Seismic Toss",
+      "Sand Attack"
     ]
   ],
   "Nidoran-F": [
@@ -1155,6 +1227,18 @@
       "Body Slam",
       "Confuse Ray",
       "Quick Attack"
+    ],
+    [
+      "Confuse Ray",
+      "Fire Blast",
+      "Dig",
+      "Substitute"
+    ],
+    [
+      "Flamethrower",
+      "Dig",
+      "Confuse Ray",
+      "Double Edge"
     ]
   ],
   "Ninetales": [
@@ -1162,6 +1246,18 @@
       "Fire Blast",
       "Fire Spin",
       "Body Slam",
+      "Confuse Ray"
+    ],
+    [
+      "Fire Blast",
+      "Fire Spin",
+      "Dig",
+      "Toxic"
+    ],
+    [
+      "Fire Blast",
+      "Fire Spin",
+      "Dig",
       "Confuse Ray"
     ],
     [
@@ -1377,6 +1473,12 @@
       "Stun Spore",
       "Slash",
       "Leech Life"
+    ],
+    [
+      "Spore",
+      "Slash",
+      "Dig",
+      "Mega Drain"
     ]
   ],
   "Parasect": [
@@ -1427,6 +1529,12 @@
       "Toxic",
       "Slash",
       "Mega Drain"
+    ],
+    [
+      "Spore",
+      "Take Down",
+      "Dig",
+      "Solar Beam"
     ]
   ],
   "Venonat": [
@@ -1543,6 +1651,24 @@
       "Rock Slide",
       "Substitute",
       "Toxic"
+    ],
+    [
+      "Earthquake",
+      "Dig",
+      "Rock Slide",
+      "Substitute"
+    ],
+    [
+      "Earthquake",
+      "Dig",
+      "Rock Slide",
+      "Sand Attack"
+    ],
+    [
+      "Dig",
+      "Sand Attack",
+      "Toxic",
+      "Hyper Beam"
     ]
   ],
   "Meowth": [
@@ -1815,6 +1941,24 @@
       "Dragon Rage",
       "Body Slam",
       "Substitute"
+    ],
+    [
+      "Fire Blast",
+      "Dragon Rage",
+      "Body Slam",
+      "Dig"
+    ],
+    [
+      "Fire Blast",
+      "Dragon Rage",
+      "Dig",
+      "Substitute"
+    ],
+    [
+      "Flamethrower",
+      "Body Slam",
+      "Reflect",
+      "Dig"
     ]
   ],
   "Arcanine": [
@@ -2243,6 +2387,12 @@
       "Substitute"
     ],
     [
+      "Psychic",
+      "Counter",
+      "Recover",
+      "Dig"
+    ],
+    [
       "Psybeam",
       "Thunder Wave",
       "Recover",
@@ -2303,6 +2453,12 @@
       "Metronome",
       "Disable",
       "Tri Attack"
+    ],
+    [
+      "Psybeam",
+      "Recover",
+      "Kinesis",
+      "Dig"
     ]
   ],
   "Machop": [
@@ -2835,6 +2991,18 @@
       "Explosion",
       "Body Slam",
       "Fire Blast"
+    ],
+    [
+      "Dig",
+      "Seismic Toss",
+      "Fire Blast",
+      "Metronome"
+    ],
+    [
+      "Rock Throw",
+      "Mega Punch",
+      "Dig",
+      "Self Destruct"
     ]
   ],
   "Ponyta": [
@@ -3113,6 +3281,18 @@
       "Agility",
       "Swords Dance",
       "Double Edge"
+    ],
+    [
+      "Swords Dance",
+      "Body Slam",
+      "Fly",
+      "Substitute"
+    ],
+    [
+      "Slash",
+      "Sand Attack",
+      "Toxic",
+      "Fly"
     ]
   ],
   "Doduo": [
@@ -3147,6 +3327,12 @@
       "Hyper Beam",
       "Drill Peck",
       "Toxic"
+    ],
+    [
+      "Fly",
+      "Tri Attack",
+      "Agility",
+      "Reflect"
     ]
   ],
   "Seel": [
@@ -4311,6 +4497,12 @@
       "Rock Slide",
       "Body Slam",
       "Rest"
+    ],
+    [
+      "Dig",
+      "Strength",
+      "Thunder",
+      "Surf"
     ]
   ],
   "Chansey": [
@@ -5842,6 +6034,12 @@
       "Hyper Beam",
       "Fire Blast",
       "Agility"
+    ],
+    [
+      "Fly",
+      "Hyper Beam",
+      "Supersonic",
+      "Dragon Rage"
     ]
   ],
   "Snorlax": [
@@ -6197,9 +6395,21 @@
     ],
     [
       "Blizzard",
+      "Double Edge",
+      "Hyper Beam",
+      "Fly"
+    ],
+    [
+      "Blizzard",
       "Toxic",
       "Hyper Beam",
       "Agility"
+    ],
+    [
+      "Blizzard",
+      "Toxic",
+      "Hyper Beam",
+      "Fly"
     ],
     [
       "Blizzard",
@@ -6247,6 +6457,30 @@
     ],
     [
       "Thunderbolt",
+      "Fly",
+      "Thunder Wave",
+      "Rest"
+    ],
+    [
+      "Thunderbolt",
+      "Fly",
+      "Thunder Wave",
+      "Hyper Beam"
+    ],
+    [
+      "Thunderbolt",
+      "Fly",
+      "Toxic",
+      "Rest"
+    ],
+    [
+      "Thunderbolt",
+      "Fly",
+      "Toxic",
+      "Hyper Beam"
+    ],
+    [
+      "Thunderbolt",
       "Drill Peck",
       "Thunder Wave",
       "Rest"
@@ -6286,6 +6520,12 @@
       "Sky Attack",
       "Thunder Wave",
       "Flash"
+    ],
+    [
+      "Toxic",
+      "Thunder Shock",
+      "Thunder Wave",
+      "Fly"
     ]
   ],
   "Moltres": [
@@ -6342,6 +6582,18 @@
       "Fire Spin",
       "Double Edge",
       "Agility"
+    ],
+    [
+      "Fire Blast",
+      "Fly",
+      "Swift",
+      "Substitute"
+    ],
+    [
+      "Fire Spin",
+      "Fire Blast",
+      "Hyper Beam",
+      "Fly"
     ]
   ],
   "Dratini": [

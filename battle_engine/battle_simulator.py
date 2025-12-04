@@ -1,4 +1,4 @@
-# simulator/battle_simulator.py
+# battle_engine/battle_simulator.py
 import asyncio
 import uuid
 import json

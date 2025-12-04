@@ -1,7 +1,7 @@
 # bo/objective.py
 import torch
 import logging
-from simulator.battle_simulator import evaluate_team
+from battle_engine.battle_simulator import evaluate_team
 from .encoding import decode_team_pokemon_only, random_legal_moves, format_team, parse_showdown_team
 
 # ============================================================

@@ -1,5 +1,5 @@
 from .encoding import load_flattened_pool, team_string_from_indices
-from simulator.battle_simulator import evaluate_team
+from battle_engine.battle_simulator import evaluate_team
 import typing as t
 
 flattened = load_flattened_pool()

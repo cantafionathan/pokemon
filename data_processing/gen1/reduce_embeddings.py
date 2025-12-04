@@ -13,7 +13,7 @@ from scipy.stats import spearmanr
 # CONFIG
 # ============================================
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = ROOT / "data"
 POKEMON_EMBED_PATH = DATA_DIR / "pokemon_embeddings.parquet"
 POKEDEX_PATH = DATA_DIR / "gen1_pokedex.json"
@@ -70,7 +70,7 @@ def distance_spearman(orig, reduced):
 # MAIN
 # ============================================
 
-def main(dim):
+def main(dim = 64):
     print("=== LOADING ===")
     names, X = load_text_embeddings()
     print(f"Loaded {len(names)} Pokémon embeddings")
