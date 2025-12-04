@@ -1,10 +1,8 @@
-from parse_teams import main as parse_teams
-from reduce_embeddings import main as reduce_embeddings
+from get_pokedex import main as get_pokedex
 from scrape_moves import main as scrape_moves
-from scrape_competitive_movesets import main as scrape_competitive_movesets
+from parse_teams import main as parse_teams
 
 if __name__ == "__main__":
+    get_pokedex()
     scrape_moves()
     parse_teams()
-    reduce_embeddings()
-    scrape_competitive_movesets()

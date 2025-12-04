@@ -1,22 +1,18 @@
 # opt/optimizer.py
 
 import json
-from opt.pool_bo.optimizer import POOLBOOptimizer
-from opt.pool_ga.optimizer import POOLGAOptimizer
-from opt.pool_rs.optimizer import POOLRandomSearchOptimizer
-from opt.pool_bo.encoding import parse_showdown_team
+from opt.rs.optimizer import RSOptimizer
+from opt.ga.optimizer import GAOptimizer
 from config import DATA_DIR, set_format, get_format
 
 
 class Optimizer:
     """
-    Unified wrapper for all optimization methods:
-    - Bayesian Optimization on pool of good movesets (pool_bo)
-    - Genetic Algorithm on pool of good movesets (pool_ga)
-    - Random Search on pool of good movesets (pool_rs)
+    Unified wrapper for all optimization methods:)
+    - Random Search (rs)
 
     Usage:
-        opt = Optimizer(method="pool_bo", B=7500, seed=0, format="ou")
+        opt = Optimizer(method="rs", B=7500, seed=0, format="ou")
         results = opt.run()
     """
 
@@ -36,7 +32,7 @@ class Optimizer:
 
         
 
-        valid = {"pool_bo", "pool_ga", "pool_rs"}
+        valid = {"rs", "ga"}
         if self.method not in valid:
             raise ValueError(f"method must be one of {valid}")
 
@@ -44,61 +40,17 @@ class Optimizer:
     # Unified run()
     # --------------------------------------------------------
     def run(self):
-        if self.method == "pool_bo":
-            return self._run_pool_bo()
-        elif self.method == "pool_ga":
-            return self._run_pool_ga()
-        elif self.method == "pool_rs":
-            return self._run_pool_rs()
+        if self.method == "rs":
+            return self._run_rs()
+        elif self.method == "ga":
+            return self._run_ga()
 
-    # --------------------------------------------------------
-    # BO
-    # --------------------------------------------------------
-    def _run_pool_bo(self):
-        opt = POOLBOOptimizer()
-
-        n_init = 5
-        n_moveset_samples = 1
-
-        n_init_battles = (
-            n_init
-            * self.n_battles_per_opponent
-            * n_moveset_samples
-            * self.n_opponents
-        )
-
-        battles_per_iter = (
-            self.n_battles_per_opponent
-            * n_moveset_samples
-            * self.n_opponents
-        )
-
-        n_iters = max(1, (self.B - n_init_battles) // battles_per_iter)
-
-        print("=== Pool BO Schedule ===")
-        print(f"Battle Budget: {self.B}")
-        print(f"Init Number of Battles: {n_init_battles}")
-        print(f"Battles per BO Step: {battles_per_iter}")
-        print(f"BO Iterations: {n_iters}")
-        print(f"Format: {get_format()}")
-
-        best_x, best_y, best_team_str = opt.run_pool_bo(
-            n_iters=n_iters,
-            n_init=n_init,
-            n_battles_per_opponent=self.n_battles_per_opponent,
-            n_moveset_samples=n_moveset_samples,
-            seed=self.seed,
-        )
-
-        parsed = parse_showdown_team(best_team_str)
-        self._print_best(parsed, best_y)
-        return parsed, best_y
 
     # --------------------------------------------------------
     # GA
     # --------------------------------------------------------
     def _run_pool_ga(self):
-        opt = POOLGAOptimizer(
+        opt = GAOptimizer(
             population_size=50,
             mutation_rate=0.12,
             seed=self.seed,
@@ -114,7 +66,7 @@ class Optimizer:
         print(f"GA Generations: {n_generations}")
         print(f"Format: {get_format()}")
 
-        best_team_indices, best_score, best_repr = opt.run_pool_ga(
+        best_team_indices, best_score, best_repr = opt.run_ga(
             n_generations=n_generations,
             n_battles_per_opponent=self.n_battles_per_opponent,
             verbose=True,
@@ -136,12 +88,12 @@ class Optimizer:
         print(f"Random Samples: {n_samples}")
         print(f"Format: {get_format()}")
 
-        opt = POOLRandomSearchOptimizer(
+        opt = RSOptimizer(
             n_samples=n_samples,
             seed=self.seed,
         )
 
-        best_team_indices, best_score, best_repr = opt.run_pool_random_search(
+        best_team_indices, best_score, best_repr = opt.run_rs(
             n_battles_per_opponent=self.n_battles_per_opponent,
             verbose=True,
         )
