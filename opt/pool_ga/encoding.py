@@ -65,7 +65,6 @@ def team_string_from_indices(
 
         block = (
             f"{species}\n"
-            f"Ability: None\n"
             f"{move_lines}"
         )
 

@@ -20,7 +20,7 @@ class Optimizer:
         results = opt.run()
     """
 
-    def __init__(self, method, B, seed=0, n_battles_per_opponent=1, format="ou"):
+    def __init__(self, method, B, seed=0, n_battles_per_opponent=1, format="gen1ou"):
         set_format(format)
 
         OPP_PATH = DATA_DIR() / "opponent_teams.json"
@@ -80,7 +80,7 @@ class Optimizer:
         print(f"Init Number of Battles: {n_init_battles}")
         print(f"Battles per BO Step: {battles_per_iter}")
         print(f"BO Iterations: {n_iters}")
-        print(f"Format: gen1{get_format()}")
+        print(f"Format: {get_format()}")
 
         best_x, best_y, best_team_str = opt.run_pool_bo(
             n_iters=n_iters,
@@ -112,7 +112,7 @@ class Optimizer:
         print(f"Population Size: {opt.population_size}")
         print(f"Battles per Team Evaluation: {battles_per_eval}")
         print(f"GA Generations: {n_generations}")
-        print(f"Format: gen1{get_format()}")
+        print(f"Format: {get_format()}")
 
         best_team_indices, best_score, best_repr = opt.run_pool_ga(
             n_generations=n_generations,
@@ -134,7 +134,7 @@ class Optimizer:
         print(f"Battle Budget: {self.B}")
         print(f"Battles per Team Evaluation: {battles_per_eval}")
         print(f"Random Samples: {n_samples}")
-        print(f"Format: gen1{get_format()}")
+        print(f"Format: {get_format()}")
 
         opt = POOLRandomSearchOptimizer(
             n_samples=n_samples,

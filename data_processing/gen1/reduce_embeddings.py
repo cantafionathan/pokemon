@@ -19,8 +19,8 @@ POKEMON_EMBED_PATH = DATA_DIR / "pokemon_embeddings.parquet"
 POKEDEX_PATH = DATA_DIR / "gen1_pokedex.json"
 
 # New output paths
-OUT_UBERS = DATA_DIR / "ubers" / "pokemon_embeddings_reduced.json"
-OUT_OU = DATA_DIR / "ou" / "pokemon_embeddings_reduced.json"
+OUT_UBERS = DATA_DIR / "gen1ubers" / "pokemon_embeddings_reduced.json"
+OUT_OU = DATA_DIR / "gen1ou" / "pokemon_embeddings_reduced.json"
 
 
 # ============================================

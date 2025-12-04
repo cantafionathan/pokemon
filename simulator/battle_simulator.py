@@ -12,15 +12,55 @@ from config import DATA_DIR, get_format
 
 
 # ============================================================
-# Data
+# Helpers
 # ============================================================
 
+def ensure_ability_none(team_text: str) -> str:
+    """
+    Parses a team string and ensures every Pokémon block has 'Ability: None'.
+    This is often required for Gen 1 simulations to prevent parser warnings 
+    or defaults.
+    """
+    if not team_text:
+        return team_text
+
+    # Split into Pokémon blocks (separated by blank lines)
+    mons = team_text.strip().split("\n\n")
+    new_blocks = []
+
+    for mon in mons:
+        lines = mon.strip().splitlines()
+        if not lines:
+            continue
+        
+        # Check if "Ability:" is already present (case-insensitive)
+        has_ability = any(line.lower().startswith("ability:") for line in lines)
+        
+        if not has_ability:
+            # Insert at index 1 (after the Name/Item line)
+            # If the list only has 1 line, this effectively appends it.
+            lines.insert(1, "Ability: None")
+        
+        new_blocks.append("\n".join(lines))
+
+    return "\n\n".join(new_blocks)
+
+
+# ============================================================
+# Data
+# ============================================================
 
 OPP_PATH = DATA_DIR() / "opponent_teams.json"
 
 def load_opponent_teams():
     with open(OPP_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+        data = json.load(f)
+    
+    # Pre-process opponent teams to ensure they have Ability: None
+    for entry in data:
+        entry["team"] = ensure_ability_none(entry["team"])
+        
+    return data
 
 OPPONENTS = load_opponent_teams()
 
@@ -43,7 +83,7 @@ class BattleRunner:
         
 
     async def _battle_once(self, team_str: str, opponent_team_str: str) -> int:
-        fmt = f"gen1{get_format()}"
+        fmt = get_format()
         
         player = PLAYER_CLASS(
             battle_format=fmt,
@@ -86,13 +126,19 @@ class BattleRunner:
 
     async def evaluate_team_async(self, team_str: str, n_battles_per_opponent: int = 1) -> float:
         """Evaluate team against all opponents sequentially."""
+        
+        # Ensure the player team has Ability: None before starting battles
+        safe_team_str = ensure_ability_none(team_str)
+        
         wins = 0
         total = 0
 
         for opp in OPPONENTS:
+            # Opponent teams are already sanitized in load_opponent_teams
             opp_team = opp["team"]
+            
             for _ in range(n_battles_per_opponent):
-                w = await self._battle_once(team_str, opp_team)
+                w = await self._battle_once(safe_team_str, opp_team)
                 wins += w
                 total += 1
 
@@ -103,7 +149,6 @@ class BattleRunner:
         return self.loop.run_until_complete(
             self.evaluate_team_async(team_str, n_battles_per_opponent)
         )
-
 
 
 # ============================================================

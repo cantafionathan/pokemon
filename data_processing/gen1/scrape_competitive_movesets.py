@@ -9,7 +9,7 @@ from pathlib import Path
 # Formats handled by this script
 # ─────────────────────────────────────────────
 
-FORMATS = ["ubers", "ou"]
+FORMATS = ["gen1ubers", "gen1ou"]
 
 
 # ─────────────────────────────────────────────
@@ -156,13 +156,7 @@ def scrape_pokemon_movesets(slug_name, real_name,
 
     return unique
 
-
-# ─────────────────────────────────────────────
-# Main execution
-# ─────────────────────────────────────────────
-
-if __name__ == "__main__":
-
+def main():
     with open("data/gen1_pokedex.json") as f:
         pokedex = json.load(f)
 
@@ -219,3 +213,12 @@ if __name__ == "__main__":
             json.dump(all_data, f, indent=2)
 
         print(f"\nSaved {fmt.upper()} movesets → {output_path}")
+
+
+# ─────────────────────────────────────────────
+# Main execution
+# ─────────────────────────────────────────────
+
+if __name__ == "__main__":
+    main()
+   

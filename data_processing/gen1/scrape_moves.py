@@ -14,7 +14,7 @@ VALID_MOVES_PATH = DATA_DIR / "valid_moves.json"
 POKEAPI_BASE = "https://pokeapi.co/api/v2"
 
 FORMATS = {
-    "ubers": {
+    "gen1ubers": {
         "banned_pokemon": set(),  # none banned in Ubers
         "banned_moves": {
             "Fissure",
@@ -27,7 +27,7 @@ FORMATS = {
             "Bide",
         },  
     },
-    "ou": {
+    "gen1ou": {
         "banned_pokemon": {
             "Mewtwo",
             "Mew",

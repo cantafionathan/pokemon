@@ -6,7 +6,7 @@ if __name__ == "__main__":
     B = 750 + 150*55
     seed = 0
     n_battles_per_opponent = 1
-    format = "ou" # "ou", "ubers"
+    format = "gen1ou" # "gen1ou", "gen1ubers"
 
     opt = Optimizer(
         method=method,

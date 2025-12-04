@@ -10,8 +10,8 @@ DATA_DIR = ROOT / "data"
 RAW_PATH = DATA_DIR / "raw_teams.txt"
 
 FORMAT_DIRS = {
-    "gen1ou": DATA_DIR / "ou",
-    "gen1ubers": DATA_DIR / "ubers"
+    "gen1ou": DATA_DIR / "gen1ou",
+    "gen1ubers": DATA_DIR / "gen1ubers"
 }
 
 TEAM_HEADER = re.compile(
@@ -54,10 +54,6 @@ def parse_raw_teams(raw_text):
             if not lines:
                 continue
 
-            # Insert Ability: None if missing
-            if not any(ln.lower().startswith("ability:") for ln in lines):
-                lines.insert(1, "Ability: None")
-
             # Normalize moves
             for j, ln in enumerate(lines):
                 m = MOVE_LINE.match(ln)
@@ -91,19 +87,19 @@ def save_teams(teams):
     ubers_teams = teams[:]  # copy entire list
 
     # Save
-    (DATA_DIR / "ou").mkdir(exist_ok=True)
-    (DATA_DIR / "ubers").mkdir(exist_ok=True)
+    (DATA_DIR / "gen1ou").mkdir(exist_ok=True)
+    (DATA_DIR / "gen1ubers").mkdir(exist_ok=True)
 
-    (DATA_DIR / "ou" / "opponent_teams.json").write_text(
+    (DATA_DIR / "gen1ou" / "opponent_teams.json").write_text(
         json.dumps(ou_teams, indent=2), encoding="utf-8"
     )
 
-    (DATA_DIR / "ubers" / "opponent_teams.json").write_text(
+    (DATA_DIR / "gen1ubers" / "opponent_teams.json").write_text(
         json.dumps(ubers_teams, indent=2), encoding="utf-8"
     )
 
-    print(f"Saved {len(ou_teams)} → data/ou/opponent_teams.json")
-    print(f"Saved {len(ubers_teams)} → data/ubers/opponent_teams.json")
+    print(f"Saved {len(ou_teams)} → data/gen1ou/opponent_teams.json")
+    print(f"Saved {len(ubers_teams)} → data/gen1ubers/opponent_teams.json")
 
 
 # ----------------------------------------------------

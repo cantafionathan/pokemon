@@ -4,7 +4,6 @@ import random
 import torch
 from pathlib import Path
 from typing import List, Dict
-
 from config import DATA_DIR
 
 DEBUG_DECODE = True  # set to True manually when debugging
@@ -40,7 +39,6 @@ def parse_showdown_team(team_str: str) -> list[dict]:
     Example input chunk:
 
     Clefable
-    Ability: None
     - Mega Kick
     - Hyper Beam
     - Blizzard
@@ -143,11 +141,11 @@ def random_legal_moves(p: str) -> list:
 
 
 def format_team(pokemon_moves: Dict[str, List[str]]) -> str:
-    """Format Gen 1 team with explicit Ability: None lines so poke-env won't crash."""
+    """Format Gen 1 team."""
     blocks = []
     for mon, moves in pokemon_moves.items():
         move_lines = "\n".join(f"- {m}" for m in moves)
-        block = f"{mon}\nAbility: None\n{move_lines}"
+        block = f"{mon}\n{move_lines}"
         blocks.append(block)
     return "\n\n".join(blocks)
 
@@ -224,11 +222,8 @@ Exeggutor
 - Psychic
 - Explosion
 
-Tauros
+Mr. Mime
 - Body Slam
-- Earthquake
-- Hyper Beam
-- Blizzard
 
 Lapras
 - Blizzard
