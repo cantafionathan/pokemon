@@ -1,181 +1,161 @@
-# scrape_moves.py
+# data_processing/gen1/scrape_moves.py
+"""
+Scrape generation move vocabulary and valid per-mon moves (Gen-specific),
+and write format-specific files to data/gen{gen}/{ou,ubers}/...
+"""
 
-import requests
+import csv
 import json
+import requests
 from pathlib import Path
 from tqdm import tqdm
+from data_processing.common.paths import data_dir
 
-DATA_DIR = Path("data")
-DATA_DIR.mkdir(exist_ok=True)
+POKEAPI = "https://pokeapi.co/api/v2"
 
-MOVE_VOCAB_PATH = DATA_DIR / "move_vocab.json"
-VALID_MOVES_PATH = DATA_DIR / "valid_moves.json"
-
-POKEAPI_BASE = "https://pokeapi.co/api/v2"
-
+# Format rules (names mapped to output subfolders)
 FORMATS = {
-    "gen1ubers": {
-        "banned_pokemon": set(),  # none banned in Ubers
+    "ou": {
+        "banned_pokemon": {"Mewtwo", "Mew"},
         "banned_moves": {
-            "Fissure",
-            "Horn Drill",
-            "Guillotine",
-            "Double Team",
-            "Minimize",
-            "Bide",
-        },  
-    },
-    "gen1ou": {
-        "banned_pokemon": {
-            "Mewtwo",
-            "Mew",
+            "Fissure", "Horn Drill", "Guillotine",
+            "Double Team", "Minimize", "Bide",
         },
+    },
+    "ubers": {
+        "banned_pokemon": set(),
         "banned_moves": {
-            "Fissure",
-            "Horn Drill",
-            "Guillotine",
-            "Double Team",
-            "Minimize",
-            "Bide",
+            "Fissure", "Horn Drill", "Guillotine",
+            "Double Team", "Minimize", "Bide",
         },
     },
 }
 
-def get_gen1_moves():
-    """Return a list of all moves introduced in Generation 1."""
-    gen1 = requests.get(f"{POKEAPI_BASE}/generation/1/").json()
-    moves = [m["name"].replace("-", " ").title() for m in gen1["moves"]]
+def fetch_gen_moves(gen: int = 1):
+    gen_url = f"{POKEAPI}/generation/{gen}/"
+    resp = requests.get(gen_url)
+    resp.raise_for_status()
+    moves = [m["name"].replace("-", " ").title() for m in resp.json().get("moves", [])]
     return sorted(moves)
 
+def fetch_gen_pokemon_list(gen: int = 1):
+    gen_url = f"{POKEAPI}/generation/{gen}/"
+    resp = requests.get(gen_url)
+    resp.raise_for_status()
+    mons = [p["name"].replace("-", " ").title() for p in resp.json().get("pokemon_species", [])]
+    return sorted(mons)
 
-def get_gen1_pokemon():
-    """Return a list of all Pokémon introduced in Generation 1."""
-    gen1 = requests.get(f"{POKEAPI_BASE}/generation/1/").json()
-    pokemons = [p["name"].replace("-", " ").title() for p in gen1["pokemon_species"]]
-    return sorted(pokemons)
-
-
-def get_valid_moves_for_pokemon(name, gen1_move_vocab):
-    """Return all moves a Pokémon can learn *in Generation 1*."""
-    url_name = name.lower().replace(" ", "-").replace("♀", "-f").replace("♂", "-m")
-    resp = requests.get(f"{POKEAPI_BASE}/pokemon/{url_name}")
+def fetch_valid_moves_for_pokemon(name: str, gen_moves_set, gen:int=1):
+    """
+    Return moves that this pokemon can learn in the given generation
+    by inspecting the /pokemon/<name> endpoint and filtering version groups.
+    """
+    slug = name.lower().replace(" ", "-").replace("♀", "-f").replace("♂", "-m")
+    url = f"{POKEAPI}/pokemon/{slug}"
+    resp = requests.get(url)
     if resp.status_code != 200:
         return []
 
     data = resp.json()
     valid = []
-
-    for m in data["moves"]:
-        move_name = m["move"]["name"].replace("-", " ").title()
-
-        # Skip moves not introduced in Gen1
-        if move_name not in gen1_move_vocab:
+    for m in data.get("moves", []):
+        mv = m["move"]["name"].replace("-", " ").title()
+        if mv not in gen_moves_set:
             continue
-
-        # Check if learned in Gen1 version groups
-        for detail in m["version_group_details"]:
+        # check version groups for Gen1 games
+        for detail in m.get("version_group_details", []):
             vg = detail["version_group"]["name"]
             if vg in ("red-blue", "yellow"):
-                valid.append(move_name)
+                valid.append(mv)
                 break
-
     return sorted(set(valid))
 
-def get_evolution_chain(name):
-    """Return a list of Pokémon names in its evolution chain, in order."""
-    # Convert name to API species slug
-    species_name = name.lower().replace(" ", "-").replace("♀", "-f").replace("♂", "-m")
-    species = requests.get(f"{POKEAPI_BASE}/pokemon-species/{species_name}").json()
-    
-    chain_url = species["evolution_chain"]["url"]
-    chain = requests.get(chain_url).json()["chain"]
+def build_evo_cache(pokemons):
+    """
+    Get evolution chains for each species and return a dict species -> chain list.
+    If any species fetch fails, we ignore and continue.
+    """
+    evo_cache = {}
+    for name in tqdm(pokemons, desc="evo cache"):
+        slug = name.lower().replace(" ", "-").replace("♀", "-f").replace("♂", "-m")
+        try:
+            resp = requests.get(f"{POKEAPI}/pokemon-species/{slug}")
+            resp.raise_for_status()
+            species = resp.json()
+            chain_url = species["evolution_chain"]["url"]
+            chain_data = requests.get(chain_url).json()["chain"]
+            chain = []
+            def traverse(node):
+                chain.append(node["species"]["name"].replace("-", " ").title())
+                for e in node.get("evolves_to", []):
+                    traverse(e)
+            traverse(chain_data)
+            evo_cache[name] = chain
+        except Exception:
+            # skip on any errors (network, missing data)
+            continue
+    return evo_cache
 
-    evo_list = []
+def main(gen:int=1):
+    base_dir = data_dir(gen)
+    base_dir.mkdir(parents=True, exist_ok=True)
 
-    def traverse(node):
-        evo_list.append(node["species"]["name"].replace("-", " ").title())
-        for e in node["evolves_to"]:
-            traverse(e)
+    print(f"Fetching generation {gen} move vocabulary and Pokémon list...")
+    gen_moves = fetch_gen_moves(gen)
+    gen_moves_set = set(gen_moves)
+    mons = fetch_gen_pokemon_list(gen)
 
-    traverse(chain)
-    return evo_list
+    # Precompute evo cache to perform inheritance (so pre-evolutions learn shared moves)
+    print("Building evolution chain cache (this may take a while)...")
+    evo_cache = build_evo_cache(mons)
 
-
-def main():
-    print("Fetching Generation 1 move vocabulary...")
-    base_move_vocab = get_gen1_moves()
-
-    print("Fetching Generation 1 Pokémon...")
-    base_pokemons = get_gen1_pokemon()
-
-    print(f"Found {len(base_pokemons)} Pokémon")
-
-    # Cache evolution chains once (same for all formats)
-    print("Building evolution chain cache...")
-    evo_cache = {name: get_evolution_chain(name) for name in base_pokemons}
-
-    #
-    # ───────────────────────────────────────────────────────────────
-    #   PROCESS EACH FORMAT SEPARATELY
-    # ───────────────────────────────────────────────────────────────
-    #
-    for fmt, rules in FORMATS.items():
-        fmt_dir = DATA_DIR / fmt
+    # For each target format, filter and save format-specific JSONs
+    for fmt_name, rules in FORMATS.items():
+        fmt_dir = base_dir / fmt_name
         fmt_dir.mkdir(parents=True, exist_ok=True)
 
         banned_moves = rules["banned_moves"]
         banned_pokemon = rules["banned_pokemon"]
 
-        print(f"\n=== Processing format: {fmt.upper()} ===")
-
-        # Apply move filter
-        move_vocab = sorted([m for m in base_move_vocab if m not in banned_moves])
-
-        # Save move vocab
+        # filtered move vocab
+        move_vocab = sorted([m for m in gen_moves if m not in banned_moves])
         (fmt_dir / "move_vocab.json").write_text(json.dumps(move_vocab, indent=2))
+        print(f"Saved move_vocab to {fmt_dir / 'move_vocab.json'}")
 
-        # Apply Pokémon filter
-        pokemons = [p for p in base_pokemons if p not in banned_pokemon]
-
-        print("Collecting valid moves for each Pokémon...")
+        # valid moves per mon (filtered)
         valid_moves = {}
-        for name in tqdm(pokemons):
-            moves = get_valid_moves_for_pokemon(name, set(move_vocab))
-            valid_moves[name] = sorted(set(moves) - banned_moves)
+        for mon in tqdm(mons, desc=f"valid moves ({fmt_name})"):
+            if mon in banned_pokemon:
+                continue
+            moves = fetch_valid_moves_for_pokemon(mon, set(move_vocab), gen=gen)
+            valid_moves[mon] = sorted(set(moves) - banned_moves)
 
-        print("Applying evolution-based inheritance...")
+        # evolution-based inheritance
         for chain in evo_cache.values():
-            # Skip chains containing banned mons
-            chain = [m for m in chain if m in valid_moves]
+            # filter to mons we have in valid_moves
+            available_chain = [m for m in chain if m in valid_moves]
             inherited = set()
-            for mon in chain:
+            for mon in available_chain:
                 current = set(valid_moves.get(mon, []))
                 valid_moves[mon] = sorted(current | inherited)
                 inherited |= current
 
-        # Name consistency fixes
+        # name normalization map
         rename_map = {
             "Mr Mime": "Mr. Mime",
             "Nidoran M": "Nidoran-M",
             "Nidoran F": "Nidoran-F",
             "Farfetchd": "Farfetch'd",
         }
-
         for old, new in rename_map.items():
             if old in valid_moves:
                 valid_moves[new] = valid_moves.pop(old)
 
-        # Save final valid_moves.json
-        (fmt_dir / "valid_moves.json").write_text(
-            json.dumps(valid_moves, indent=2)
-        )
+        (fmt_dir / "valid_moves.json").write_text(json.dumps(valid_moves, indent=2))
+        print(f"Saved valid_moves to {fmt_dir / 'valid_moves.json'} (count={len(valid_moves)})")
 
-        print(f"Saved {len(valid_moves)} Pokémon to {fmt_dir}/valid_moves.json")
-
-    print("\nAll formats processed!")
-
-
-
+    print("All formats processed.")
+    return base_dir
 
 if __name__ == "__main__":
-    main()
+    main(gen=1)

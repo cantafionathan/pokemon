@@ -1,9 +1,10 @@
-import os
+# data_processing/gen1/get_pokedex.py
 import json
 import requests
+from pathlib import Path
+from data_processing.common.paths import data_dir
 
-
-# Fixes for PokeAPI names → your preferred names
+# Fixes for PokeAPI names → preferred names
 RENAME_MAP = {
     "Mr Mime": "Mr. Mime",
     "Nidoran M": "Nidoran-M",
@@ -11,59 +12,59 @@ RENAME_MAP = {
     "Farfetchd": "Farfetch'd",
 }
 
-
-def normalize_name(name: str) -> str:
-    """
-    Convert PokeAPI species names to your preferred format using RENAME_MAP.
-    Handles capitalization & spacing weirdness from PokeAPI.
-    """
-    # Capitalize words (pokeapi gives lower-case)
-    name = name.replace("-", " ").title().replace(" ", " ")
-
-    # Apply custom renames if matched
+def normalize_name(raw: str) -> str:
+    # PokeAPI names often use hyphens; normalize capitalization and common exceptions
+    name = raw.replace("-", " ").title()
     return RENAME_MAP.get(name, name)
 
-
-def fetch_gen1_pokedex():
+def fetch_gen_pokedex(gen: int = 1):
     """
-    Fetch the Gen 1 Pokédex (1–151) using the Kanto Pokédex endpoint.
-    Returns {"1": "Bulbasaur", ..., "151": "Mew"}.
+    Fetch the Pokédex for the given generation.
+    For Gen1, the Kanto Pokédex has id=2 on PokeAPI.
+    Returns a dict mapping dex number (str) -> canonical name.
     """
-
-    url = "https://pokeapi.co/api/v2/pokedex/2/"
+    if gen == 1:
+        url = "https://pokeapi.co/api/v2/pokedex/2/"
+    else:
+        # Generic fallback: use generation endpoint to collect species and sort
+        # (this will return species not necessarily dex-ordered)
+        url = f"https://pokeapi.co/api/v2/generation/{gen}/"
     resp = requests.get(url)
     resp.raise_for_status()
-
     data = resp.json()
-    entries = data["pokemon_entries"]
 
     pokedex = {}
 
-    for entry in entries:
-        dex_num = entry["entry_number"]
-        raw = entry["pokemon_species"]["name"]  # e.g. "mr-mime", "nidoran-m"
-        cleaned = normalize_name(raw)
-
-        pokedex[str(dex_num)] = cleaned
+    if gen == 1:
+        entries = data["pokemon_entries"]
+        for entry in entries:
+            dex_num = entry["entry_number"]
+            raw = entry["pokemon_species"]["name"]
+            pokedex[str(dex_num)] = normalize_name(raw)
+    else:
+        # For other gens, produce a simple index: 1..N
+        species = [s["name"] for s in data.get("pokemon_species", [])]
+        for i, s in enumerate(species, start=1):
+            pokedex[str(i)] = normalize_name(s)
 
     return pokedex
 
-
-def main(out_path=None):
-    root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    data_dir = os.path.join(root_dir, "data")
-    os.makedirs(data_dir, exist_ok=True)
+def main(gen:int=1, out_path: str=None):
+    out_dir = data_dir(gen)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     if out_path is None:
-        out_path = os.path.join(data_dir, "gen1_pokedex.json")
+        out_path = out_dir / "pokedex.json"
+    else:
+        out_path = Path(out_path)
 
-    pokedex = fetch_gen1_pokedex()
+    pokedex = fetch_gen_pokedex(gen)
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(pokedex, f, indent=2, ensure_ascii=False)
 
-    print(f"Saved Gen 1 Pokédex to {out_path}")
-
+    print(f"Saved Gen {gen} Pokédex to {out_path}")
+    return out_path
 
 if __name__ == "__main__":
-    main()
+    main(gen=1)
