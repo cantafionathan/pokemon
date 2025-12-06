@@ -25,7 +25,7 @@ class Move:
                 move_id = int(row["id"])
                 cls._move_data[move_id] = row
 
-    def __init__(self, id, name=None, type_=None, power=None, pp=None, accuracy=None):
+    def __init__(self, id, name=None, type_=None, power=None, pp=None, accuracy=None, priority=None):
         self._load_moveset()
 
         if name is None or type_ is None or power is None or pp is None or accuracy is None:
@@ -36,9 +36,13 @@ class Move:
 
             name = data["name"]
             type_ = data["type"]
-            power = int(data["power"]) if data["power"].isdigit() else None
+            power = int(data["power"]) if data["power"].isdigit() else 0
             pp = int(data["pp"]) if data["pp"].isdigit() else 15
-            accuracy = float(data["accuracy"]) if data["accuracy"].replace('.', '', 1).isdigit() else 100
+            accuracy = float(data["accuracy"]) if data["accuracy"].isdigit() else 100
+            try:
+                priority = int(data["priority"])
+            except (ValueError, TypeError):
+                priority = 0
 
         self.id = int(id)
         self.name = name
@@ -47,6 +51,7 @@ class Move:
         self.max_pp = int(pp)
         self.current_pp = int(pp)
         self.accuracy = accuracy
+        self.priority = priority
 
     # -------------------------------------------------------------
     # Helpers

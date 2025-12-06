@@ -1,166 +1,166 @@
-id,name,type,power,pp,accuracy
-1,Pound,normal,40,35,100
-2,Karate Chop,normal,50,25,100
-3,Double Slap,normal,15,10,85
-4,Comet Punch,normal,18,15,85
-5,Mega Punch,normal,80,20,85
-6,Pay Day,normal,40,20,100
-7,Fire Punch,fire,75,15,100
-8,Ice Punch,ice,75,15,100
-9,Thunder Punch,electric,75,15,100
-10,Scratch,normal,40,35,100
-11,Vice Grip,normal,55,30,100
-12,Guillotine,normal,1,5,30
-13,Razor Wind,normal,80,10,74.6
-14,Swords Dance,normal,0,30,100
-15,Cut,normal,50,30,95
-16,Gust,normal,40,35,100
-17,Wing Attack,flying,35,35,100
-18,Whirlwind,normal,0,20,85
-19,Fly,flying,70,15,95
-20,Bind,normal,15,20,74.6
-21,Slam,normal,80,20,74.6
-22,Vine Whip,grass,35,10,100
-23,Stomp,normal,65,20,100
-24,Double Kick,fighting,30,30,100
-25,Mega Kick,normal,120,5,74.6
-26,Jump Kick,fighting,70,25,95
-27,Rolling Kick,fighting,60,15,85
-28,Sand Attack,normal,0,15,100
-29,Headbutt,normal,70,15,100
-30,Horn Attack,normal,65,25,100
-31,Fury Attack,normal,15,20,85
-32,Horn Drill,normal,1,5,30
-33,Tackle,normal,35,35,95
-34,Body Slam,normal,85,15,100
-35,Wrap,normal,15,20,85
-36,Take Down,normal,90,20,85
-37,Thrash,normal,90,20,100
-38,Double-Edge,normal,100,15,100
-39,Tail Whip,normal,0,30,100
-40,Poison Sting,poison,15,35,100
-41,Twineedle,bug,25,20,100
-42,Pin Missile,bug,14,20,85
-43,Leer,normal,0,30,100
-44,Bite,normal,60,25,100
-45,Growl,normal,0,40,100
-46,Roar,normal,0,20,100
-47,Sing,normal,0,15,55
-48,Supersonic,normal,0,20,55
-49,Sonic Boom,normal,1,20,90
-50,Disable,normal,0,20,55
-51,Acid,poison,40,30,100
-52,Ember,fire,40,25,100
-53,Flamethrower,fire,95,15,100
-54,Mist,ice,0,30,100
-55,Water Gun,water,40,25,100
-56,Hydro Pump,water,120,5,80
-57,Surf,water,95,15,100
-58,Ice Beam,ice,95,10,100
-59,Blizzard,ice,120,5,90
-60,Psybeam,psychic,65,20,100
-61,Bubble Beam,water,65,20,100
-62,Aurora Beam,ice,65,20,100
-63,Hyper Beam,normal,150,5,90
-64,Peck,flying,35,35,100
-65,Drill Peck,flying,80,20,100
-66,Submission,fighting,80,25,80
-67,Low Kick,fighting,50,20,90
-68,Counter,fighting,1,20,100
-69,Seismic Toss,fighting,1,20,100
-70,Strength,normal,80,15,100
-71,Absorb,grass,20,20,100
-72,Mega Drain,grass,40,10,100
-73,Leech Seed,grass,0,10,90
-74,Growth,normal,0,40,100
-75,Razor Leaf,grass,55,25,95
-76,Solar Beam,grass,120,10,100
-77,Poison Powder,poison,0,35,74.6
-78,Stun Spore,grass,0,30,75
-79,Sleep Powder,grass,0,15,75
-80,Petal Dance,grass,70,20,100
-81,String Shot,bug,0,40,95
-82,Dragon Rage,dragon,1,10,100
-83,Fire Spin,fire,15,15,70
-84,Thunder Shock,electric,40,30,100
-85,Thunderbolt,electric,95,15,100
-86,Thunder Wave,electric,0,20,100
-87,Thunder,electric,120,10,70
-88,Rock Throw,rock,50,15,65
-89,Earthquake,ground,100,10,100
-90,Fissure,ground,1,5,30
-91,Dig,ground,100,10,100
-92,Toxic,poison,0,10,85
-93,Confusion,psychic,50,25,100
-94,Psychic,psychic,90,10,100
-95,Hypnosis,psychic,0,20,59.8
-96,Meditate,psychic,0,40,100
-97,Agility,psychic,0,30,100
-98,Quick Attack,normal,40,30,100
-99,Rage,normal,20,20,100
-100,Teleport,psychic,0,20,100
-101,Night Shade,ghost,0,15,100
-102,Mimic,normal,0,10,100
-103,Screech,normal,0,40,85
-104,Double Team,normal,0,15,100
-105,Recover,normal,0,20,100
-106,Harden,normal,0,30,100
-107,Minimize,normal,0,20,100
-108,Smokescreen,normal,0,20,100
-109,Confuse Ray,ghost,0,10,100
-110,Withdraw,water,0,40,100
-111,Defense Curl,normal,0,40,100
-112,Barrier,psychic,0,30,100
-113,Light Screen,psychic,0,30,100
-114,Haze,ice,0,30,100
-115,Reflect,psychic,0,20,100
-116,Focus Energy,normal,0,30,100
-117,Bide,normal,0,10,100
-118,Metronome,normal,0,10,100
-119,Mirror Move,flying,0,20,100
-120,Self-Destruct,normal,130,5,100
-121,Egg Bomb,normal,100,10,75
-122,Lick,ghost,20,30,100
-123,Smog,poison,20,20,70
-124,Sludge,poison,65,20,100
-125,Bone Club,ground,65,20,85
-126,Fire Blast,fire,120,5,85
-127,Waterfall,water,80,15,100
-128,Clamp,water,35,10,75
-129,Swift,normal,60,20,100
-130,Skull Bash,normal,100,15,100
-131,Spike Cannon,normal,20,15,100
-132,Constrict,normal,10,35,100
-133,Amnesia,psychic,0,20,100
-134,Kinesis,psychic,0,15,80
-135,Soft-Boiled,normal,0,10,100
-136,Hi Jump Kick,fighting,85,20,90
-137,Glare,normal,0,30,75
-138,Dream Eater,psychic,100,15,100
-139,Poison Gas,poison,0,40,55
-140,Barrage,normal,15,20,85
-141,Leech Life,bug,20,15,100
-142,Lovely Kiss,normal,0,10,75
-143,Sky Attack,flying,140,5,90
-144,Transform,normal,0,10,100
-145,Bubble,water,20,30,100
-146,Dizzy Punch,normal,70,10,100
-147,Spore,grass,0,15,100
-148,Flash,normal,0,20,70
-149,Psywave,psychic,1,15,80
-150,Splash,normal,0,40,100
-151,Acid Armor,poison,0,40,100
-152,Crabhammer,water,90,10,85
-153,Explosion,normal,170,5,100
-154,Fury Swipes,normal,18,15,80
-155,Bonemerang,ground,50,10,90
-156,Rest,psychic,0,10,100
-157,Rock Slide,rock,75,10,90
-158,Hyper Fang,normal,80,15,90
-159,Sharpen,normal,0,30,100
-160,Conversion,normal,0,30,100
-161,Tri Attack,normal,80,10,100
-162,Super Fang,normal,1,10,90
-163,Slash,normal,70,20,100
-164,Substitute,normal,0,10,100
-165,Struggle,normal,50,10,100
+id,name,type,power,pp,accuracy,priority
+1,Pound,normal,40,35,100,0
+2,Karate Chop,normal,50,25,100,0
+3,Double Slap,normal,15,10,85,0
+4,Comet Punch,normal,18,15,85,0
+5,Mega Punch,normal,80,20,85,0
+6,Pay Day,normal,40,20,100,0
+7,Fire Punch,fire,75,15,100,0
+8,Ice Punch,ice,75,15,100,0
+9,Thunder Punch,electric,75,15,100,0
+10,Scratch,normal,40,35,100,0
+11,Vice Grip,normal,55,30,100,0
+12,Guillotine,normal,1,5,30,0
+13,Razor Wind,normal,80,10,74.6,0
+14,Swords Dance,normal,0,30,100,0
+15,Cut,normal,50,30,95,0
+16,Gust,normal,40,35,100,0
+17,Wing Attack,flying,35,35,100,0
+18,Whirlwind,normal,0,20,85,-6
+19,Fly,flying,70,15,95,0
+20,Bind,normal,15,20,74.6,0
+21,Slam,normal,80,20,74.6,0
+22,Vine Whip,grass,35,10,100,0
+23,Stomp,normal,65,20,100,0
+24,Double Kick,fighting,30,30,100,0
+25,Mega Kick,normal,120,5,74.6,0
+26,Jump Kick,fighting,70,25,95,0
+27,Rolling Kick,fighting,60,15,85,0
+28,Sand Attack,normal,0,15,100,0
+29,Headbutt,normal,70,15,100,0
+30,Horn Attack,normal,65,25,100,0
+31,Fury Attack,normal,15,20,85,0
+32,Horn Drill,normal,1,5,30,0
+33,Tackle,normal,35,35,95,0
+34,Body Slam,normal,85,15,100,0
+35,Wrap,normal,15,20,85,0
+36,Take Down,normal,90,20,85,0
+37,Thrash,normal,90,20,100,0
+38,Double-Edge,normal,100,15,100,0
+39,Tail Whip,normal,0,30,100,0
+40,Poison Sting,poison,15,35,100,0
+41,Twineedle,bug,25,20,100,0
+42,Pin Missile,bug,14,20,85,0
+43,Leer,normal,0,30,100,0
+44,Bite,normal,60,25,100,0
+45,Growl,normal,0,40,100,0
+46,Roar,normal,0,20,100,-6
+47,Sing,normal,0,15,55,0
+48,Supersonic,normal,0,20,55,0
+49,Sonic Boom,normal,1,20,90,0
+50,Disable,normal,0,20,55,0
+51,Acid,poison,40,30,100,0
+52,Ember,fire,40,25,100,0
+53,Flamethrower,fire,95,15,100,0
+54,Mist,ice,0,30,100,0
+55,Water Gun,water,40,25,100,0
+56,Hydro Pump,water,120,5,80,0
+57,Surf,water,95,15,100,0
+58,Ice Beam,ice,95,10,100,0
+59,Blizzard,ice,120,5,90,0
+60,Psybeam,psychic,65,20,100,0
+61,Bubble Beam,water,65,20,100,0
+62,Aurora Beam,ice,65,20,100,0
+63,Hyper Beam,normal,150,5,90,0
+64,Peck,flying,35,35,100,0
+65,Drill Peck,flying,80,20,100,0
+66,Submission,fighting,80,25,80,0
+67,Low Kick,fighting,50,20,90,0
+68,Counter,fighting,1,20,100,-5
+69,Seismic Toss,fighting,1,20,100,0
+70,Strength,normal,80,15,100,0
+71,Absorb,grass,20,20,100,0
+72,Mega Drain,grass,40,10,100,0
+73,Leech Seed,grass,0,10,90,0
+74,Growth,normal,0,40,100,0
+75,Razor Leaf,grass,55,25,95,0
+76,Solar Beam,grass,120,10,100,0
+77,Poison Powder,poison,0,35,74.6,0
+78,Stun Spore,grass,0,30,75,0
+79,Sleep Powder,grass,0,15,75,0
+80,Petal Dance,grass,70,20,100,0
+81,String Shot,bug,0,40,95,0
+82,Dragon Rage,dragon,1,10,100,0
+83,Fire Spin,fire,15,15,70,0
+84,Thunder Shock,electric,40,30,100,0
+85,Thunderbolt,electric,95,15,100,0
+86,Thunder Wave,electric,0,20,100,0
+87,Thunder,electric,120,10,70,0
+88,Rock Throw,rock,50,15,65,0
+89,Earthquake,ground,100,10,100,0
+90,Fissure,ground,1,5,30,0
+91,Dig,ground,100,10,100,0
+92,Toxic,poison,0,10,85,0
+93,Confusion,psychic,50,25,100,0
+94,Psychic,psychic,90,10,100,0
+95,Hypnosis,psychic,0,20,59.8,0
+96,Meditate,psychic,0,40,100,0
+97,Agility,psychic,0,30,100,0
+98,Quick Attack,normal,40,30,100,1
+99,Rage,normal,20,20,100,0
+100,Teleport,psychic,0,20,100,0
+101,Night Shade,ghost,0,15,100,0
+102,Mimic,normal,0,10,100,0
+103,Screech,normal,0,40,85,0
+104,Double Team,normal,0,15,100,0
+105,Recover,normal,0,20,100,0
+106,Harden,normal,0,30,100,0
+107,Minimize,normal,0,20,100,0
+108,Smokescreen,normal,0,20,100,0
+109,Confuse Ray,ghost,0,10,100,0
+110,Withdraw,water,0,40,100,0
+111,Defense Curl,normal,0,40,100,0
+112,Barrier,psychic,0,30,100,0
+113,Light Screen,psychic,0,30,100,0
+114,Haze,ice,0,30,100,0
+115,Reflect,psychic,0,20,100,0
+116,Focus Energy,normal,0,30,100,0
+117,Bide,normal,0,10,100,1
+118,Metronome,normal,0,10,100,0
+119,Mirror Move,flying,0,20,100,0
+120,Self-Destruct,normal,130,5,100,0
+121,Egg Bomb,normal,100,10,75,0
+122,Lick,ghost,20,30,100,0
+123,Smog,poison,20,20,70,0
+124,Sludge,poison,65,20,100,0
+125,Bone Club,ground,65,20,85,0
+126,Fire Blast,fire,120,5,85,0
+127,Waterfall,water,80,15,100,0
+128,Clamp,water,35,10,75,0
+129,Swift,normal,60,20,100,0
+130,Skull Bash,normal,100,15,100,0
+131,Spike Cannon,normal,20,15,100,0
+132,Constrict,normal,10,35,100,0
+133,Amnesia,psychic,0,20,100,0
+134,Kinesis,psychic,0,15,80,0
+135,Soft-Boiled,normal,0,10,100,0
+136,Hi Jump Kick,fighting,85,20,90,0
+137,Glare,normal,0,30,75,0
+138,Dream Eater,psychic,100,15,100,0
+139,Poison Gas,poison,0,40,55,0
+140,Barrage,normal,15,20,85,0
+141,Leech Life,bug,20,15,100,0
+142,Lovely Kiss,normal,0,10,75,0
+143,Sky Attack,flying,140,5,90,0
+144,Transform,normal,0,10,100,0
+145,Bubble,water,20,30,100,0
+146,Dizzy Punch,normal,70,10,100,0
+147,Spore,grass,0,15,100,0
+148,Flash,normal,0,20,70,0
+149,Psywave,psychic,1,15,80,0
+150,Splash,normal,0,40,100,0
+151,Acid Armor,poison,0,40,100,0
+152,Crabhammer,water,90,10,85,0
+153,Explosion,normal,170,5,100,0
+154,Fury Swipes,normal,18,15,80,0
+155,Bonemerang,ground,50,10,90,0
+156,Rest,psychic,0,10,100,0
+157,Rock Slide,rock,75,10,90,0
+158,Hyper Fang,normal,80,15,90,0
+159,Sharpen,normal,0,30,100,0
+160,Conversion,normal,0,30,100,0
+161,Tri Attack,normal,80,10,100,0
+162,Super Fang,normal,1,10,90,0
+163,Slash,normal,70,20,100,0
+164,Substitute,normal,0,10,100,0
+165,Struggle,normal,50,10,100,0

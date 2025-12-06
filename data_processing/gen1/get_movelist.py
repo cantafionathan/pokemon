@@ -187,6 +187,7 @@ def scrape_serebii(move_name: str) -> dict:
       - Power
       - PP
       - Accuracy
+      - Priority
       - Type (from Battle Type table link)
     """
 
@@ -222,22 +223,35 @@ def scrape_serebii(move_name: str) -> dict:
         print(f"  Could not locate stats table for {move_name}")
         return None
 
-    # Extract power, pp, accuracy
+    # Extract power, pp, accuracy, and priority
     rows = info_table.find_all("tr")
     PP = ""
     power = ""
     accuracy = ""
+    priority = ""
 
     i = 0
     while i < len(rows):
         cols = [c.get_text(" ", strip=True) for c in rows[i].find_all("td")]
+
+        # Extract PP, Power, Accuracy
         if len(cols) >= 3 and cols[0] == "Power Points":
             if i + 1 < len(rows):
-                vals = [c.get_text(" ", strip=True) for c in rows[i+1].find_all("td")]
+                vals = [c.get_text(" ", strip=True) for c in rows[i + 1].find_all("td")]
                 if len(vals) >= 3:
                     PP, power, accuracy = vals[:3]
             i += 2
             continue
+
+        # Extract Priority from row with header "TM #" and "Speed Priority"
+        if len(cols) >= 3 and cols[0] == "TM #" and cols[1] == "Speed Priority":
+            if i + 1 < len(rows):
+                vals = [c.get_text(" ", strip=True) for c in rows[i + 1].find_all("td")]
+                if len(vals) >= 2:
+                    priority = vals[1]
+            i += 2
+            continue
+
         i += 1
 
     # Now extract the Battle Type from the 4th table (index 3)
@@ -248,7 +262,6 @@ def scrape_serebii(move_name: str) -> dict:
             battle_type_cell = tables[3].find_all("tr")[1].find_all("td")[1]
             a_tag = battle_type_cell.find("a")
             if a_tag and a_tag.has_attr("href"):
-                import re
                 href = a_tag["href"]
                 m = re.search(r"/type/(\w+)\.shtml", href)
                 if m:
@@ -260,6 +273,7 @@ def scrape_serebii(move_name: str) -> dict:
         "power": power,
         "pp": PP,
         "accuracy": accuracy,
+        "priority": priority,
         "type": battle_type,
     }
 
@@ -286,7 +300,7 @@ def main():
         scraped = scrape_serebii(name)
 
         if scraped is None:
-            scraped = {"power": "", "pp": "", "accuracy": "", "type": ""}
+            scraped = {"power": "", "pp": "", "accuracy": "", "priority": "", "type": ""}
 
         results.append({
             "id": move_id,
@@ -295,6 +309,7 @@ def main():
             "power": scraped["power"],
             "pp": scraped["pp"],
             "accuracy": scraped["accuracy"],
+            "priority": scraped["priority"],
         })
 
         time.sleep(1)  # be polite to Serebii
@@ -302,7 +317,7 @@ def main():
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["id", "name", "type", "power", "pp", "accuracy"]
+            fieldnames=["id", "name", "type", "power", "pp", "accuracy", "priority"]
         )
         writer.writeheader()
         writer.writerows(results)
