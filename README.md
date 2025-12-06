@@ -1,7 +1,7 @@
 # Pokémon Team Building
 
-This project uses a custom battle engine to simulate Pokémon battles and evaluate AI-designed teams.
-Various methods are implemented to optimize the combinatorial black-box optimization problem of team building.
+This project is a work-in-progress that uses a custom battle engine to simulate Pokémon battles and evaluate AI-designed teams.
+Various methods will be implemented to optimize the combinatorial black-box optimization problem of team building.
 
 ------------------------------------------------------------------------
 
@@ -32,8 +32,8 @@ pip install -r requirements.txt
 ```
 
 
-## Data Sources
+## Data Sources and sites that were useful
 
 [raw_teams.txt](https://gist.github.com/scheibo/7c9172f3379bbf795a5e61a802caf2f0)
-
-[pokeapi.co](https://pokeapi.co/)
+[serebii](https://www.serebii.net/attackdex-rby/)
+[psypoke](https://www.psypokes.com/rby/attacks.php)

@@ -1,70 +1,113 @@
 # data_processing/gen1/get_pokedex.py
-import json
+
+import re
+import csv
 import requests
-from pathlib import Path
-from data_processing.common.paths import data_dir
 
-# Fixes for PokeAPI names → preferred names
-RENAME_MAP = {
-    "Mr Mime": "Mr. Mime",
-    "Nidoran M": "Nidoran-M",
-    "Nidoran F": "Nidoran-F",
-    "Farfetchd": "Farfetch'd",
-}
+BASE_URL = "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/pokedex.ts"
+GEN1_URL = "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/gen1/pokedex.ts"
 
-def normalize_name(raw: str) -> str:
-    # PokeAPI names often use hyphens; normalize capitalization and common exceptions
-    name = raw.replace("-", " ").title()
-    return RENAME_MAP.get(name, name)
 
-def fetch_gen_pokedex(gen: int = 1):
-    """
-    Fetch the Pokédex for the given generation.
-    For Gen1, the Kanto Pokédex has id=2 on PokeAPI.
-    Returns a dict mapping dex number (str) -> canonical name.
-    """
-    if gen == 1:
-        url = "https://pokeapi.co/api/v2/pokedex/2/"
-    else:
-        # Generic fallback: use generation endpoint to collect species and sort
-        # (this will return species not necessarily dex-ordered)
-        url = f"https://pokeapi.co/api/v2/generation/{gen}/"
-    resp = requests.get(url)
-    resp.raise_for_status()
-    data = resp.json()
+def fetch(url):
+    r = requests.get(url)
+    r.raise_for_status()
+    return r.text
 
-    pokedex = {}
 
-    if gen == 1:
-        entries = data["pokemon_entries"]
-        for entry in entries:
-            dex_num = entry["entry_number"]
-            raw = entry["pokemon_species"]["name"]
-            pokedex[str(dex_num)] = normalize_name(raw)
-    else:
-        # For other gens, produce a simple index: 1..N
-        species = [s["name"] for s in data.get("pokemon_species", [])]
-        for i, s in enumerate(species, start=1):
-            pokedex[str(i)] = normalize_name(s)
+def parse_base_pokedex(text):
+    """Extract num, name, types from the main pokedex.ts"""
+    entries = {}
 
-    return pokedex
+    # Regex for entries like:
+    # bulbasaur: {
+    #     num: 1,
+    #     name: "Bulbasaur",
+    #     types: ["Grass", "Poison"],
+    pattern = re.compile(
+        r'(\w+)\s*:\s*\{[^}]*?num:\s*(\d+),[^}]*?name:\s*"([^"]+)"[^}]*?types:\s*\[\s*"(\w+)"\s*(?:,\s*"(\w+)")?',
+        re.DOTALL
+    )
 
-def main(gen:int=1, out_path: str=None):
-    out_dir = data_dir(gen)
-    out_dir.mkdir(parents=True, exist_ok=True)
+    for match in pattern.finditer(text):
+        key, num, name, t1, t2 = match.groups()
+        entries[key] = {
+            "id": int(num),
+            "name": name,
+            "type1": t1.lower(),
+            "type2": t2.lower() if t2 else "",
+        }
 
-    if out_path is None:
-        out_path = out_dir / "pokedex.json"
-    else:
-        out_path = Path(out_path)
+    return entries
 
-    pokedex = fetch_gen_pokedex(gen)
 
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(pokedex, f, indent=2, ensure_ascii=False)
+def parse_gen1_overrides(text):
+    """Extract baseStats overrides from mods/gen1/pokedex.ts"""
+    stats = {}
 
-    print(f"Saved Gen {gen} Pokédex to {out_path}")
-    return out_path
+    # Example:
+    # bulbasaur: {
+    #     inherit: true,
+    #     baseStats: { hp: 45, atk: 49, def: 49, spa: 65, spd: 65, spe: 45 },
+    # },
+
+    pattern = re.compile(
+        r'(\w+)\s*:\s*\{[^}]*?baseStats:\s*\{\s*hp:\s*(\d+),\s*atk:\s*(\d+),\s*def:\s*(\d+),\s*spa:\s*(\d+),\s*spd:\s*(\d+),\s*spe:\s*(\d+)',
+        re.DOTALL
+    )
+
+    for match in pattern.finditer(text):
+        key, hp, atk, deff, spa, spd, spe = match.groups()
+        stats[key] = {
+            "HP": int(hp),
+            "ATK": int(atk),
+            "DEF": int(deff),
+            "SPC": int(spa),   # Gen 1 Special is combined
+            "SPE": int(spe),
+        }
+
+    return stats
+
+
+def save_csv(all_entries, path="data/gen1/pokedex.csv"):
+    fields = ["id", "name", "type1", "type2", "HP", "ATK", "DEF", "SPC", "SPE"]
+
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+
+        for e in sorted(all_entries, key=lambda x: x["id"]):
+            writer.writerow(e)
+
+    print("Wrote", len(all_entries), "entries to", path)
+
+
+def main():
+    base_text = fetch(BASE_URL)
+    gen1_text = fetch(GEN1_URL)
+
+    base = parse_base_pokedex(base_text)
+    overrides = parse_gen1_overrides(gen1_text)
+
+    rows = []
+
+    for key, base_entry in base.items():
+        if key not in overrides:
+            continue  # only include Gen 1 Pokémon
+
+        # Skip MissingNo
+        if base_entry["id"] == 0 or base_entry["name"].lower() == "missingno":
+            continue
+
+        stats = overrides[key]
+
+        row = {
+            **base_entry,
+            **stats
+        }
+        rows.append(row)
+
+    save_csv(rows)
+
 
 if __name__ == "__main__":
-    main(gen=1)
+    main()

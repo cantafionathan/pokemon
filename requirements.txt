@@ -1,12 +1,2 @@
-botorch==0.16.0
-detoxify==0.5.2
-gpytorch==1.14.2
-numpy==2.3.5
-pandas==2.3.3
-poke_env==0.10.0
+beautifulsoup4==4.14.3
 Requests==2.32.5
-scikit_learn==1.7.2
-scipy==1.16.3
-setuptools==80.9.0
-torch==2.9.1
-tqdm==4.67.1

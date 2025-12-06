@@ -22,7 +22,7 @@ from data_processing.common.paths import data_dir
 RAW_TEAMS_PATH = Path(__file__).resolve().parents[2] / "data" / "gen1" / "raw_teams.txt"
 
 # ----------------------------------------------------
-# REGEX PATTERNS (from original implementation)
+# REGEX PATTERNS 
 # ----------------------------------------------------
 
 TEAM_HEADER = re.compile(
@@ -39,7 +39,7 @@ def normalize_move_name(move_name: str) -> str:
 
 
 # ----------------------------------------------------
-# PARSE RAW TEAMS (old logic)
+# PARSE RAW TEAMS 
 # ----------------------------------------------------
 
 def parse_raw_teams(raw_text: str):
@@ -84,7 +84,7 @@ def parse_raw_teams(raw_text: str):
 
 
 # ----------------------------------------------------
-# SAVE TEAMS (old behavior)
+# SAVE TEAMS 
 # ----------------------------------------------------
 
 def save_teams(teams, gen_dir: Path):

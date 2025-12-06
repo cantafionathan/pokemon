@@ -7,10 +7,14 @@ Run the full Gen1 data pipeline:
 """
 
 from data_processing.gen1.get_pokedex import main as get_pokedex
-from data_processing.gen1.scrape_moves import main as scrape_moves
+from data_processing.gen1.get_movelist import main as get_movelist
+from data_processing.gen1.get_learnsets import main as get_learnsets
 from data_processing.gen1.parse_teams import main as parse_teams
+from data_processing.gen1.get_static_gen1_files import main as get_static_files
 
 if __name__ == "__main__":
-    get_pokedex(gen=1)
-    scrape_moves(gen=1)
-    parse_teams(gen=1)
+    get_pokedex()
+    get_movelist()
+    get_learnsets()
+    parse_teams()
+    get_static_files()
