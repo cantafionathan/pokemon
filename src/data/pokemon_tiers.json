@@ -1,0 +1,757 @@
+[
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "tier": "LC"
+  },
+  {
+    "id": 2,
+    "name": "Ivysaur",
+    "tier": "NFE"
+  },
+  {
+    "id": 3,
+    "name": "Venusaur",
+    "tier": "PU"
+  },
+  {
+    "id": 4,
+    "name": "Charmander",
+    "tier": "LC"
+  },
+  {
+    "id": 5,
+    "name": "Charmeleon",
+    "tier": "NFE"
+  },
+  {
+    "id": 6,
+    "name": "Charizard",
+    "tier": "NU"
+  },
+  {
+    "id": 7,
+    "name": "Squirtle",
+    "tier": "LC"
+  },
+  {
+    "id": 8,
+    "name": "Wartortle",
+    "tier": "NFE"
+  },
+  {
+    "id": 9,
+    "name": "Blastoise",
+    "tier": "NU"
+  },
+  {
+    "id": 10,
+    "name": "Caterpie",
+    "tier": "LC"
+  },
+  {
+    "id": 11,
+    "name": "Metapod",
+    "tier": "NFE"
+  },
+  {
+    "id": 12,
+    "name": "Butterfree",
+    "tier": "ZU"
+  },
+  {
+    "id": 13,
+    "name": "Weedle",
+    "tier": "LC"
+  },
+  {
+    "id": 14,
+    "name": "Kakuna",
+    "tier": "NFE"
+  },
+  {
+    "id": 15,
+    "name": "Beedrill",
+    "tier": "ZU"
+  },
+  {
+    "id": 16,
+    "name": "Pidgey",
+    "tier": "LC"
+  },
+  {
+    "id": 17,
+    "name": "Pidgeotto",
+    "tier": "NFE"
+  },
+  {
+    "id": 18,
+    "name": "Pidgeot",
+    "tier": "ZU"
+  },
+  {
+    "id": 19,
+    "name": "Rattata",
+    "tier": "LC"
+  },
+  {
+    "id": 20,
+    "name": "Raticate",
+    "tier": "NU"
+  },
+  {
+    "id": 21,
+    "name": "Spearow",
+    "tier": "LC"
+  },
+  {
+    "id": 22,
+    "name": "Fearow",
+    "tier": "NU"
+  },
+  {
+    "id": 23,
+    "name": "Ekans",
+    "tier": "LC"
+  },
+  {
+    "id": 24,
+    "name": "Arbok",
+    "tier": "ZU"
+  },
+  {
+    "id": 25,
+    "name": "Pikachu",
+    "tier": "LC"
+  },
+  {
+    "id": 26,
+    "name": "Raichu",
+    "tier": "UU"
+  },
+  {
+    "id": 27,
+    "name": "Sandshrew",
+    "tier": "LC"
+  },
+  {
+    "id": 28,
+    "name": "Sandslash",
+    "tier": "ZU"
+  },
+  {
+    "id": 29,
+    "name": "Nidoran-F",
+    "tier": "LC"
+  },
+  {
+    "id": 30,
+    "name": "Nidorina",
+    "tier": "NFE"
+  },
+  {
+    "id": 31,
+    "name": "Nidoqueen",
+    "tier": "PU"
+  },
+  {
+    "id": 32,
+    "name": "Nidoran-M",
+    "tier": "LC"
+  },
+  {
+    "id": 33,
+    "name": "Nidorino",
+    "tier": "NFE"
+  },
+  {
+    "id": 34,
+    "name": "Nidoking",
+    "tier": "PU"
+  },
+  {
+    "id": 35,
+    "name": "Clefairy",
+    "tier": "LC"
+  },
+  {
+    "id": 36,
+    "name": "Clefable",
+    "tier": "UU"
+  },
+  {
+    "id": 37,
+    "name": "Vulpix",
+    "tier": "LC"
+  },
+  {
+    "id": 38,
+    "name": "Ninetales",
+    "tier": "UU"
+  },
+  {
+    "id": 39,
+    "name": "Jigglypuff",
+    "tier": "LC"
+  },
+  {
+    "id": 40,
+    "name": "Wigglytuff",
+    "tier": "PU"
+  },
+  {
+    "id": 41,
+    "name": "Zubat",
+    "tier": "LC"
+  },
+  {
+    "id": 42,
+    "name": "Golbat",
+    "tier": "ZU"
+  },
+  {
+    "id": 43,
+    "name": "Oddish",
+    "tier": "LC"
+  },
+  {
+    "id": 44,
+    "name": "Gloom",
+    "tier": "NFE"
+  },
+  {
+    "id": 45,
+    "name": "Vileplume",
+    "tier": "PU"
+  },
+  {
+    "id": 46,
+    "name": "Paras",
+    "tier": "LC"
+  },
+  {
+    "id": 47,
+    "name": "Parasect",
+    "tier": "ZU"
+  },
+  {
+    "id": 48,
+    "name": "Venonat",
+    "tier": "LC"
+  },
+  {
+    "id": 49,
+    "name": "Venomoth",
+    "tier": "NU"
+  },
+  {
+    "id": 50,
+    "name": "Diglett",
+    "tier": "LC"
+  },
+  {
+    "id": 51,
+    "name": "Dugtrio",
+    "tier": "UU"
+  },
+  {
+    "id": 52,
+    "name": "Meowth",
+    "tier": "LC"
+  },
+  {
+    "id": 53,
+    "name": "Persian",
+    "tier": "UU"
+  },
+  {
+    "id": 54,
+    "name": "Psyduck",
+    "tier": "LC"
+  },
+  {
+    "id": 55,
+    "name": "Golduck",
+    "tier": "PU"
+  },
+  {
+    "id": 56,
+    "name": "Mankey",
+    "tier": "LC"
+  },
+  {
+    "id": 57,
+    "name": "Primeape",
+    "tier": "ZU"
+  },
+  {
+    "id": 58,
+    "name": "Growlithe",
+    "tier": "LC"
+  },
+  {
+    "id": 59,
+    "name": "Arcanine",
+    "tier": "NU"
+  },
+  {
+    "id": 60,
+    "name": "Poliwag",
+    "tier": "ZU"
+  },
+  {
+    "id": 61,
+    "name": "Poliwhirl",
+    "tier": "NU"
+  },
+  {
+    "id": 62,
+    "name": "Poliwrath",
+    "tier": "NU"
+  },
+  {
+    "id": 63,
+    "name": "Abra",
+    "tier": "PU"
+  },
+  {
+    "id": 64,
+    "name": "Kadabra",
+    "tier": "UU"
+  },
+  {
+    "id": 65,
+    "name": "Alakazam",
+    "tier": "OU"
+  },
+  {
+    "id": 66,
+    "name": "Machop",
+    "tier": "LC"
+  },
+  {
+    "id": 67,
+    "name": "Machoke",
+    "tier": "NFE"
+  },
+  {
+    "id": 68,
+    "name": "Machamp",
+    "tier": "PU"
+  },
+  {
+    "id": 69,
+    "name": "Bellsprout",
+    "tier": "LC"
+  },
+  {
+    "id": 70,
+    "name": "Weepinbell",
+    "tier": "NFE"
+  },
+  {
+    "id": 71,
+    "name": "Victreebel",
+    "tier": "NU"
+  },
+  {
+    "id": 72,
+    "name": "Tentacool",
+    "tier": "ZU"
+  },
+  {
+    "id": 73,
+    "name": "Tentacruel",
+    "tier": "UU"
+  },
+  {
+    "id": 74,
+    "name": "Geodude",
+    "tier": "LC"
+  },
+  {
+    "id": 75,
+    "name": "Graveler",
+    "tier": "PU"
+  },
+  {
+    "id": 76,
+    "name": "Golem",
+    "tier": "UU"
+  },
+  {
+    "id": 77,
+    "name": "Ponyta",
+    "tier": "LC"
+  },
+  {
+    "id": 78,
+    "name": "Rapidash",
+    "tier": "PUBL"
+  },
+  {
+    "id": 79,
+    "name": "Slowpoke",
+    "tier": "ZU"
+  },
+  {
+    "id": 80,
+    "name": "Slowbro",
+    "tier": "UU"
+  },
+  {
+    "id": 81,
+    "name": "Magnemite",
+    "tier": "LC"
+  },
+  {
+    "id": 82,
+    "name": "Magneton",
+    "tier": "NU"
+  },
+  {
+    "id": 83,
+    "name": "Farfetchd",
+    "tier": "ZU"
+  },
+  {
+    "id": 84,
+    "name": "Doduo",
+    "tier": "LC"
+  },
+  {
+    "id": 85,
+    "name": "Dodrio",
+    "tier": "UU"
+  },
+  {
+    "id": 86,
+    "name": "Seel",
+    "tier": "LC"
+  },
+  {
+    "id": 87,
+    "name": "Dewgong",
+    "tier": "UU"
+  },
+  {
+    "id": 88,
+    "name": "Grimer",
+    "tier": "LC"
+  },
+  {
+    "id": 89,
+    "name": "Muk",
+    "tier": "ZU"
+  },
+  {
+    "id": 90,
+    "name": "Shellder",
+    "tier": "LC"
+  },
+  {
+    "id": 91,
+    "name": "Cloyster",
+    "tier": "OU"
+  },
+  {
+    "id": 92,
+    "name": "Gastly",
+    "tier": "PU"
+  },
+  {
+    "id": 93,
+    "name": "Haunter",
+    "tier": "UU"
+  },
+  {
+    "id": 94,
+    "name": "Gengar",
+    "tier": "OU"
+  },
+  {
+    "id": 95,
+    "name": "Onix",
+    "tier": "ZU"
+  },
+  {
+    "id": 96,
+    "name": "Drowzee",
+    "tier": "ZU"
+  },
+  {
+    "id": 97,
+    "name": "Hypno",
+    "tier": "UU"
+  },
+  {
+    "id": 98,
+    "name": "Krabby",
+    "tier": "LC"
+  },
+  {
+    "id": 99,
+    "name": "Kingler",
+    "tier": "PU"
+  },
+  {
+    "id": 100,
+    "name": "Voltorb",
+    "tier": "LC"
+  },
+  {
+    "id": 101,
+    "name": "Electrode",
+    "tier": "UU"
+  },
+  {
+    "id": 102,
+    "name": "Exeggcute",
+    "tier": "PU"
+  },
+  {
+    "id": 103,
+    "name": "Exeggutor",
+    "tier": "OU"
+  },
+  {
+    "id": 104,
+    "name": "Cubone",
+    "tier": "LC"
+  },
+  {
+    "id": 105,
+    "name": "Marowak",
+    "tier": "ZU"
+  },
+  {
+    "id": 106,
+    "name": "Hitmonlee",
+    "tier": "ZU"
+  },
+  {
+    "id": 107,
+    "name": "Hitmonchan",
+    "tier": "ZU"
+  },
+  {
+    "id": 108,
+    "name": "Lickitung",
+    "tier": "ZU"
+  },
+  {
+    "id": 109,
+    "name": "Koffing",
+    "tier": "LC"
+  },
+  {
+    "id": 110,
+    "name": "Weezing",
+    "tier": "ZU"
+  },
+  {
+    "id": 111,
+    "name": "Rhyhorn",
+    "tier": "LC"
+  },
+  {
+    "id": 112,
+    "name": "Rhydon",
+    "tier": "OU"
+  },
+  {
+    "id": 113,
+    "name": "Chansey",
+    "tier": "OU"
+  },
+  {
+    "id": 114,
+    "name": "Tangela",
+    "tier": "UU"
+  },
+  {
+    "id": 115,
+    "name": "Kangaskhan",
+    "tier": "UU"
+  },
+  {
+    "id": 116,
+    "name": "Horsea",
+    "tier": "LC"
+  },
+  {
+    "id": 117,
+    "name": "Seadra",
+    "tier": "NU"
+  },
+  {
+    "id": 118,
+    "name": "Goldeen",
+    "tier": "LC"
+  },
+  {
+    "id": 119,
+    "name": "Seaking",
+    "tier": "PU"
+  },
+  {
+    "id": 120,
+    "name": "Staryu",
+    "tier": "PU"
+  },
+  {
+    "id": 121,
+    "name": "Starmie",
+    "tier": "OU"
+  },
+  {
+    "id": 122,
+    "name": "Mr. Mime",
+    "tier": "NU"
+  },
+  {
+    "id": 123,
+    "name": "Scyther",
+    "tier": "ZU"
+  },
+  {
+    "id": 124,
+    "name": "Jynx",
+    "tier": "OU"
+  },
+  {
+    "id": 125,
+    "name": "Electabuzz",
+    "tier": "UU"
+  },
+  {
+    "id": 126,
+    "name": "Magmar",
+    "tier": "ZU"
+  },
+  {
+    "id": 127,
+    "name": "Pinsir",
+    "tier": "PU"
+  },
+  {
+    "id": 128,
+    "name": "Tauros",
+    "tier": "OU"
+  },
+  {
+    "id": 129,
+    "name": "Magikarp",
+    "tier": "LC"
+  },
+  {
+    "id": 130,
+    "name": "Gyarados",
+    "tier": "UU"
+  },
+  {
+    "id": 131,
+    "name": "Lapras",
+    "tier": "UU"
+  },
+  {
+    "id": 132,
+    "name": "Ditto",
+    "tier": "ZU"
+  },
+  {
+    "id": 133,
+    "name": "Eevee",
+    "tier": "LC"
+  },
+  {
+    "id": 134,
+    "name": "Vaporeon",
+    "tier": "UU"
+  },
+  {
+    "id": 135,
+    "name": "Jolteon",
+    "tier": "OU"
+  },
+  {
+    "id": 136,
+    "name": "Flareon",
+    "tier": "ZU"
+  },
+  {
+    "id": 137,
+    "name": "Porygon",
+    "tier": "PU"
+  },
+  {
+    "id": 138,
+    "name": "Omanyte",
+    "tier": "ZU"
+  },
+  {
+    "id": 139,
+    "name": "Omastar",
+    "tier": "UU"
+  },
+  {
+    "id": 140,
+    "name": "Kabuto",
+    "tier": "LC"
+  },
+  {
+    "id": 141,
+    "name": "Kabutops",
+    "tier": "NU"
+  },
+  {
+    "id": 142,
+    "name": "Aerodactyl",
+    "tier": "NU"
+  },
+  {
+    "id": 143,
+    "name": "Snorlax",
+    "tier": "OU"
+  },
+  {
+    "id": 144,
+    "name": "Articuno",
+    "tier": "UU"
+  },
+  {
+    "id": 145,
+    "name": "Zapdos",
+    "tier": "OU"
+  },
+  {
+    "id": 146,
+    "name": "Moltres",
+    "tier": "NU"
+  },
+  {
+    "id": 147,
+    "name": "Dratini",
+    "tier": "LC"
+  },
+  {
+    "id": 148,
+    "name": "Dragonair",
+    "tier": "ZU"
+  },
+  {
+    "id": 149,
+    "name": "Dragonite",
+    "tier": "UU"
+  },
+  {
+    "id": 150,
+    "name": "Mewtwo",
+    "tier": "Uber"
+  },
+  {
+    "id": 151,
+    "name": "Mew",
+    "tier": "Uber"
+  }
+]
