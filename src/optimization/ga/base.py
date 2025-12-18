@@ -6,8 +6,6 @@ from typing import List, Tuple, Union
 from pathlib import Path
 
 from poke_env_engine.battle_simulator import battle_once
-from config import get_format
-from utils import build_team_summary
 
 Team = Tuple[List[int], List[List[int]]]  # (pokemon_ids, moves_ids_per_pokemon)
 
@@ -170,42 +168,3 @@ class GeneticAlgorithm:
 
         return scores[:self.survivors_count]
 
-
-
-if __name__ == "__main__":
-    tier = "OU"  # "Uber", "OU", "UU", "NU", "PU", "ZU", "LC"
-    learnsets_file = Path(f"data/learnsets_by_tier/learnsets_{tier.lower()}.json")
-    battle_format = get_format(tier)
-    population_size = 10
-    survivors_count = 2
-    num_opponents = 2
-    generations = 2
-
-    class RandomSearchGA(GeneticAlgorithm):
-        def evaluate_teams(self, population: List[Team]) -> List[Tuple[int, Team]]:
-            scores = []
-            for idx, team in enumerate(population):
-                opponents = random.sample([t for i, t in enumerate(population) if i != idx], self.num_opponents)
-                wins = self.evaluate_team(team, opponents)
-                self.total_battles_used += self.num_opponents
-                scores.append((wins, team))
-            return scores
-
-        def produce_next_generation(self, scores):
-            survivors = [team for _, team in scores[:self.survivors_count]]
-            new_teams = [self.sample_random_team() for _ in range(self.population_size - self.survivors_count)]
-            return survivors + new_teams
-
-
-    optimizer = RandomSearchGA(learnsets_file, 
-                               battle_format, 
-                               population_size, 
-                               survivors_count,
-                               num_opponents, 
-                               logging=True)
-    top_results = optimizer.optimize(generations)
-
-    print("\nFinal Top Teams:")
-    for score, team in top_results:
-        print(f"Score: {score}")
-        print(build_team_summary(*team))

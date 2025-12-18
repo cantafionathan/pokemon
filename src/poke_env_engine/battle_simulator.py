@@ -117,11 +117,21 @@ async def battle_async(team1: str, team2: str, format: str) -> int:
 
 
 
-def battle_once(team1: tuple[list[int], list[list[int]]], 
-                team2: tuple[list[int], list[list[int]]], 
-                format: str) -> int:
-    """Run one battle synchronously, returning 1/2/0 for player1 win/player2 win/draw."""
-    team1_str = build_team_text(*team1)
-    team2_str = build_team_text(*team2)
-    return asyncio.run(battle_async(team1_str, team2_str, format))
-
+def battle_once(
+    team1: tuple[list[int], list[list[int]]],
+    team2: tuple[list[int], list[list[int]]],
+    format: str,
+) -> int:
+    """Run one battle synchronously.
+    Returns:
+        1 if team1 wins
+        2 if team2 wins
+        0 if draw OR ANY ERROR
+    """
+    try:
+        team1_str = build_team_text(*team1)
+        team2_str = build_team_text(*team2)
+        return asyncio.run(battle_async(team1_str, team2_str, format))
+    except Exception as e:
+        logging.error(f"battle_once failed catastrophically: {e}")
+        return 0
