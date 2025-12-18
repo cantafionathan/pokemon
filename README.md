@@ -1,6 +1,7 @@
 # Pokémon Team Building
 
-This project uses [`poke-env`](https://github.com/hsahovic/poke-env) to simulate Pokémon battles and attempt the combinatorial optimization task of team building. A **Genetic Algorithm (GA)** is implemented for this task. It connects to a local Pokémon Showdown server (included as a git submodule) to run the battles.
+This project uses [`poke-env`](https://github.com/hsahovic/poke-env) to simulate Pokémon battles and attempt the combinatorial optimization task of team building. A **Genetic Algorithm (GA)** is implemented for this task. To run the battles, it connects to a local Pokémon Showdown server (included as a git submodule).
+
 ------------------------------------------------------------------------
 
 ## Installation
