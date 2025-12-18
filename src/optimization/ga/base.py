@@ -66,14 +66,6 @@ class GeneticAlgorithm:
     def initialize_population(self):
         self.population = [self.sample_random_team() for _ in range(self.population_size)]
 
-    def evaluate_team(self, team: Team, opponents: List[Team]) -> int:
-        wins = 0
-        for opp in opponents:
-            result = battle_once(team, opp, self.format)
-            if result == 1:
-                wins += 1
-        return wins
-
     def log_entry(self, iteration: int, team: Team, wins: int):
         if not self.logging:
             return
@@ -86,7 +78,7 @@ class GeneticAlgorithm:
         entry = {
             "timestamp": now_iso,
             "team": team_str,
-            "battles_used": self.total_battles_used,
+            "battles_used_for_this_generation": self.total_battles_used,
             "runtime_sec": runtime_sec,
             "generation": iteration,
             "wins": wins,
@@ -123,6 +115,25 @@ class GeneticAlgorithm:
 
         print(f"[LOG] Saved optimization logs to {filename}")
 
+    def evaluate_team(self, team: Team, opponents: List[Team]) -> int:
+        wins = 0
+        for opp in opponents:
+            result = battle_once(team, opp, self.format)
+            if result == 1:
+                wins += 1
+        return wins
+
+    def evaluate_teams(self, population: List[Team]) -> List[Tuple[int, Team]]:
+        """
+        Evaluate all teams in the given population and return their scores.
+        
+        Args:
+            population: List of teams to evaluate.
+            
+        Returns:
+            List of (score, team) tuples.
+        """
+        raise NotImplementedError("Must implement evaluate_teams")
 
     def produce_next_generation(self, scores: List[Tuple[int, Team]]) -> List[Team]:
         """
@@ -143,22 +154,16 @@ class GeneticAlgorithm:
         for iteration in range(1, generations + 1):
             print(f"Generation {iteration}/{generations}")
 
-            scores = []
+            scores = self.evaluate_teams(self.population)
 
-            for idx, team in enumerate(self.population):
-                opponents = random.sample([t for i, t in enumerate(self.population) if i != idx], self.num_opponents)
-                wins = self.evaluate_team(team, opponents)
-                self.total_battles_used += self.num_opponents
-                scores.append((wins, team))
-
-                self.log_entry(iteration, team, wins)
+            # Logging
+            for score, team in scores:
+                self.log_entry(iteration, team, score)
 
             scores.sort(key=lambda x: x[0], reverse=True)
-
             top_teams = [team for _, team in scores[:self.survivors_count]]
             print(f"Top {self.survivors_count} teams selected with scores: {[score for score, _ in scores[:self.survivors_count]]}")
 
-            # Produce the next generation
             self.population = self.produce_next_generation(scores)
 
         self.save_logs()
@@ -166,21 +171,31 @@ class GeneticAlgorithm:
         return scores[:self.survivors_count]
 
 
+
 if __name__ == "__main__":
     tier = "OU"  # "Uber", "OU", "UU", "NU", "PU", "ZU", "LC"
     learnsets_file = Path(f"data/learnsets_by_tier/learnsets_{tier.lower()}.json")
     battle_format = get_format(tier)
-    population_size = 20
-    survivors_count = 5
-    num_opponents = 10
-    generations = 3
+    population_size = 10
+    survivors_count = 2
+    num_opponents = 2
+    generations = 2
 
     class RandomSearchGA(GeneticAlgorithm):
+        def evaluate_teams(self, population: List[Team]) -> List[Tuple[int, Team]]:
+            scores = []
+            for idx, team in enumerate(population):
+                opponents = random.sample([t for i, t in enumerate(population) if i != idx], self.num_opponents)
+                wins = self.evaluate_team(team, opponents)
+                self.total_battles_used += self.num_opponents
+                scores.append((wins, team))
+            return scores
+
         def produce_next_generation(self, scores):
-            # Keep top survivors, fill rest with new random teams
             survivors = [team for _, team in scores[:self.survivors_count]]
             new_teams = [self.sample_random_team() for _ in range(self.population_size - self.survivors_count)]
             return survivors + new_teams
+
 
     optimizer = RandomSearchGA(learnsets_file, 
                                battle_format, 
