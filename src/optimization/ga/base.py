@@ -2,10 +2,8 @@ import random
 import json
 import time
 from datetime import datetime, timezone
-from typing import List, Tuple, Union
+from typing import List, Tuple, Union, Callable
 from pathlib import Path
-
-from poke_env_engine.battle_simulator import battle_once
 
 Team = Tuple[List[int], List[List[int]]]  # (pokemon_ids, moves_ids_per_pokemon)
 
@@ -13,6 +11,7 @@ class GeneticAlgorithm:
     def __init__(
         self,
         learnsets_path: Path,
+        battle_engine_func: Callable,
         battle_format: str,
         population_size: int,
         survivors_count: int,
@@ -20,8 +19,9 @@ class GeneticAlgorithm:
         logging: Union[bool, str] = False,  # False: no logs, True: default path, str: custom filename/folder
     ):
         assert survivors_count < population_size, "survivors_count must be less than population_size"
-        assert num_opponents <= population_size, "num_opponents must be less than population_size"
+        assert num_opponents < population_size, "num_opponents must be less than population_size"
         self.learnsets_path = learnsets_path
+        self.battle_engine_func = battle_engine_func
         self.format = battle_format
         self.population_size = population_size
         self.survivors_count = survivors_count
@@ -116,7 +116,7 @@ class GeneticAlgorithm:
     def evaluate_team(self, team: Team, opponents: List[Team]) -> int:
         wins = 0
         for opp in opponents:
-            result = battle_once(team, opp, self.format)
+            result = self.battle_engine_func(team, opp, self.format)
             if result == 1:
                 wins += 1
         return wins
@@ -153,14 +153,11 @@ class GeneticAlgorithm:
             print(f"Generation {iteration}/{generations}")
 
             scores = self.evaluate_teams(self.population)
+            print(f"Top {self.survivors_count} teams selected with scores: {[score for score, _ in scores[:self.survivors_count]]}")
 
             # Logging
             for score, team in scores:
                 self.log_entry(iteration, team, score)
-
-            scores.sort(key=lambda x: x[0], reverse=True)
-            top_teams = [team for _, team in scores[:self.survivors_count]]
-            print(f"Top {self.survivors_count} teams selected with scores: {[score for score, _ in scores[:self.survivors_count]]}")
 
             self.population = self.produce_next_generation(scores)
 

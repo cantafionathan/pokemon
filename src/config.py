@@ -1,4 +1,8 @@
 # config.py
+from typing import Callable
+
+import poke_env_engine.battle_simulator
+
 
 # Define formats for each tier or category
 FORMATS = {
@@ -15,14 +19,23 @@ FORMATS = {
 DEFAULT_FORMAT = "gen1ou"
 
 
+# Define simulators for each engine
+ENGINES: dict[str, Callable] = {
+    "poke-env": poke_env_engine.battle_simulator.battle_once,
+}
+
+DEFAULT_ENGINE: Callable = poke_env_engine.battle_simulator.battle_once
+
+
 def get_format(tier: str) -> str:
     """
     Returns the battle format string based on the tier.
-    
-    Args:
-        tier (str): The tier name (e.g., 'OU', 'Uber', 'LC', etc.)
-        
-    Returns:
-        str: Corresponding format string for battle simulator
     """
     return FORMATS.get(tier, DEFAULT_FORMAT)
+
+
+def get_engine(simulator: str) -> Callable:
+    """
+    Returns the battle simulator function based on the simulator name.
+    """
+    return ENGINES.get(simulator, DEFAULT_ENGINE)
