@@ -69,7 +69,12 @@ Experiments are launched via `main.py`.
 To see all available arguments, run:
 
 ```bash
-python main.py
+python main.py --help
+```
+
+To see all available arguments for a given experiment, run:
+```bash
+python main.py --experiment \<experiment_name\> --help
 ```
 
 ### Example: GA vs RS in gen1OU with plots
@@ -92,15 +97,16 @@ This will:
     - total battles used
     - scores
     - and other info
+  - Each experiment has the option to provide its own plotting method
   - For example, `plot_ga_vs_rs.py` loads logs automatically and produces
     - score vs generation
     - score vs battles
     - optional interactive team evolution viewer
-
-
 
 ## Data Sources
 
 [Fortelle's Pokémon Learnsets](https://raw.githubusercontent.com/Fortelle/pokemon-learnsets/master/dist/)
 
 [Smogon Gen 1 Tier data](https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/gen1/formats-data.ts)
+
+[Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/)
