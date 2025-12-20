@@ -88,11 +88,11 @@ This will:
 ### Logging & plotting
   - Logs are written to structed directories under `logs/`
   - Each run records:
-    - team scores
-    - runtime
-    - total battles used
     - full team specification
-  - `run_plots.py` loads logs automatically and produces
+    - total battles used
+    - scores
+    - and other info
+  - For example, `plot_ga_vs_rs.py` loads logs automatically and produces
     - score vs generation
     - score vs battles
     - optional interactive team evolution viewer
@@ -102,4 +102,5 @@ This will:
 ## Data Sources
 
 [Fortelle's Pokémon Learnsets](https://raw.githubusercontent.com/Fortelle/pokemon-learnsets/master/dist/)
+
 [Smogon Gen 1 Tier data](https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/gen1/formats-data.ts)

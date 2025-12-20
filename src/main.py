@@ -3,17 +3,27 @@ from pathlib import Path
 from utils import now_vancouver
 
 from experiments import EXPERIMENTS
-from plotting.run_plots import run_plots
-
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(add_help=False)
+
+    # --------------------------------------------------
+    # Global arguments
+    # --------------------------------------------------
 
     parser.add_argument(
         "--experiment",
         required=True,
         choices=EXPERIMENTS.keys(),
         help="Which experiment to run",
+    )
+
+    parser.add_argument(
+        "--seeds",
+        nargs="+",
+        type=int,
+        default=[0, 1, 2],
+        help="Which seeds to run the experiment with (default: 0, 1, 2)"
     )
 
     parser.add_argument(
@@ -24,35 +34,24 @@ def main():
     )
 
     parser.add_argument(
+        "--engine",
+        default="poke-env",
+        choices=["poke-env"],
+        help="Battle engine to use (default: poke-env)"
+    )
+
+    parser.add_argument(
         "--plot",
         action="store_true",
-        help="Automatically generate plots after experiment",
+        help="If a plotting method exists, automatically generate plots after experiment",
     )
 
-    # --------------------------------------------------
-    # Team evolution options
-    # --------------------------------------------------
-    parser.add_argument(
-        "--team-evo-method",
-        default=None,
-        help="Method to visualize team evolution for",
-    )
+    parser.add_argument("-h", "--help", action="store_true")
 
-    parser.add_argument(
-        "--team-evo-seed",
-        type=int,
-        default=None,
-        help="Seed to visualize (default: best seed for method)",
-    )
+    # Parse *only* known args
+    args, remaining_argv = parser.parse_known_args()
 
-    parser.add_argument(
-        "--team-evo-k",
-        type=int,
-        default=None,
-        help="Show every k generations (default: generations // 5)",
-    )
-
-    args = parser.parse_args()
+    ###
 
     now = now_vancouver()
     date = now.strftime("%Y-%m-%d")
@@ -64,14 +63,34 @@ def main():
     # -------------------------
     # Run experiment
     # -------------------------
-    experiment_fn = EXPERIMENTS[args.experiment]
-    experiment_fn(args.tier, log_path=log)
+    experiment_cfg = EXPERIMENTS[args.experiment]
+    add_args = experiment_cfg.get("add_args")
+    experiment_fn = experiment_cfg["run"]
+    plot_fn = experiment_cfg["plot"]
+
+    if add_args is not None:
+        add_args(parser)
+
+    # If help was requested, print *full* help and exit
+    if args.help:
+        parser.print_help()
+        return
+
+    args = parser.parse_args()
+
+
+    experiment_fn(args.tier, args.engine, log=log, args=args)
 
     # -------------------------
     # Run plotting
     # -------------------------
     if args.plot:
-        run_plots(
+        if plot_fn is None:
+            raise RuntimeError(
+                f"Experiment '{args.experiment}' does not define a plot function"
+            )
+
+        plot_fn(
             log_path=log_path,
             tier=args.tier,
             team_evolution_method=args.team_evo_method,
