@@ -4,6 +4,14 @@ from pathlib import Path
 from io import StringIO
 from data_processing.get_unrestricted_learnsets import MOVE_LIST as MOVELIST_CSV
 
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+VANCOUVER_TZ = ZoneInfo("America/Vancouver")
+
+def now_vancouver() -> datetime:
+    return datetime.now(VANCOUVER_TZ)
+
 def normalize_name(name: str) -> str:
     """
     Normalize Pokémon move / species names to canonical forms.

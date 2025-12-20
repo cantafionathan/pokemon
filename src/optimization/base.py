@@ -2,11 +2,12 @@ import random
 import json
 import time
 import uuid
-from datetime import datetime, timezone
 from typing import List, Tuple, Union, Callable
 from pathlib import Path
 from dataclasses import dataclass
 from typing import Any
+from utils import now_vancouver
+
 
 @dataclass(frozen=True)
 class Evaluation:
@@ -71,7 +72,8 @@ class PopulationOptimizer:
         if not self.logging:
             return
 
-        now_iso = datetime.now(timezone.utc).isoformat() + "Z"
+        now = now_vancouver()
+        now_iso = now.isoformat()
         runtime_sec = time.time() - self.start_time if self.start_time else 0
 
         team_str = json.dumps(team, separators=(',', ':'))
@@ -96,14 +98,15 @@ class PopulationOptimizer:
         if not self.logging or not self.logs:
             return
 
-        date_folder = Path("logs") / datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        now = now_vancouver()
+        date_folder = Path("logs") / now.strftime("%Y-%m-%d")
 
         prefix = self.__class__.__name__
-        timestamp = datetime.now(timezone.utc).strftime("%H-%M-%S")
+        timestamp = now.strftime("%H-%M-%S")
 
         # Case 1: logging is a string → logs/YYYY-MM-DD/<string>/
         if isinstance(self.logging, str):
-            folder = date_folder / self.logging
+            folder = Path("logs") / self.logging
             folder.mkdir(parents=True, exist_ok=True)
 
             if filename is None:

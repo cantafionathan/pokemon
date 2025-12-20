@@ -7,39 +7,47 @@ from plotting.plots.score_vs_battles import plot_score_vs_battles
 from plotting.plots.team_evolution import TeamNavigator
 
 
-def main():
-    # ------------------------------------------------------------------
-    # CONFIG — change these paths / choices as needed
-    # ------------------------------------------------------------------
+def run_plots(
+    log_path,
+    tier: str,
+    team_evolution_method: str | None = None,
+    team_evolution_seed: int | None = None,
+    every_k_generations: int | None = None,
+):
+    """
+    Generate plots from experiment logs.
 
-    # Can be:
-    #  - logs/2025-01-01/
-    #  - logs/2025-01-01/SomeMethod_12-30-00.json
-    #  - logs/
-    LOG_PATH = Path("logs/2025-12-19/test_experiment")
+    Parameters
+    ----------
+    log_path : str | Path
+        Path to experiment logs directory
+    tier : str
+        Tier name (OU, UU, etc.) — informational for titles
+    team_evolution_method : str | None
+        Optimizer method to visualize (None disables team evolution)
+    team_evolution_seed : int | None
+        Seed to visualize (None = auto-select best seed)
+    every_k_generations : int | None
+        Downsample generations for team evolution (None = generations // 5)
+    """
 
-    # For team evolution: pick ONE run
-    TEAM_EVOLUTION_METHOD = "EloGeneticAlgorithm"  # e.g. "EloGeneticAlgorithm"
-    TEAM_EVOLUTION_SEED = None    # e.g. 1234
-    EVERY_K_GENERATIONS = 1
+    log_path = Path(log_path)
 
     # ------------------------------------------------------------------
     # LOAD LOGS
     # ------------------------------------------------------------------
-
-    runs = load_logs_from_path(LOG_PATH)
+    runs = load_logs_from_path(log_path)
 
     if not runs:
-        raise RuntimeError(f"No logs found at {LOG_PATH}")
+        raise RuntimeError(f"No logs found at {log_path}")
 
-    print(f"Loaded {len(runs)} runs")
+    print(f"Loaded {len(runs)} runs from {log_path}")
     for r in runs:
         print(f"  Method={r.method}, Seed={r.run_seed}, Entries={len(r.entries)}")
 
     # ------------------------------------------------------------------
-    # PLOTS ACROSS ALL RUNS (mean ± SE)
+    # PLOTS ACROSS ALL RUNS
     # ------------------------------------------------------------------
-
     fig, axes = plt.subplots(2, 2, figsize=(10, 8), sharex=False)
 
     plot_score_vs_generation(runs, ax=axes[0, 0], mode="generation_best")
@@ -47,47 +55,86 @@ def main():
     plot_score_vs_battles(runs, ax=axes[0, 1], mode="generation_best")
     plot_score_vs_battles(runs, ax=axes[1, 1], mode="best_so_far")
 
+    fig.suptitle(f"{tier} — Aggregate Performance", fontsize=14)
     plt.tight_layout()
     plt.show()
 
-
-
-
     # ------------------------------------------------------------------
-    # TEAM EVOLUTION (single run, interactive navigator)
+    # TEAM EVOLUTION (single run)
     # ------------------------------------------------------------------
+    if team_evolution_method is None:
+        return
 
-    if TEAM_EVOLUTION_METHOD is not None:
-        matching = [
-            r for r in runs
-            if r.method == TEAM_EVOLUTION_METHOD
-            and (TEAM_EVOLUTION_SEED is None or r.run_seed == TEAM_EVOLUTION_SEED)
-        ]
+    # Filter runs by method
+    method_runs = [r for r in runs if r.method == team_evolution_method]
 
-        if not matching:
-            raise RuntimeError(
-                f"No run found for method={TEAM_EVOLUTION_METHOD}, "
-                f"seed={TEAM_EVOLUTION_SEED}"
-            )
+    if not method_runs:
+        raise RuntimeError(
+            f"No runs found for method={team_evolution_method}"
+        )
 
-        run = matching[0]
+    # --------------------------------------------------
+    # Auto-select best seed if not provided
+    # --------------------------------------------------
+    if team_evolution_seed is None:
+        best_run = max(
+            method_runs,
+            key=lambda r: r.best_per_generation()[-1].score,
+        )
+        team_evolution_seed = best_run.run_seed
 
-        print("\nTEAM EVOLUTION")
-        print("=" * 80)
+        print(
+            f"Auto-selected best seed {team_evolution_seed} "
+            f"for method {team_evolution_method}"
+        )
 
-        # Filter to generations we want to display
-        filtered_entries = [
-            e for e in run.best_per_generation()
-            if e.generation % EVERY_K_GENERATIONS == 0
-        ]
+    matching = [
+        r for r in method_runs
+        if r.run_seed == team_evolution_seed
+    ]
 
-        # Print generation info (optional)
-        for e in filtered_entries:
-            print(f"Generation {e.generation} - Score: {e.score:.4f}")
+    if not matching:
+        raise RuntimeError(
+            f"No run found for method={team_evolution_method}, "
+            f"seed={team_evolution_seed}"
+        )
 
-        # Now launch interactive navigator with filtered entries
-        navigator = TeamNavigator(run, filtered_entries)
+    run = matching[0]
+
+    # --------------------------------------------------
+    # Auto-select k if not provided
+    # --------------------------------------------------
+    max_generation = run.entries[-1].generation
+
+    if every_k_generations is None:
+        every_k_generations = max(1, max_generation // 5)
+
+        print(
+            f"Auto-selected every_k_generations={every_k_generations} "
+            f"(generations={max_generation})"
+        )
+
+    filtered_entries = [
+        e for e in run.best_per_generation()
+        if e.generation % every_k_generations == 0
+    ]
+
+    print("\nTEAM EVOLUTION")
+    print("=" * 80)
+    for e in filtered_entries:
+        print(f"Generation {e.generation} - Score: {e.score:.4f}")
+
+    TeamNavigator(run, filtered_entries)
 
 
+# ----------------------------------------------------------------------
+# Standalone usage (keeps old behavior)
+# ----------------------------------------------------------------------
 if __name__ == "__main__":
-    main()
+    run_plots(
+        log_path="ga_vs_rs_OU",
+        tier="OU",
+        team_evolution_method="EloGeneticAlgorithm",
+        team_evolution_seed=0,
+        every_k_generations=1,
+    )

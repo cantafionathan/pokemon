@@ -10,37 +10,33 @@ from plotting.utils import load_move_names, load_pokedex_from_tiers
 
 POKEDEX = load_pokedex_from_tiers()
 MOVE_NAMES = load_move_names()
+SPRITE_DIR = Path("plotting/sprites")
 
-_sprite_cache = {}
+_sprite_cache: dict[int, Image.Image | None] = {}
 
-def get_sprite_from_pokeapi(pokemon_id: int) -> Image.Image | None:
+
+def get_local_sprite(pokemon_id: int) -> Image.Image | None:
     """
-    Fetches the front_default sprite image from PokéAPI for the given Pokémon ID.
-    Caches the result in memory to avoid repeated requests.
+    Load a locally saved sprite for a Pokémon ID.
+    Caches results in memory.
     """
     if pokemon_id in _sprite_cache:
         return _sprite_cache[pokemon_id]
 
-    url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}"
+    sprite_path = SPRITE_DIR / f"{pokemon_id}.png"
+    if not sprite_path.exists():
+        _sprite_cache[pokemon_id] = None
+        return None
+
     try:
-        response = requests.get(url, timeout=5)
-        response.raise_for_status()
-        data = response.json()
-        sprite_url = data["sprites"]["front_default"]
-        if sprite_url is None:
-            _sprite_cache[pokemon_id] = None
-            return None
-
-        img_response = requests.get(sprite_url, timeout=5)
-        img_response.raise_for_status()
-        img = Image.open(BytesIO(img_response.content)).convert("RGBA")
-
+        img = Image.open(sprite_path).convert("RGBA")
         _sprite_cache[pokemon_id] = img
         return img
     except Exception as e:
-        print(f"Warning: Could not load sprite for Pokémon {pokemon_id}: {e}")
+        print(f"Warning: could not load sprite {pokemon_id}: {e}")
         _sprite_cache[pokemon_id] = None
         return None
+
 
 
 def plot_team_evolution(run, entry, ax):
@@ -89,7 +85,7 @@ def plot_team_evolution(run, entry, ax):
         ax.text(x + 0.75, y + 0.05, pokemon_display_name, ha="center", va="top", fontsize=12, weight="bold")
 
         # Get and plot sprite
-        sprite = get_sprite_from_pokeapi(pid)
+        sprite = get_local_sprite(pid)
         sprite_x = x + 0.1
         sprite_y = y - 0.15
         sprite_size = 0.6

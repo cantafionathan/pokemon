@@ -1,62 +1,84 @@
-from poke_env_engine.battle_simulator import battle_once, build_team_text
-from config import get_format
-import json
-import random
+import argparse
 from pathlib import Path
+from utils import now_vancouver
 
-
-# ACTUAL CODE BEGINS HERE
-######################################################################
-######################################################################
-
-######################################################################
-######################################################################
-
-def sample_random_team(learnsets_path: Path):
-    with open(learnsets_path, encoding="utf-8") as f:
-        learnsets = json.load(f)
-
-    # Filter Pokémon that have at least 4 learned moves
-    valid_pokemon = [
-        pid for pid, pdata in learnsets.items()
-        if len(pdata.get("learned", [])) >= 4
-    ]
-    if len(valid_pokemon) < 6:
-        raise ValueError("Not enough Pokémon with 4+ moves to build a full team")
-
-    chosen_pokemon = random.sample(valid_pokemon, 6)
-
-    pokemon_ids = []
-    moves_ids_per_pokemon = []
-
-    for pid in chosen_pokemon:
-        pdata = learnsets[pid]
-        pokemon_ids.append(int(pid))  # convert string ID to int
-
-        learned_moves = pdata.get("learned", [])
-
-        # Randomly pick 4 unique moves (each is a dict with move_id, move_name)
-        chosen_moves = random.sample(learned_moves, 4)
-
-        moves_ids = [move["move_id"] for move in chosen_moves]
-        moves_ids_per_pokemon.append(moves_ids)
-
-    return (pokemon_ids, moves_ids_per_pokemon)
+from experiments import EXPERIMENTS
+from plotting.run_plots import run_plots
 
 
 def main():
-    tier = "OU"  # "Uber", "OU", "UU", "NU", "PU", "ZU", "LC"
-    learnsets_file = Path(f"data/learnsets_by_tier/learnsets_{tier.lower()}.json")
+    parser = argparse.ArgumentParser()
 
-    team1 = sample_random_team(learnsets_file)
-    team2 = sample_random_team(learnsets_file)
+    parser.add_argument(
+        "--experiment",
+        required=True,
+        choices=EXPERIMENTS.keys(),
+        help="Which experiment to run",
+    )
 
-    format = get_format(tier)  # Assuming your format strings follow this pattern
-    print(f"{format}, ({tier})")
+    parser.add_argument(
+        "--tier",
+        default="OU",
+        choices=["Uber", "OU", "UU", "NU", "PU", "ZU", "LC"],
+        help="Tier to run (OU, UU, LC, etc.)",
+    )
 
-    result = battle_once(team1, team2, format)
+    parser.add_argument(
+        "--plot",
+        action="store_true",
+        help="Automatically generate plots after experiment",
+    )
 
-    print(f"Battle result: Player {result} won")
+    # --------------------------------------------------
+    # Team evolution options
+    # --------------------------------------------------
+    parser.add_argument(
+        "--team-evo-method",
+        default=None,
+        help="Method to visualize team evolution for",
+    )
+
+    parser.add_argument(
+        "--team-evo-seed",
+        type=int,
+        default=None,
+        help="Seed to visualize (default: best seed for method)",
+    )
+
+    parser.add_argument(
+        "--team-evo-k",
+        type=int,
+        default=None,
+        help="Show every k generations (default: generations // 5)",
+    )
+
+    args = parser.parse_args()
+
+    now = now_vancouver()
+    date = now.strftime("%Y-%m-%d")
+    timestamp = now.strftime("%H-%M-%S")
+
+    log = f"{args.experiment}_{args.tier}_{date}_{timestamp}"
+    log_path = Path("logs") / log
+
+    # -------------------------
+    # Run experiment
+    # -------------------------
+    experiment_fn = EXPERIMENTS[args.experiment]
+    experiment_fn(args.tier, log_path=log)
+
+    # -------------------------
+    # Run plotting
+    # -------------------------
+    if args.plot:
+        run_plots(
+            log_path=log_path,
+            tier=args.tier,
+            team_evolution_method=args.team_evo_method,
+            team_evolution_seed=args.team_evo_seed,
+            every_k_generations=args.team_evo_k,
+        )
+
 
 if __name__ == "__main__":
     main()

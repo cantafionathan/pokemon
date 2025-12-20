@@ -1,8 +1,19 @@
 # Pokémon Team Building
 
-This project uses [`poke-env`](https://github.com/hsahovic/poke-env) to simulate Pokémon battles and attempt the combinatorial optimization task of team building. A **Genetic Algorithm (GA)** is implemented for this task. To run the battles, it connects to a local Pokémon Showdown server (included as a git submodule).
+This project uses [`poke-env`](https://github.com/hsahovic/poke-env) to simulate Pokémon battles and study the **combinatorial optimization task of team building.**
+
+It implements and compares
+
+ - a **Genetic Algorithm (GA)**
+ - a **Randoms Search (RS)** baseline
+
+Battles are executed by connecting to a **local Pokémon Showdown server**, included as a git submodule.
 
 ------------------------------------------------------------------------
+
+## Requirements
+ - **Python 3.9+**
+ - **Node.js 10+**
 
 ## Installation
 
@@ -49,7 +60,43 @@ node pokemon-showdown start --no-security
 
 > The `--no-security` flag disables crucial security features buts its useful for AI training as it removes rate limiting and authentication. Use with caution.
 
-`node pokemon-showdown start --no-security` starts a local Showdown server on `ws://localhost:8000`, which `poke-env` will connect to.
+`node pokemon-showdown start --no-security` starts a local Showdown server at `ws://localhost:8000`, which `poke-env` will connect to.
+
+## Running experiments
+
+Experiments are launched via `main.py`.
+
+To see all available arguments, run:
+
+```bash
+python main.py
+```
+
+### Example: GA vs RS in gen1OU with plots
+
+```bash
+python main.py --experiment ga_vs_rs --tier OU --plot --team-evo-method EloRandomSearch
+```
+
+This will:
+
+ 1. Run the selected experiment (`ga_vs_rs`) 
+ 2. Save logs to the `logs/` directory
+ 3. The `--plot` tag generates aggregate performance plots
+ 4. the`--team-evo-method` argument is an optional addition to `--plot` which launches an **interactive team evolution viewer**
+
+### Logging & plotting
+  - Logs are written to structed directories under `logs/`
+  - Each run records:
+    - team scores
+    - runtime
+    - total battles used
+    - full team specification
+  - `run_plots.py` loads logs automatically and produces
+    - score vs generation
+    - score vs battles
+    - optional interactive team evolution viewer
+
 
 
 ## Data Sources
