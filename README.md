@@ -105,7 +105,7 @@ This will:
 
 ## Data Sources
 
-[Fortelle's Pokémon Learnsets](https://raw.githubusercontent.com/Fortelle/pokemon-learnsets/master/dist/)
+[Fortelle's Pokémon Learnsets](https://github.com/Fortelle/pokemon-learnsets)
 
 [Smogon Gen 1 Tier data](https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/gen1/formats-data.ts)
 
