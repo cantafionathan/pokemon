@@ -28,7 +28,7 @@ def normalize_name(name: str) -> str:
 
 def parse_movelist(csv_text):
     movelist = {}
-    f = StringIO(csv_text.strip())
+    f = StringIO(csv_text.strip())  
     reader = csv.DictReader(f)
     for row in reader:
         move_id = int(row["id"])

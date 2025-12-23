@@ -1,0 +1,1157 @@
+=== [gen1ou] marcoasd 2014 ===
+
+Gengar
+- Hypnosis
+- Thunderbolt
+- Night Shade
+- Explosion
+
+Chansey
+- Ice Beam
+- Thunderbolt
+- Thunder Wave
+- Soft-Boiled
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Self-Destruct
+
+Exeggutor
+- Sleep Powder
+- Stun Spore
+- Psychic
+- Explosion
+
+Tauros
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Blizzard
+
+Lapras
+- Blizzard
+- Thunderbolt
+- Body Slam
+- Confuse Ray
+
+
+=== [gen1ou] Isa Standard ===
+
+Alakazam
+- Psychic
+- Recover
+- Seismic Toss
+- Thunder Wave
+
+Exeggutor
+- Explosion
+- Psychic
+- Sleep Powder
+- Mega Drain
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Selfdestruct
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Chansey
+- Ice Beam
+- Softboiled
+- Thunder Wave
+- Thunderbolt
+
+Rhydon
+- Body Slam
+- Earthquake
+- Rock Slide
+- Substitute
+
+
+=== [gen1ou] GGFan 2002 (TOS) ===
+
+Starmie
+- Blizzard
+- Thunderbolt
+- Thunder Wave
+- Recover
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Exeggutor
+- Explosion
+- Psychic
+- Mega Drain
+- Sleep Powder
+
+Golem
+- Explosion
+- Earthquake
+- Rock Slide
+- Body Slam
+
+Alakazam
+- Psychic
+- Thunder Wave
+- Reflect
+- Recover
+
+Slowbro
+- Amnesia
+- Surf
+- Thunder Wave
+- Rest
+
+=== [gen1ou] GGFan 2003 (Big 4) ===
+
+Starmie
+- Blizzard
+- Thunderbolt
+- Thunder Wave
+- Recover
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Selfdestruct
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Chansey
+- Ice Beam
+- Thunderbolt
+- Thunder Wave
+- Softboiled
+
+Exeggutor
+- Explosion
+- Psychic
+- Stun Spore
+- Sleep Powder
+
+Alakazam
+- Psychic
+- Thunder Wave
+- Reflect
+- Recover
+
+
+=== [gen1ou] GGFan 2006 ===
+
+Jynx
+- Lovely Kiss
+- Blizzard
+- Psychic
+- Body Slam
+
+Gengar
+- Confuse Ray
+- Thunderbolt
+- Mega Drain
+- Explosion
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Selfdestruct
+
+Exeggutor
+- Psychic
+- Sleep Powder
+- Explosion
+- Stun Spore
+
+
+=== [gen1ou] GGFan 2007 ===
+
+Jynx
+- Lovely Kiss
+- Blizzard
+- Psychic
+- Body Slam
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Selfdestruct
+
+Exeggutor
+- Psychic
+- Sleep Powder
+- Explosion
+- Stun Spore
+
+Chansey
+- Ice Beam
+- Thunder Wave
+- Counter
+- Softboiled
+
+Alakazam
+- Psychic
+- Thunder Wave
+- Recover
+- Reflect
+
+
+=== [gen1ou] GGFan 2011 ===
+
+Starmie
+- Blizzard
+- Psychic
+- Thunder Wave
+- Recover
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Clefable
+- Blizzard
+- Body Slam
+- Thunder Wave
+- Hyper Beam
+
+Jolteon
+- Thunderbolt
+- Thunder Wave
+- Pin Missile
+- Double Kick
+
+Nidoqueen
+- Blizzard
+- Body Slam
+- Earthquake
+- Thunderbolt
+
+Snorlax
+- Amnesia
+- Reflect
+- Body Slam
+- Rest
+
+=== [gen1ou] GGFan 2012 ===
+
+Starmie
+- Blizzard
+- Psychic
+- Thunder Wave
+- Recover
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Selfdestruct
+
+Exeggutor
+- Explosion
+- Psychic
+- Sleep Powder
+- Stun Spore
+
+Chansey
+- Ice Beam
+- Thunder Wave
+- Counter
+- Softboiled
+
+Clefable
+- Blizzard
+- Body Slam
+- Thunder Wave
+- Hyper Beam
+
+
+=== [gen1ou] GGFan 2013 ===
+
+Starmie
+- Blizzard
+- Psychic
+- Thunder Wave
+- Recover
+
+Snorlax
+- Body Slam
+- Hyper Beam
+- Earthquake
+- Selfdestruct
+
+Tauros
+- Blizzard
+- Body Slam
+- Hyper Beam
+- Earthquake
+
+Exeggutor
+- Psychic
+- Sleep Powder
+- Explosion
+- Hyper Beam
+
+Chansey
+- Ice Beam
+- Thunder Wave
+- Softboiled
+- Light Screen
+
+Alakazam
+- Psychic
+- Thunder Wave
+- Reflect
+- Recover
+
+
+=== [gen1ou] RBY ===
+
+Alakazam
+- Psychic
+- Recover
+- Thunder Wave
+- Seismic Toss
+
+Jolteon
+- Thunder Wave
+- Thunderbolt
+- Pin Missile
+- Double Kick
+
+Lapras
+- Sing
+- Ice Beam
+- Thunderbolt
+- Confuse Ray
+
+Exeggutor
+- Sleep Powder
+- Double-Edge
+- Psychic
+- Explosion
+
+Persian
+- Slash
+- Bubble Beam
+- Hyper Beam
+- Thunderbolt
+
+Tauros
+- Body Slam
+- Earthquake
+- Blizzard
+- Hyper Beam
+
+
+=== [gen1ou] Double Elec with Tauros > Zap ===
+
+Starmie
+- Psychic
+- Ice Beam
+- Thunder Wave
+- Recover
+
+Exeggutor
+- Sleep Powder
+- Psychic
+- Explosion
+- Mega Drain
+
+Jolteon
+- Thunder Wave
+- Thunderbolt
+- Double Kick
+- Pin Missile
+
+Tauros
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Blizzard
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Self-Destruct
+
+Alakazam
+- Psychic
+- Recover
+- Seismic Toss
+- Thunder Wave
+
+
+=== [gen1ou] MASTERZAP ===
+
+Alakazam
+- Psychic
+- Recover
+- Seismic Toss
+- Thunder Wave
+
+Snorlax
+- Body Slam
+- Counter
+- Surf
+- Self-Destruct
+
+Exeggutor
+- Sleep Powder
+- Psychic
+- Explosion
+- Stun Spore
+
+Zapdos
+- Thunderbolt
+- Drill Peck
+- Thunder Wave
+- Rest
+
+Chansey
+- Thunderbolt
+- Soft-Boiled
+- Ice Beam
+- Thunder Wave
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+
+=== [gen1ou] AmnesiaSNORLAX ===
+
+Starmie
+- Blizzard
+- Thunder Wave
+- Psychic
+- Recover
+
+Tauros
+- Body Slam
+- Blizzard
+- Earthquake
+- Hyper Beam
+
+Exeggutor
+- Explosion
+- Psychic
+- Sleep Powder
+- Stun Spore
+
+Snorlax
+- Amnesia
+- Ice Beam
+- Reflect
+- Rest
+
+Lapras
+- Rest
+- Blizzard
+- Body Slam
+- Thunderbolt
+
+Alakazam
+- Recover
+- Psychic
+- Thunder Wave
+- Seismic Toss
+
+
+=== [gen1ou] BETSY STAR ===
+
+Starmie
+- Recover
+- Psychic
+- Ice Beam
+- Thunderbolt
+
+Chansey
+- Reflect
+- Ice Beam
+- Soft-Boiled
+- Thunderbolt
+
+Alakazam
+- Thunder Wave
+- Psychic
+- Recover
+- Seismic Toss
+
+Snorlax
+- Body Slam
+- Earthquake
+- Self-Destruct
+- Counter
+
+Slowbro
+- Counter
+- Amnesia
+- Surf
+- Rest
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+
+=== [gen1ou] JYNX, MAN ===
+
+Jynx
+- Lovely Kiss
+- Psychic
+- Blizzard
+- Mimic
+
+Exeggutor
+- Psychic
+- Sleep Powder
+- Explosion
+- Stun Spore
+
+Snorlax
+- Body Slam
+- Blizzard
+- Amnesia
+- Self-Destruct
+
+Tauros
+- Body Slam
+- Earthquake
+- Blizzard
+- Hyper Beam
+
+Lapras
+- Body Slam
+- Blizzard
+- Thunderbolt
+- Confuse Ray
+
+Alakazam
+- Psychic
+- Thunder Wave
+- Recover
+- Seismic Toss
+
+
+=== [gen1ou] WrapitUp ===
+
+Starmie
+- Thunder Wave
+- Psychic
+- Recover
+- Ice Beam
+
+Exeggutor
+- Stun Spore
+- Psychic
+- Sleep Powder
+- Explosion
+
+Snorlax
+- Body Slam
+- Earthquake
+- Self-Destruct
+- Counter
+
+Alakazam
+- Psychic
+- Recover
+- Seismic Toss
+- Thunder Wave
+
+Dragonite
+- Wrap
+- Surf
+- Agility
+- Hyper Beam
+
+Tauros
+- Body Slam
+- Earthquake
+- Blizzard
+- Hyper Beam
+
+
+=== [gen1ou] Lord Gengar ===
+
+Jynx
+- Lovely Kiss
+- Psychic
+- Blizzard
+- Mimic
+
+Gengar
+- Hypnosis
+- Psychic
+- Explosion
+- Night Shade
+
+Snorlax
+- Body Slam
+- Counter
+- Earthquake
+- Self-Destruct
+
+Persian
+- Bubble Beam
+- Hyper Beam
+- Slash
+- Screech
+
+Tauros
+- Earthquake
+- Body Slam
+- Blizzard
+- Hyper Beam
+
+Alakazam
+- Psychic
+- Recover
+- Seismic Toss
+- Thunder Wave
+
+
+=== [gen1ou] Double Electric ===
+
+Starmie
+- Psychic
+- Ice Beam
+- Thunder Wave
+- Recover
+
+Exeggutor
+- Sleep Powder
+- Psychic
+- Explosion
+- Mega Drain
+
+Jolteon
+- Thunder Wave
+- Thunderbolt
+- Double Kick
+- Pin Missile
+
+Zapdos
+- Thunderbolt
+- Drill Peck
+- Thunder Wave
+- Rest
+
+Snorlax
+- Body Slam
+- Earthquake
+- Surf
+- Self-Destruct
+
+Alakazam
+- Psychic
+- Recover
+- Seismic Toss
+- Thunder Wave
+
+
+=== [gen1ou] NEW_META ===
+
+Starmie
+- Ice Beam
+- Thunder Wave
+- Psychic
+- Recover
+
+Slowbro
+- Amnesia
+- Surf
+- Rest
+- Thunder Wave
+
+Zapdos
+- Thunder Wave
+- Thunderbolt
+- Drill Peck
+- Rest
+
+Exeggutor
+- Sleep Powder
+- Mega Drain
+- Psychic
+- Explosion
+
+Chansey
+- Reflect
+- Soft-Boiled
+- Seismic Toss
+- Counter
+
+Tauros
+- Body Slam
+- Earthquake
+- Blizzard
+- Hyper Beam
+
+
+=== [gen1ou] Donk_Crystal ===
+
+Jynx
+- Blizzard
+- Lovely Kiss
+- Psychic
+- Counter
+
+Alakazam
+- Psychic
+- Recover
+- Thunder Wave
+- Seismic Toss
+
+Snorlax
+- Body Slam
+- Earthquake
+- Counter
+- Self-Destruct
+
+Articuno
+- Blizzard
+- Ice Beam
+- Rest
+- Hyper Beam
+
+Nidoking
+- Earthquake
+- Counter
+- Blizzard
+- Body Slam
+
+Exeggutor
+- Psychic
+- Stun Spore
+- Sleep Powder
+- Explosion
+
+=== [gen1ou] CounterLax + Golem ===
+
+Starmie
+- Psychic
+- Recover
+- Thunder Wave
+- Blizzard
+
+Snorlax
+- Counter
+- Body Slam
+- Earthquake
+- Self-Destruct
+
+Chansey
+- Thunderbolt
+- Thunder Wave
+- Soft-Boiled
+- Ice Beam
+
+Exeggutor
+- Sleep Powder
+- Stun Spore
+- Psychic
+- Explosion
+
+Tauros
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Blizzard
+
+Golem
+- Earthquake
+- Explosion
+- Body Slam
+- Rock Slide
+
+
+=== [gen1ou] Slowbro + Rhydon ===
+
+Gengar
+- Hypnosis
+- Night Shade
+- Thunderbolt
+- Explosion
+
+Rhydon
+- Earthquake
+- Rock Slide
+- Body Slam
+- Substitute
+
+Slowbro
+- Amnesia
+- Rest
+- Thunder Wave
+- Psychic
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Self-Destruct
+
+Tauros
+- Body Slam
+- Blizzard
+- Earthquake
+- Hyper Beam
+
+Chansey
+- Soft-Boiled
+- Thunder Wave
+- Sing
+- Seismic Toss
+
+
+=== [gen1ou] Slowbro + Rhydon w/ Jynx ===
+
+Jynx
+- Psychic
+- Lovely Kiss
+- Counter
+- Blizzard
+
+Golem
+- Body Slam
+- Earthquake
+- Explosion
+- Rock Slide
+
+Slowbro
+- Amnesia
+- Rest
+- Thunder Wave
+- Psychic
+
+Tauros
+- Body Slam
+- Blizzard
+- Earthquake
+- Hyper Beam
+
+Snorlax
+- Body Slam
+- Earthquake
+- Counter
+- Self-Destruct
+
+Alakazam
+- Psychic
+- Reflect
+- Thunder Wave
+- Recover
+
+=== [gen1ou] Hyper Offense ===
+
+Jolteon
+- Pin Missile
+- Thunderbolt
+- Thunder Wave
+- Double Kick
+
+Snorlax
+- Body Slam
+- Earthquake
+- Reflect
+- Rest
+
+Starmie
+- Thunderbolt
+- Psychic
+- Recover
+- Thunder Wave
+
+Alakazam
+- Psychic
+- Seismic Toss
+- Thunder Wave
+- Recover
+
+Tauros
+- Body Slam
+- Blizzard
+- Earthquake
+- Hyper Beam
+
+Chansey
+- Soft-Boiled
+- Sing
+- Thunder Wave
+- Seismic Toss
+
+=== [gen1ou] The Standard? ===
+
+Jynx
+- Psychic
+- Lovely Kiss
+- Rest
+- Blizzard
+
+Zapdos
+- Thunderbolt
+- Light Screen
+- Drill Peck
+- Thunder Wave
+
+Tauros
+- Body Slam
+- Blizzard
+- Earthquake
+- Hyper Beam
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Self-Destruct
+
+Exeggutor
+- Psychic
+- Sleep Powder
+- Explosion
+- Stun Spore
+
+Chansey
+- Ice Beam
+- Soft-Boiled
+- Thunder Wave
+- Thunderbolt
+
+
+=== [gen1ou] Ladder Team ===
+
+Jolteon
+- Thunderbolt
+- Pin Missile
+- Thunder Wave
+- Double Kick
+
+Tauros
+- Body Slam
+- Blizzard
+- Earthquake
+- Hyper Beam
+
+Chansey
+- Ice Beam
+- Counter
+- Thunder Wave
+- Soft-Boiled
+
+Exeggutor
+- Psychic
+- Sleep Powder
+- Hyper Beam
+- Explosion
+
+Snorlax
+- Body Slam
+- Counter
+- Earthquake
+- Self-Destruct
+
+Starmie
+- Recover
+- Psychic
+- Blizzard
+- Thunder Wave
+
+
+=== [gen1ou] Kingler ===
+
+Gengar
+- Hypnosis
+- Night Shade
+- Thunderbolt
+- Explosion
+
+Exeggutor
+- Sleep Powder
+- Stun Spore
+- Psychic
+- Explosion
+
+Zapdos
+- Drill Peck
+- Thunderbolt
+- Thunder Wave
+- Light Screen
+
+Chansey
+- Ice Beam
+- Soft-Boiled
+- Thunder Wave
+- Thunderbolt
+
+Tauros
+- Body Slam
+- Blizzard
+- Earthquake
+- Hyper Beam
+
+Kingler
+- Crabhammer
+- Body Slam
+- Hyper Beam
+- Swords Dance
+
+
+=== [gen1ou] Old Standard  ===
+
+Alakazam
+- Psychic
+- Thunder Wave
+- Seismic Toss
+- Recover
+
+Snorlax
+- Body Slam
+- Earthquake
+- Self-Destruct
+- Hyper Beam
+
+Chansey
+- Ice Beam
+- Soft-Boiled
+- Thunder Wave
+- Thunderbolt
+
+Exeggutor
+- Sleep Powder
+- Psychic
+- Stun Spore
+- Explosion
+
+Tauros
+- Body Slam
+- Hyper Beam
+- Blizzard
+- Earthquake
+
+Golem
+- Earthquake
+- Rock Slide
+- Body Slam
+- Explosion
+
+
+=== [gen1ou] Oddball Wrap ===
+
+Starmie
+- Blizzard
+- Psychic
+- Thunder Wave
+- Recover
+
+Jolteon
+- Double Kick
+- Pin Missile
+- Thunderbolt
+- Thunder Wave
+
+Golem
+- Body Slam
+- Earthquake
+- Rock Slide
+- Explosion
+
+Alakazam
+- Psychic
+- Thunder Wave
+- Reflect
+- Recover
+
+Cloyster
+- Clamp
+- Blizzard
+- Hyper Beam
+- Explosion
+
+Victreebel
+- Razor Leaf
+- Stun Spore
+- Sleep Powder
+- Wrap
+
+
+=== [gen1ou] Double Electric ===
+
+Alakazam
+- Psychic
+- Seismic Toss
+- Thunder Wave
+- Recover
+
+Exeggutor
+- Sleep Powder
+- Psychic
+- Stun Spore
+- Explosion
+
+Snorlax
+- Body Slam
+- Earthquake
+- Hyper Beam
+- Self-Destruct
+
+Jolteon
+- Double Kick
+- Pin Missile
+- Thunderbolt
+- Thunder Wave
+
+Tauros
+- Blizzard
+- Body Slam
+- Earthquake
+- Hyper Beam
+
+Zapdos
+- Drill Peck
+- Thunder Wave
+- Thunderbolt
+- Thunder

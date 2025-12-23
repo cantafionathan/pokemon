@@ -23,7 +23,7 @@ def main():
         nargs="+",
         type=int,
         default=[0, 1, 2],
-        help="Which seeds to run the experiment with (default: 0, 1, 2)"
+        help="Which seeds (separated by spaces) to run the experiment with (default: 0 1 2)"
     )
 
     parser.add_argument(
@@ -38,6 +38,14 @@ def main():
         default="poke-env",
         choices=["poke-env"],
         help="Battle engine to use (default: poke-env)"
+    )
+
+    # Team evaluation option
+    parser.add_argument(
+        "--team-evaluation",
+        default=True,
+        choices=[True, False],
+        help="Flag to indicate if team evaluation should be performed (default: True)",
     )
 
     parser.add_argument(
@@ -57,8 +65,10 @@ def main():
     date = now.strftime("%Y-%m-%d")
     timestamp = now.strftime("%H-%M-%S")
 
+
     log = f"{args.experiment}_{args.tier}_{date}_{timestamp}"
-    log_path = Path("logs") / log
+    log = "ga_vs_rs_OU_2025-12-19_23-29-58"
+
 
     # -------------------------
     # Run experiment
@@ -66,6 +76,7 @@ def main():
     experiment_cfg = EXPERIMENTS[args.experiment]
     add_args = experiment_cfg.get("add_args")
     experiment_fn = experiment_cfg["run"]
+    evaluate_fn = experiment_cfg["evaluation"]
     plot_fn = experiment_cfg["plot"]
 
     if add_args is not None:
@@ -78,8 +89,16 @@ def main():
 
     args = parser.parse_args()
 
+    
+    # experiment_fn(args.tier, args.engine, log=log, args=args)
 
-    experiment_fn(args.tier, args.engine, log=log, args=args)
+    # if args.team_evaluation:
+    #     if evaluate_fn is None:
+    #         raise RuntimeError(
+    #             f"Experiment '{args.experiment}' does not define an evaluation function"
+    #         )
+        
+    #     evaluate_fn(args.engine, args.tier, log = log)
 
     # -------------------------
     # Run plotting
@@ -90,12 +109,28 @@ def main():
                 f"Experiment '{args.experiment}' does not define a plot function"
             )
 
+        save = (
+            True if args.save == "yes"
+            else False if args.save == "no"
+            else None
+        )
+
+        animation = (
+            True if args.animation == "yes"
+            else False if args.animation == "no"
+            else None
+        )
+
+
         plot_fn(
-            log_path=log_path,
-            tier=args.tier,
+            log=log,
+            tier = args.tier,
             team_evolution_method=args.team_evo_method,
             team_evolution_seed=args.team_evo_seed,
             every_k_generations=args.team_evo_k,
+            animation=animation,
+            interval_ms=args.interval_ms,
+            save=save,
         )
 
 

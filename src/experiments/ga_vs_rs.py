@@ -53,6 +53,7 @@ def add_args(parser):
     # Team evolution options
     parser.add_argument(
         "--team-evo-method",
+        nargs = "+",
         default=None,
         choices=["EloGeneticAlgorithm", "EloRandomSearch"],
         help="Method to visualize team evolution for",
@@ -70,6 +71,27 @@ def add_args(parser):
         type=int,
         default=None,
         help="Show every k generations (default: generations // 5)",
+    )
+
+    parser.add_argument(
+        "--animation",
+        default="yes",
+        choices = ["no", "yes"],
+        help="Flag for whether or not team evolution should be animated (default: True)",
+    )
+
+    parser.add_argument(
+        "--interval_ms",
+        type=int,
+        default=1000,
+        help="Delay between frames for animation in ms (default: 1000)",
+    )
+
+    parser.add_argument(
+        "--save",
+        default="no",
+        choices = ["no", "yes"],
+        help="Flag for whether or not plots (gifs, etc.) should be saved, (default: no)",
     )
 
 def run_optimizer(tier: str, engine: str, log: str, optimizer_cls, args, extra_kwargs=None):

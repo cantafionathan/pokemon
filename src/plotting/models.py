@@ -82,6 +82,23 @@ class RunLog:
         for gen, entries in self.entries_by_generation().items():
             best.append(max(entries, key=lambda e: e.score))
         return sorted(best, key=lambda e: e.generation)
+    
+    def best_so_far_per_generation(self) -> List[LogEntry]:
+        """
+        Best-scoring team seen up to and including each generation.
+        (Cumulative maximum over generations.)
+        """
+        best_by_gen = self.best_per_generation()
+
+        best_so_far: List[LogEntry] = []
+        current_best: LogEntry | None = None
+
+        for entry in best_by_gen:
+            if current_best is None or entry.score > current_best.score:
+                current_best = entry
+            best_so_far.append(current_best)
+
+        return best_so_far
 
     def global_best(self) -> LogEntry:
         return max(self.entries, key=lambda e: e.score)

@@ -99,7 +99,7 @@ async def battle_async(team1: str, team2: str, format: str) -> int:
     player2._username = f"o_{uuid.uuid4().hex[:6]}"
 
     try:
-        await asyncio.wait_for(player1.battle_against(player2, n_battles=1), timeout=60)
+        await asyncio.wait_for(player1.battle_against(player2, n_battles=1), timeout=15)
         winner = 1 if player1.n_won_battles > 0 else 2
     except asyncio.TimeoutError:
         logging.error("Battle timed out")

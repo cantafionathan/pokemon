@@ -21,7 +21,10 @@ def load_logs_from_path(path: Path) -> List[RunLog]:
     if path.is_file():
         paths = [path]
     elif path.is_dir():
-        paths = sorted(path.rglob("*.json"))
+        paths = sorted(
+            p for p in path.rglob("*.json")
+            if not p.name.startswith("EVALUATION_")
+        )
     else:
         raise FileNotFoundError(path)
 
@@ -30,6 +33,7 @@ def load_logs_from_path(path: Path) -> List[RunLog]:
         entries.extend(load_log_file(p))
 
     return group_entries_by_run(entries)
+
 
 
 def group_entries_by_run(entries: List[LogEntry]) -> List[RunLog]:
@@ -53,4 +57,15 @@ def group_entries_by_run(entries: List[LogEntry]) -> List[RunLog]:
         )
         for (method, seed, run_id, format), ents in grouped.items()
     ]
+
+def load_run_log_file(path: Path) -> RunLog:
+    entries = load_log_file(path)
+    runs = group_entries_by_run(entries)
+
+    if len(runs) != 1:
+        raise RuntimeError(
+            f"Expected exactly one run in {path}, found {len(runs)}"
+        )
+
+    return runs[0]
 

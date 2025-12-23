@@ -19,7 +19,7 @@ FORMATS = {
 DEFAULT_FORMAT = "gen1ou"
 
 
-# Define simulators for each engine
+# Define battle functions for each engine
 ENGINES: dict[str, Callable] = {
     "poke-env": poke_env_engine.battle_simulator.battle_once,
 }
@@ -34,8 +34,8 @@ def get_format(tier: str) -> str:
     return FORMATS.get(tier, DEFAULT_FORMAT)
 
 
-def get_engine(simulator: str) -> Callable:
+def get_engine(engine: str) -> Callable:
     """
-    Returns the battle simulator function based on the simulator name.
+    Returns the battle function based on the engine name.
     """
-    return ENGINES.get(simulator, DEFAULT_ENGINE)
+    return ENGINES.get(engine, DEFAULT_ENGINE)

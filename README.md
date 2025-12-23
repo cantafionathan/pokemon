@@ -74,7 +74,7 @@ python main.py --help
 
 To see all available arguments for a given experiment, run:
 ```bash
-python main.py --experiment \<experiment_name\> --help
+python main.py --experiment <experiment_name> --help
 ```
 
 ### Example: GA vs RS in gen1OU with plots
@@ -110,3 +110,5 @@ This will:
 [Smogon Gen 1 Tier data](https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/gen1/formats-data.ts)
 
 [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/)
+
+[Gen1OU Meta Teams for Evaluation](https://gist.github.com/scheibo/7c9172f3379bbf795a5e61a802caf2f0)

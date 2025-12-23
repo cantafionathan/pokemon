@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-import requests
-from io import BytesIO
 from PIL import Image
 from pathlib import Path
 import numpy as np
 from matplotlib.widgets import Button
 from plotting.utils import load_move_names, load_pokedex_from_tiers
+from matplotlib.animation import FuncAnimation
+import matplotlib.pyplot as plt
+from matplotlib.widgets import Button
 
 POKEDEX = load_pokedex_from_tiers()
 MOVE_NAMES = load_move_names()
@@ -44,8 +45,9 @@ def plot_team_evolution(run, entry, ax):
     Plot one team onto the given Axes `ax`.
     Does NOT call plt.show().
     """
-    ax.clear()
-    ax.axis("off")
+    ax.cla()
+    ax.set_axis_off()
+
 
     pokemon_ids, movesets = entry.team
     num_pokemon = len(pokemon_ids)
@@ -102,40 +104,104 @@ def plot_team_evolution(run, entry, ax):
 
     ax.set_xlim(0, cols * 1.6 + 0.5)
     ax.set_ylim(-rows * 1.5, 1.2)
+    ax.set_autoscale_on(False)
 
 
-class TeamNavigator:
-    def __init__(self, run, entries):
+class TeamViewer:
+    def __init__(
+        self,
+        run,
+        entries,
+        *,
+        animation: bool = False,
+        interval_ms: int = 2000,
+        save_path: str = None,
+    ):
+        """
+        Parameters
+        ----------
+        animation : bool
+            If True, play team evolution as an animation (FuncAnimation).
+            If False, show interactive Previous/Next viewer.
+        interval_ms : int
+            Delay between frames for animation.
+        """
         self.run = run
         self.entries = entries
         self.index = 0
+        self.animation = animation
 
         self.fig, self.ax = plt.subplots(figsize=(10, 5))
-        plt.subplots_adjust(bottom=-0.4)
         self.ax.axis("off")
 
-        # Buttons axes
+        if animation:
+            self._init_animation(interval_ms)
+        else:
+            self._init_buttons()
+
+        if save_path:
+            self.save_gif(save_path, run.method)
+
+        plt.show()
+
+        
+
+
+    # --------------------------------------------------
+    # Static / interactive mode (buttons)
+    # --------------------------------------------------
+    def _init_buttons(self):
+        plt.subplots_adjust(bottom=-0.4)
+
         axprev = plt.axes([0.3, 0.05, 0.1, 0.075])
         axnext = plt.axes([0.6, 0.05, 0.1, 0.075])
 
-        self.bprev = Button(axprev, 'Previous')
-        self.bnext = Button(axnext, 'Next')
+        self.bprev = Button(axprev, "Previous")
+        self.bnext = Button(axnext, "Next")
 
         self.bprev.on_clicked(self.prev)
         self.bnext.on_clicked(self.next)
 
         self.plot_current()
 
-        plt.show()
-
     def plot_current(self):
         plot_team_evolution(self.run, self.entries[self.index], self.ax)
         self.fig.canvas.draw_idle()
 
-    def next(self, event):
+    def next(self, event=None):
         self.index = (self.index + 1) % len(self.entries)
         self.plot_current()
 
-    def prev(self, event):
+    def prev(self, event=None):
         self.index = (self.index - 1) % len(self.entries)
         self.plot_current()
+
+    # --------------------------------------------------
+    # Animation mode
+    # --------------------------------------------------
+    def _init_animation(self, interval_ms: int):
+        plt.subplots_adjust(bottom=-0.4)
+
+        def update(frame_idx):
+            entry = self.entries[frame_idx]
+            plot_team_evolution(self.run, entry, self.ax)
+            return []
+
+        self.anim = FuncAnimation(
+            self.fig,
+            update,
+            frames=len(self.entries),
+            interval=interval_ms,
+            repeat=True,
+        )
+
+    # --------------------------------------------------
+    # Optional: save animation
+    # --------------------------------------------------
+    def save_gif(self, path: str, method: str, dpi: int = 150):
+        if not hasattr(self, "anim"):
+            raise RuntimeError("Animation not initialized (animation=False).")
+        
+        filename = f"team_evolution_{method}.gif"
+        self.anim.save(path / filename, writer="pillow", dpi=dpi)
+
