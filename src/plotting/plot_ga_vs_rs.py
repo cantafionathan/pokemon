@@ -241,7 +241,7 @@ if __name__ == "__main__":
     run_plots(
         log="ga_vs_rs_OU_2025-12-19_23-29-58",
         tier="OU",
-        team_evolution_method="EloGeneticAlgorithm",
+        team_evolution_method=["EloGeneticAlgorithm", "EloRandomSearch"],
         team_evolution_seed=0,
         every_k_generations=1,
         animation=True,

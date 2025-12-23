@@ -21,12 +21,10 @@ def _per_run_curve(
         ]
 
     elif mode == "best_so_far":
-        best = float("-inf")
-        result = []
-        for e in sorted(run.entries, key=lambda x: x.generation):
-            best = max(best, e.score)
-            result.append((e.generation, best, e.total_battles_used))
-        return result
+        return [
+            (e.generation, e.score, e.total_battles_used)
+            for e in run.best_so_far_per_generation()
+        ]
 
     else:
         raise ValueError(f"Unknown mode: {mode}")

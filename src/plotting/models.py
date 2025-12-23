@@ -75,13 +75,14 @@ class RunLog:
         return by_gen
 
     def best_per_generation(self) -> List[LogEntry]:
-        """
-        Best-scoring team in each generation.
-        """
+        by_gen = self.entries_by_generation()
         best = []
-        for gen, entries in self.entries_by_generation().items():
-            best.append(max(entries, key=lambda e: e.score))
-        return sorted(best, key=lambda e: e.generation)
+
+        for gen in sorted(by_gen.keys()):
+            best.append(max(by_gen[gen], key=lambda e: e.score))
+
+        return best
+
     
     def best_so_far_per_generation(self) -> List[LogEntry]:
         """
@@ -99,6 +100,9 @@ class RunLog:
             best_so_far.append(current_best)
 
         return best_so_far
+
+
+
 
     def global_best(self) -> LogEntry:
         return max(self.entries, key=lambda e: e.score)
