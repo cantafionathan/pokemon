@@ -1,5 +1,4 @@
 import argparse
-from pathlib import Path
 from utils import now_vancouver
 
 from experiments import EXPERIMENTS
@@ -90,15 +89,15 @@ def main():
     args = parser.parse_args()
 
     
-    # experiment_fn(args.tier, args.engine, log=log, args=args)
+    experiment_fn(args.tier, args.engine, log=log, args=args)
 
-    # if args.team_evaluation:
-    #     if evaluate_fn is None:
-    #         raise RuntimeError(
-    #             f"Experiment '{args.experiment}' does not define an evaluation function"
-    #         )
+    if args.team_evaluation:
+        if evaluate_fn is None:
+            raise RuntimeError(
+                f"Experiment '{args.experiment}' does not define an evaluation function"
+            )
         
-    #     evaluate_fn(args.engine, args.tier, log = log)
+        evaluate_fn(args.engine, args.tier, log = log)
 
     # -------------------------
     # Run plotting
